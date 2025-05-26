@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Analysis Tool (AUT) Software</title>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FHWNDPXWTZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FHWNDPXWTZ');
+</script>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #ADD8E6;
+    }
+
+    a:visited {
+      color: #90EE90;
+    }
+
+    h1, h2, h3, h4 {
+      color: #FFD700;
+      margin-top: 20px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      list-style-type: disc; /* Ensure bullet points are visible */
+      padding-left: 20px; /* Indent list items */
+    }
+    /* New style for list items within 'Arguments' section */
+    ul.arguments-list li {
+      word-wrap: break-word; /* Allow long words to break */
+      white-space: normal;   /* Allow text to wrap normally */
+      margin-bottom: 10px; /* Space between list items */
+    }
+
+    img.responsive-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border: 2px solid #555;
+    }
+
+    /* Style for the top-right image container */
+    .top-right-image-container {
+        position: absolute; /* Absolute positioning relative to the nearest positioned ancestor (body in this case) */
+        top: 20px; /* Distance from the top of the page */
+        right: 20px; /* Distance from the right of the page */
+        z-index: 1000; /* Ensure it stays on top of other content */
+    }
+
+    /* Style for the image inside the top-right container */
+    .top-right-image {
+        width: 50px; /* Adjust size as needed, e.g., 50px, 80px */
+        height: auto;
+        border: none; /* No border for this small icon */
+        display: block; /* Remove extra space below image */
+    }
+
+
+    pre, code {
+      background-color: #1e1e1e;
+      color: #FFD700;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: Consolas, "Courier New", monospace;
+      overflow-x: auto;
+      white-space: pre-wrap; /* Preserve whitespace but allow breaking lines */
+      word-wrap: break-word; /* Allow long words to break */
+      margin-bottom: 20px; /* Ensure spacing below code blocks */
+    }
+
+    .json-output {
+      background-color: #2b2b2b;
+      color: #f8f8f2;
+      padding: 15px;
+      border-left: 3px solid #6272a4;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #00FFFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-right-image-container">
+    <img src="https://github.com/Reneehomepage/AUT_tool/raw/main/apple-touch-icon.png" alt="Icon" class="top-right-image">
+  </div>
+
+  <h1>Welcome to Download Audio Analysis Tool (AUT) Software</h1>
+  <p>The macOS version is available for direct download:</p>
+  <a href="https://github.com/Lorrytoolcenter/AUT_tool.github.io/releases/download/MAC_os/AUT-installer.dmg" target="_blank">
+    Click here to directly download the macOS Installer (AUT-installer.dmg)
+  </a>
+
+  <p>The Windows version is available for direct download:</p>
+  <a href="https://github.com/Lorrytoolcenter/AUT_tool.github.io/releases/download/Windows/AUT.exe" target="_blank">
+    Click here to directly download the Windows Executable (AUT.exe)
+  </a>
+
+  <p>Download the default configuration file for Windows:</p>
+  <a href="https://github.com/Lorrytoolcenter/AUT_tool.github.io/releases/download/Windows/aut.ini" target="_blank">
+    Click here to download the aut.ini configuration file
+  </a>
+
+  <img src="https://github.com/Reneehomepage/AUT_tool/raw/main/aut4.png" alt="Audio Analysis Tool Logo" class="responsive-img">
+
+  <h2>About the Audio Analysis Tool (AUT)</h2>
+  <p>The Audio Analysis Tool (AUT) is a comprehensive application designed for working with WAV audio files. It supports a range of audio analysis functionalities such as THD, Rub&Buzz, Noise detection, Frequency Response, and Sensitivity calculation. The tool can be run with command-line options or in GUI mode and is compatible with both Windows and macOS.</p>
+
+  <h3>Key Features</h3>
+  <ul>
+    <li><strong>File Management and Playback:</strong> Easily load single or multiple WAV audio files, select an active file for analysis, and play them back with a clear time display. You can also view detailed file information such as sample rate, bit depth, channels, and file size. Loaded files can be managed by deleting selected ones or clearing all.</li>
+    <li><strong>General Processing Options:</strong> Customize your analysis with options like channel selection (left, right, or both), A-weighting to approximate human hearing, and gain adjustment in dB.</li>
+    <li><strong>Audio Analysis Functions:</strong>
+      <ul>
+        <li><strong>Display Audio Waveform:</strong> Visualize the audio signal's amplitude over time, with options for channel selection, A-weighting, gain, and zoom. You can even plot waveforms for all loaded files for comparison.</li>
+        <li><strong>FFT Spectrum Plot:</strong> Analyze frequency components, identify tones, and understand spectral balance using Fast Fourier Transform (FFT). Parameters include FFT Size (N) for resolution, plotting all files or delta for comparison, and logarithmic frequency scaling.</li>
+        <li><strong>Spectrogram Display:</strong> Get a detailed view of how frequency content changes over time, useful for analyzing speech or transient events.</li>
+        <li><strong>Amplitude Histogram:</strong> Understand the statistical distribution of audio sample amplitudes to assess loudness, dynamic range, and potential clipping.</li>
+        <li><strong>Tonal Noise Analysis:</strong> Specifically designed to identify discrete, stable frequency tones that stand out from background noise. This includes a robust "Scan Tonal Noise" feature for abnormal noise detection, configurable via an `aut.ini` file or pop-up dialogues. Parameters such as frequency range, dB threshold, minimum duration, peak prominence, and frequency tracking tolerance allow for precise tuning of the detection algorithm.</li>
+        <li><strong>Inter-Channel Phase Analysis:</strong> Compare the phase relationship between two audio signals across the frequency spectrum, useful for identifying timing offsets or polarity inversions.</li>
+        <li><strong>Sweep Analysis (AUT Test):</strong> Analyze frequency sweeps for distortion metrics (THD, Rub & Buzz) and fundamental signal power, crucial for speaker and microphone testing.</li>
+        <li><strong>Scan Test (Sweep/Step Analysis):</strong> Advanced analysis for frequency sweep or step-sweep signals, focusing on tracking steps and pilot tones with detailed frequency behavior over time.</li>
+        <li><strong>Chamber Response Analysis:</strong> Study acoustic characteristics of rooms by analyzing sound energy decay in specific frequency bands.</li>
+        <li><strong>Chamber Isolation Analysis:</strong> Estimate how well a barrier blocks sound across different frequencies by comparing sound levels in two user-defined time periods.</li>
+      </ul>
+    </li>
+    <li><strong>Audio Recording:</strong> Capture audio directly from connected microphones, with options for single or dual mic recording, adjustable recording length, and automatic naming.</li>
+    <li><strong>Signal Generation and Modification:</strong> Generate new test signals (pure tones with distortion, white noise) or modify loaded audio by adding tones or distortion.</li>
+    <li><strong>Audio Modification Tools:</strong> Includes adaptive noise cancellation (via a reference noise signal) and spectral subtraction for background noise reduction. You can also merge mono WAVs into multi-channel files or split multi-channel WAVs into separate mono files. A feature to extract common sound from multiple files is also available.</li>
+    <li><strong>Saving Results and Logs:</strong> Save plots as images (PNG, JPG, BMP) or plot data to CSV for further analysis. Session logs containing status updates and errors can also be saved to text files, with an option for auto-saving.</li>
+    <li><strong>Menu Bar Functions:</strong> Access fundamental operations like loading files, engineer login (required for advanced features), clearing plots and logs, and refreshing audio devices.</li>
+  </ul>
+
+  <p>For advanced features like signal generation and modification, Engineer Login is required. Please contact Lorry at lorryruizhihua@gmail.com for the password.</p>
+
+  <h3>Basic Usage (GUI Mode)</h3>
+  <p>You can launch the software without any arguments to use its full graphical user interface:</p>
+  <pre><code>AUT.exe</code></pre>
+
+  <h2>AUT Tool Interface Screenshots: Tonal Noise Scan Example</h2>
+  <p>Here are some screenshots of the AUT Tool interface, including an example of the Tonal Noise Scan visualization:</p>
+
+  <h3>How Scan Tonal Noise Works (A Simplified Explanation)</h3>
+  <p>Our Scan Tonal Noise feature is designed to automatically find those annoying, constant "whines" or "hums" in your audio files, especially useful for checking products on a production line. Think of it like this:</p>
+  <ul>
+    <li>We take your audio file and quickly break it down into tiny slices of sound, like looking at snapshots of what frequencies are present over time.</li>
+    <li>For each snapshot, we look for any specific musical notes or tones that are significantly louder than the surrounding background noise. It's like finding a single loud whistle in a room full of murmurs.</li>
+    <li>Then, we track these loud "notes" over time. If a particular note stays loud and consistent for a certain period, our tool identifies it as a potential "tonal noise."</li>
+    <li>Finally, based on some smart rules we've set (like how loud it has to be or how long it has to last), the system decides if this tone is a problem. It can even count how much "problem tone" occurs in total. This helps us quickly tell if a product passes or fails the noise test, without needing a human to listen to every single one.</li>
+  </ul>
+
+  <img src="https://github.com/Reneehomepage/AUT_tool/raw/main/tonal_noise1.png" alt="Audio Analysis Tool Main Interface" class="responsive-img">
+
+  <h3>What is Tonal Noise?</h3>
+  <p>Tonal noise refers to a type of noise characterized by its distinct, stable, and often continuous pitch. Unlike broadband noise, which spreads across a wide range of frequencies, tonal noise is concentrated at one or more specific frequencies, making it sound like a hum, whine, buzz, or whistle.</p>
+
+  <h4>What Causes Tonal Noise?</h4>
+  <p>Tonal noise is usually caused by things that involve repetitive motion or electrical currents. It sounds like a steady hum, whine, buzz, or whistle.</p>
+  <ul>
+    <li>Tonal noise is identified if a spectral peak is perceptibly higher than neighboring bands.</li>
+    <li>The tone can be detected visually in a spectrum or audibly.</li>
+    <li>ISO 1996-1:2016 uses subjective and empirical rules for identification.</li>
+    <li>**Rotating Parts:** Motors, fans, pumps, and gears.</li>
+    <li>**Electrical Components:** Transformers and power supplies, often due to electromagnetic vibrations.</li>
+    <li>**Fluid Movement:** Steady flow in pipes.</li>
+  </ul>
+
+  <img src="https://github.com/Reneehomepage/AUT_tool/raw/main/5ktonal.png" alt="Tonal Noise Example Plot" class="responsive-img">
+  <p>This plot illustrates tonal noise. The prominent line clearly indicates a continuous, stable tone standing out from other frequencies. This line represents the identified tonal noise component.</p>
+
+  <img src="https://github.com/Reneehomepage/AUT_tool/raw/main/5ktonal_1.png" alt="Tonal Noise Detection based on ISO Definition" class="responsive-img">
+  <p>This image demonstrates how the system identifies tonal noise based on its definition. It highlights spectral peaks that are perceptibly higher than their neighboring frequency bands, indicating the presence of a tonal component as per the ISO standard.</p>
+
+  <h2>Command-Line Usage: Scan Tonal Noise Analysis (For Production Lines)</h2>
+  <p>
+    The Audio Analysis Tool (AUT) features a <span class="highlight">unique, custom-developed Scan Tonal Noise Analysis function</span>,
+    which is specifically designed for high-throughput testing environments
+    like <span class="highlight">production lines</span>.
+    This proprietary algorithm excels at rapidly detecting abnormal tonal noise events
+    in audio files, providing quick Pass/Fail judgments and detailed reports.
+    It can be integrated seamlessly into automated test sequences, requiring no human interaction
+    to perform batch analysis and generate machine-readable output.
+  </p>
+
+  <h3>How to Use from Command Line for Tonal Noise Scan:</h3>
+  <p>To leverage the Scan Tonal Noise Analysis function from the command line, use the <code>--console</code> flag along with specific arguments:</p>
+
+  <pre><code>AUT.exe --console --input_wav &lt;file1.wav&gt; [&lt;file2.wav&gt; ...] --output_result &lt;output.json&gt; [--save_plot_image &lt;plot.png&gt;] [--ini_file &lt;config.ini&gt;]</code></pre>
+
+  <h4>Arguments:</h4>
+  <ul class="arguments-list">
+    <li><code>--console</code>: This flag activates the console mode, enabling command-line execution without launching the full graphical user interface.</li>
+    <li><code>--input_wav &lt;file1.wav&gt; [&lt;file2.wav&gt; ...]</code>:
+        Specifies one or more input WAV audio files to be analyzed. Separate multiple file paths with spaces.
+        Example: <code>--input_wav "C:\audio\test1.wav" "C:\audio\batch\test2.wav"</code></li>
+    <li><code>--output_result &lt;output.json&gt;</code>:
+        Specifies the path where the detailed analysis results will be saved in <span class="highlight">JSON format</span>.
+        This structured output is ideal for automated parsing by other test programs.</li>
+    <li><code>--save_plot_image &lt;plot.png&gt;</code> (Optional):
+        If provided, a combined plot image (PNG format) containing the frequency tracking of all analyzed files will be saved to the specified path.
+        If omitted, no plot image will be generated.</li>
+    <li><code>--ini_file &lt;config.ini&gt;</code> (Optional):
+        Specifies the path to an INI configuration file (e.g., <code>aut.ini</code>) containing parameters for the tonal noise detection.
+        If omitted, the tool will look for <code>aut.ini</code> in the current working directory.
+        If <code>aut.ini</code> is not found or is invalid, the tool will use default parameters.</li>
+  </ul>
+
+  <h3>Example Commands for Production Line Integration:</h3>
+  <p>To analyze multiple audio files, save detailed results to a JSON file, and generate a combined plot image:</p>
+  <pre><code>AUT.exe --console --input_wav "D:\Test_Audio\Unit_A_Test1.wav" "D:\Test_Audio\Unit_B_Test2.wav" "D:\Test_Audio\Unit_C_Test3.wav"
+
+    --output_result "C:\Production_Logs\Batch_XYZ_Results.json" --save_plot_image "C:\Production_Logs\Batch_XYZ_Plot.png"</code></pre>
+
+  <p>If you only need the JSON output and no plot, simply omit the <code>--save_plot_image</code> argument:</p>
+  <pre><code>AUT.exe --console --input_wav "D:\Test_Audio\Unit_A_Test1.wav" "D:\Test_Audio\Unit_B_Test2.wav" --output_result "C:\Production_Logs\Batch_ABC_Results.json"</code></pre>
+
+  <img src="https://github.com/Reneehomepage/AUT_tool/raw/main/android-chrome-512x512.png" alt="AUT Tool Interface Screenshot showing Tonal Noise Scan" class="responsive-img">
+  <img src="https://github.com/Reneehomepage/AUT_tool/raw/main/aut1.png" alt="AUT Tool Interface Screenshot 3" class="responsive-img">
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<stripe-buy-button
+  buy-button-id="buy_btn_1RS6K8FK6fHHF8S9My9sUSQu"
+  publishable-key="pk_test_51RS45XFK6fHHF8S9CAXnZI5nsj7FY4WmchnekG4Wl0wOutuQVCKpoy3tXHZXPL3Th2cyU1BLzv8oLLVJcypDYzOU00j3oriOTa"
+>
+</stripe-buy-button>
+
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<stripe-buy-button
+  buy-button-id="buy_btn_1RS4DcFK6fHHF8S9wwdt1rWG"
+  publishable-key="pk_test_51RS45XFK6fHHF8S9CAXnZI5nsj7FY4WmchnekG4Wl0wOutuQVCKpoy3tXHZXPL3Th2cyU1BLzv8oLLVJcypDYzOU00j3oriOTa"
+>
+</stripe-buy-button>
+</body>
+</html>
