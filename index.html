@@ -216,6 +216,28 @@
     to perform batch analysis and generate machine-readable output.
   </p>
 
+
+  <h3>How to Call These Commands with Python:</h3>
+  <p>Here's a simple Python sample code that demonstrates how to communicate with the AAT tool via a socket connection and execute audio analysis tasks.</p>
+  <p>The script performs the following actions:</p>
+  <ul>
+    <li>**Connects to the server:** Establishes a socket connection to `127.0.0.1` on port `12345`.</li>
+    <li>**Gets Server Status (Optional):** Sends a `get_status` command to the server.</li>
+    <li>**Loads WAV Files:** Sends an `open_wave_file_gui` command with a list of WAV file paths to be loaded by the server's GUI.</li>
+    <li>**Runs Tonal Noise Analysis:** Sends a `run_scan_tonal_noise` command to analyze the loaded files. This command includes parameters for saving a combined plot image and overriding analysis settings like frequency range and threshold.</li>
+    <li>**Clears Loaded Files:** Sends a `clear_all_loaded_files` command to clear the WAV files from the server's memory.</li>
+    <li>**Saves Log:** Records the entire test process and results into a JSON log file.</li>
+    <li>**Prints Summary:** Displays a summary of the test, including overall status, abnormal noise detection, and file-specific results.</li>
+  </ul>
+  <p>
+    <strong>Using Python to call these commands is a very effective method for automation and integration into your testing workflows.</strong>
+  </p>
+  <p>
+    <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/sample_code_tonal_noise.py" target="_blank">Download Python Sample Code for Tonal Noise Analysis</a>
+  </p>
+
+
+  
   <h3>How to Use from Command Line for Tonal Noise Scan:</h3>
   <p>To leverage the Scan Tonal Noise Analysis function from the command line, use the <code>--console</code> flag along with specific arguments:</p>
 
