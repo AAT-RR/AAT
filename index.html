@@ -208,57 +208,58 @@
   <p>This image demonstrates how the system identifies tonal noise based on its definition. It highlights spectral peaks that are perceptibly higher than their neighboring frequency bands, indicating the presence of a tonal component as per the ISO standard.</p>
 <img src="https://github.com/AAT-RR/AAT/raw/main/tonal_noise_analysis_animation.gif" alt="Tonal Noise Analysis Animation" class="responsive-img">
 
-<h2>scan Tonal noise Analysis Parameters Explanation </h2>
+<h2>Scan Tonal noise Analysis Parameters Explanation(aat.ini) </h2>
+<div style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; font-size: 0.9em; background-color: #f9f9f9; color: #333;">
+    <h3><code>enable_abnormal_noise_detection = True</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This simply turns on or off the system's ability to <strong>detect specific, sustained abnormal noises</strong> in the audio. Setting it to <code>True</code> means the system will actively look for these noises.</li>
+    </ul>
 
-<h3><code>enable_abnormal_noise_detection = True</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This simply turns on or off the system's ability to <strong>detect specific, sustained abnormal noises</strong> in the audio. Setting it to <code>True</code> means the system will actively look for these noises.</li>
-</ul>
+    <h3><code>noise_freq_range = (1000, 18000)</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This defines the <strong>frequency band where the system will look for abnormal noise</strong>. In this case, it will only consider sounds between 1000 Hz (like a mid-range tone) and 18000 Hz (a very high-pitched sound). Any noise outside this range will be ignored for abnormal noise detection. You set this based on where you expect the problem noise to occur.</li>
+    </ul>
 
-<h3><code>noise_freq_range = (1000, 18000)</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This defines the <strong>frequency band where the system will look for abnormal noise</strong>. In this case, it will only consider sounds between 1000 Hz (like a mid-range tone) and 18000 Hz (a very high-pitched sound). Any noise outside this range will be ignored for abnormal noise detection. You set this based on where you expect the problem noise to occur.</li>
-</ul>
+    <h3><code>noise_db_threshold = 8.0</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This is how much <strong>louder a noise has to be compared to the general background noise</strong> for it to be considered "significant" or "abnormal." If a sound is only slightly louder than the background, it might be normal variation. A value of <code>8.0</code> means it needs to be 8 decibels louder to be flagged. You can adjust this to make the detection more or less sensitive.</li>
+    </ul>
 
-<h3><code>noise_db_threshold = 8.0</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This is how much <strong>louder a noise has to be compared to the general background noise</strong> for it to be considered "significant" or "abnormal." If a sound is only slightly louder than the background, it might be normal variation. A value of <code>8.0</code> means it needs to be 8 decibels louder to be flagged. You can adjust this to make the detection more or less sensitive.</li>
-</ul>
+    <h3><code>min_abnormal_noise_duration = 0.5</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This sets the <strong>minimum length of time a specific noise has to continuously exist</strong> to be counted as an "abnormal noise event." For example, <code>0.5</code> seconds means a very brief pop or click won't be flagged, but a sustained hum or whistle will be if it lasts longer than half a second. This helps filter out transient sounds that aren't sustained problems.</li>
+    </ul>
 
-<h3><code>min_abnormal_noise_duration = 0.5</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This sets the <strong>minimum length of time a specific noise has to continuously exist</strong> to be counted as an "abnormal noise event." For example, <code>0.5</code> seconds means a very brief pop or click won't be flagged, but a sustained hum or whistle will be if it lasts longer than half a second. This helps filter out transient sounds that aren't sustained problems.</li>
-</ul>
+    <h3><code>noise_peak_prominence_db = 8.0</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This helps the system identify a <strong>clear "peak" within the frequency range</strong>. It means that a noise needs to stand out by at least <code>8.0</code> decibels from the surrounding frequencies to be recognized as a distinct noise component, rather than just a slight bump in the overall sound. It's about how much the noise "sticks out" from its immediate neighbors in the frequency spectrum.</li>
+    </ul>
 
-<h3><code>noise_peak_prominence_db = 8.0</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This helps the system identify a <strong>clear "peak" within the frequency range</strong>. It means that a noise needs to stand out by at least <code>8.0</code> decibels from the surrounding frequencies to be recognized as a distinct noise component, rather than just a slight bump in the overall sound. It's about how much the noise "sticks out" from its immediate neighbors in the frequency spectrum.</li>
-</ul>
+    <h3><code>noise_peak_width_bins = 2</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This describes <strong>how "wide" a noise peak needs to be</strong> in the frequency spectrum. A value of <code>2</code> means the noise has to span at least two frequency "bins" (small frequency segments) to be considered a valid, distinct noise. This helps avoid detecting extremely narrow, often artificial or insignificant, peaks.</li>
+    </ul>
 
-<h3><code>noise_peak_width_bins = 2</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This describes <strong>how "wide" a noise peak needs to be</strong> in the frequency spectrum. A value of <code>2</code> means the noise has to span at least two frequency "bins" (small frequency segments) to be considered a valid, distinct noise. This helps avoid detecting extremely narrow, often artificial or insignificant, peaks.</li>
-</ul>
+    <h3><code>noise_freq_tracking_tolerance = 80</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This is a <strong>"wiggle room" for frequency changes</strong> when tracking a continuous noise. If a noise's frequency shifts slightly (e.g., a 5000 Hz hum briefly goes to 5050 Hz or 4980 Hz), this tolerance of <code>80</code> Hz allows the system to still consider it the <em>same</em> continuous noise event. If it shifts too much (more than 80 Hz), it will be considered a new or different noise.</li>
+    </ul>
 
-<h3><code>noise_freq_tracking_tolerance = 80</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This is a <strong>"wiggle room" for frequency changes</strong> when tracking a continuous noise. If a noise's frequency shifts slightly (e.g., a 5000 Hz hum briefly goes to 5050 Hz or 4980 Hz), this tolerance of <code>80</code> Hz allows the system to still consider it the <em>same</em> continuous noise event. If it shifts too much (more than 80 Hz), it will be considered a new or different noise.</li>
-</ul>
+    <h3><code>noise_peak_smoothing_kernel = 5</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This parameter is purely for <strong>making the frequency plot look smoother</strong>. When the system tracks noise frequencies over time, the raw data can look a bit jagged. This setting helps "average out" those jitters in the visual graph, making the trends easier to see. It doesn't change the detection results, just how they are displayed.</li>
+    </ul>
 
-<h3><code>noise_peak_smoothing_kernel = 5</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This parameter is purely for <strong>making the frequency plot look smoother</strong>. When the system tracks noise frequencies over time, the raw data can look a bit jagged. This setting helps "average out" those jitters in the visual graph, making the trends easier to see. It doesn't change the detection results, just how they are displayed.</li>
-</ul>
+    <h3><code>max_allowed_cumulative_noise_duration = 7.0</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This is a <strong>pass/fail limit for the total accumulated time of a specific noise frequency</strong>. If any single abnormal noise frequency (like that 5000 Hz hum) adds up to more than <code>7.0</code> seconds of total activity throughout the entire audio file, the system will flag it as a "FAIL." This is a key threshold for your overall quality assessment.</li>
+    </ul>
 
-<h3><code>max_allowed_cumulative_noise_duration = 7.0</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This is a <strong>pass/fail limit for the total accumulated time of a specific noise frequency</strong>. If any single abnormal noise frequency (like that 5000 Hz hum) adds up to more than <code>7.0</code> seconds of total activity throughout the entire audio file, the system will flag it as a "FAIL." This is a key threshold for your overall quality assessment.</li>
-</ul>
-
-<h3><code>enable_cumulative_noise_analysis = True</code></h3>
-<ul>
-    <li><strong>Explanation:</strong> This switch turns on or off the system's ability to <strong>calculate the <em>total accumulated time</em> for each unique noise frequency</strong> found. Setting it to <code>True</code> means the system will do this calculation and compare it against the <code>max_allowed_cumulative_noise_duration</code> to give you a pass/fail result.</li>
-</ul>
+    <h3><code>enable_cumulative_noise_analysis = True</code></h3>
+    <ul>
+        <li><strong>Explanation:</strong> This switch turns on or off the system's ability to <strong>calculate the <em>total accumulated time</em> for each unique noise frequency</strong> found. Setting it to <code>True</code> means the system will do this calculation and compare it against the <code>max_allowed_cumulative_noise_duration</code> to give you a pass/fail result.</li>
+    </ul>
+</div>
 
 
   
