@@ -225,9 +225,9 @@
         <li><strong>Explanation:</strong> This defines the <strong>frequency band where the system will look for abnormal noise</strong>. In this case, it will only consider sounds between 1000 Hz (like a mid-range tone) and 18000 Hz (a very high-pitched sound). Any noise outside this range will be ignored for abnormal noise detection. You set this based on where you expect the problem noise to occur.</li>
     </ul>
 
-    <p><code>noise_db_threshold = 8.0</code></p>
+    <p><code>noise_db_threshold = 15.0</code></p>
     <ul>
-        <li><strong>Explanation:</strong> This is how much <strong>louder a noise has to be compared to the general background noise</strong> for it to be considered "significant" or "abnormal." If a sound is only slightly louder than the background, it might be normal variation. A value of <code>8.0</code> means it needs to be 8 decibels louder to be flagged. You can adjust this to make the detection more or less sensitive.</li>
+        <li><strong>Explanation:</strong> This is how much <strong>louder a noise has to be compared to the general background noise</strong> for it to be considered "significant" or "abnormal." If a sound is only slightly louder than the background, it might be normal variation. A value of <code>15.0</code> means it needs to be 15 decibels louder to be flagged. You can adjust this to make the detection more or less sensitive.</li>
     </ul>
 <!-- INSERTED CONTENT START -->
     <p><strong>Reference for FFT Scan Parameters (Raw/Detailed Scan) in Relation to ISO 1996-2:</strong></p>
