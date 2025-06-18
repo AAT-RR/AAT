@@ -209,7 +209,9 @@
 <img src="https://github.com/AAT-RR/AAT/raw/main/tonal_noise_analysis_animation.gif" alt="Tonal Noise Analysis Animation" class="responsive-img">
 
 <h3>Scan Tonal noise Analysis Parameters Explanation(aat.ini) </h3>
-<div style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; font-size: 0.8em; line-height: 1.1;">
+<button onclick="toggleContent()">Show/Hide Parameter Explanation</button>
+
+<div id="collapsibleContent" style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; font-size: 0.8em; line-height: 1.1; display: none;">
     <p><code>enable_abnormal_noise_detection = True</code></p>
     <ul>
         <li><strong>Explanation:</strong> This simply turns on or off the system's ability to <strong>detect specific, sustained abnormal noises</strong> in the audio. Setting it to <code>True</code> means the system will actively look for these noises.</li>
@@ -260,6 +262,17 @@
         <li><strong>Explanation:</strong> This switch turns on or off the system's ability to <strong>calculate the <em>total accumulated time</em> for each unique noise frequency</strong> found. Setting it to <code>True</code> means the system will do this calculation and compare it against the <code>max_allowed_cumulative_noise_duration</code> to give you a pass/fail result.</li>
     </ul>
 </div>
+
+<script>
+function toggleContent() {
+  var content = document.getElementById("collapsibleContent");
+  if (content.style.display === "none") {
+    content.style.display = "block"; // Show content
+  } else {
+    content.style.display = "none"; // Hide content
+  }
+}
+</script>
 
 
   
