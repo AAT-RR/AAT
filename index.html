@@ -106,6 +106,11 @@
       color: #00FFFF;
       font-weight: bold;
     }
+    /* New style for red bold text */
+    .red-bold {
+      color: #FF0000;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -187,15 +192,15 @@
 
   <h4>What Causes Tonal Noise?</h4>
   <p>Tonal noise is usually caused by things that involve repetitive motion or electrical currents. It sounds like a steady hum, whine, buzz, or whistle.
-  Tonal Noise: Simply put, it's noise containing one or more distinct, continuous, and discernible specific frequency components. Compared to broadband background noise, the energy of these specific frequencies is concentrated, making them particularly prominent and piercing.
+  Tonal Noise: Simply put, it's noise containing one or more distinct, continuous, and discernible specific frequency components. Compared to broadband background noise, the energy of these specific frequencies is concentrated, making it particularly prominent and piercing.
   </p>
   <ul>
     <li>Tonal noise is identified if a spectral peak is perceptibly higher than neighboring bands.</li>
     <li>The tone can be detected visually in a spectrum or audibly.</li>
     <li>ISO 1996-1:2016 uses subjective and empirical rules for identification.</li>
-    <li>**Rotating Parts:** Motors, fans, pumps, and gears.</li>
-    <li>**Electrical Components:** Transformers and power supplies, often due to electromagnetic vibrations.</li>
-    <li>**Fluid Movement:** Steady flow in pipes.</li>
+    <li><strong>Rotating Parts:</strong> Motors, fans, pumps, and gears.</li>
+    <li><strong>Electrical Components:</strong> Transformers and power supplies, often due to electromagnetic vibrations.</li>
+    <li><strong>Fluid Movement:</strong> Steady flow in pipes.</li>
   </ul>
 
   <img src="https://github.com/AAT-RR/AAT/raw/main/5ktonal.png" alt="Tonal Noise Example Plot" class="responsive-img">
@@ -229,7 +234,12 @@
     <ul>
         <li><strong>Explanation:</strong> This sets the <strong>minimum length of time a specific noise has to continuously exist</strong> to be counted as an "abnormal noise event." For example, <code>0.5</code> seconds means a very brief pop or click won't be flagged, but a sustained hum or whistle will be if it lasts longer than half a second. This helps filter out transient sounds that aren't sustained problems.</li>
     </ul>
-
+    <!-- INSERTED CONTENT START -->
+    <p><strong>Reference for FFT Scan Parameters (Raw/Detailed Scan) in Relation to ISO 1996-2:</strong></p>
+    <ul>
+        <li>When using AAT software for calculations, if ISO 1996-2's 1/3 octave band rule for high-frequency ranges is 5 dB (note: it was 5 dB in the 2007 version, updated to 6 dB in 2017), then in scanning tonal noise analysis (Raw/detailed scan), you might need to define a value of <span class="red-bold">15 dB to 25 dB</span> as a reference for `noise_db_threshold` or `noise_peak_prominence_db`. This higher value accounts for the finer resolution of FFT analysis, where tonal energy is more concentrated, making it stand out significantly more from the localized background noise compared to averaged 1/3 octave band levels.</li>
+    </ul>
+    <!-- INSERTED CONTENT END -->
     <p><code>noise_peak_prominence_db = 8.0</code></p>
     <ul>
         <li><strong>Explanation:</strong> This helps the system identify a <strong>clear "peak" within the frequency range</strong>. It means that a noise needs to stand out by at least <code>8.0</code> decibels from the surrounding frequencies to be recognized as a distinct noise component, rather than just a slight bump in the overall sound. It's about how much the noise "sticks out" from its immediate neighbors in the frequency spectrum.</li>
