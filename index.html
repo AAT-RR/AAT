@@ -116,7 +116,7 @@
  </h1>
 
 <p><strong>Version:</strong> V1.6.1</p>
-  <p>The Windows version is available for direct download（lasted）:</p>
+  <p>The Windows version is available for direct download（latest）:</p>
   <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe" target="_blank">
     Click here to directly download the Windows Executable (AAT.exe)
   </a>
@@ -273,6 +273,8 @@ function toggleContent() {
 
   
   <h2>Command-Line/python Call Usage: Scan Tonal Noise Analysis (For Production Lines)</h2>
+  <button onclick="toggleCommandLineUsage()">Show/Hide Command-Line Usage</button>
+  <div id="commandLineUsage" style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; font-size: 0.8em; line-height: 1.1; display: none;">
   <p>
     The Audio Analysis Tool (AAT) features a <span class="highlight">unique, custom-developed Scan Tonal Noise Analysis function</span>,
     which is specifically designed for high-throughput testing environments
@@ -302,9 +304,11 @@ function toggleContent() {
   <p>
     <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/sample_code_tonal_noise.py" target="_blank">Download Python Sample Code for Tonal Noise Analysis</a>
   </p>
+  <p>
+    <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/5k_tonal.wav" target="_blank">Download Sample 5k Tonal WAV File</a>
+  </p>
 
 
-  
   <h3>How to Use from Command Line for Tonal Noise Scan:</h3>
   <p>To leverage the Scan Tonal Noise Analysis function from the command line, use the <code>--console</code> flag along with specific arguments:</p>
 
