@@ -2,10 +2,10 @@
 # Changelog
 
 ## [1.06.03] - 2025-06-19
-### Added
 - add more remote for IPC
 - New manual book
-
+### [1.6.2] - 2025-06-18
+- Tonal noise scan a-weighting bug fixed
 ### [1.6.1] - 2025-06-18
 - Tonal noise scan improved
  
