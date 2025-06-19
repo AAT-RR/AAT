@@ -121,6 +121,43 @@
  </h1>
 
 <p><strong>Version:</strong> V1.6.1_ 2025/6/19</p>
+<button onclick="loadReleaseNote()">Show Release Notes</button>
+<div id="release-note" style="display:none; margin-top: 1em; border: 1px solid #ccc; padding: 1em;"></div>
+
+<script>
+function loadReleaseNote() {
+  const container = document.getElementById("release-note");
+  if (container.innerHTML !== "") {
+    // Toggle display
+    container.style.display = (container.style.display === "none") ? "block" : "none";
+    return;
+  }
+
+  fetch('https://raw.githubusercontent.com/AAT-RR/AAT/main/release.md')
+    .then(response => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.text();
+    })
+    .then(markdown => {
+      // Simple conversion: replace Markdown headers and bullets
+      const html = markdown
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/^\- (.*$)/gim, '<li>$1</li>')
+        .replace(/\n/g, '<br>');
+
+      container.innerHTML = html;
+      container.style.display = "block";
+    })
+    .catch(error => {
+      container.innerHTML = "Failed to load release notes.";
+      container.style.display = "block";
+      console.error("Error loading release notes:", error);
+    });
+}
+</script>
+  
   <p>The Windows version is available for direct download（latest）:</p>
   <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe" target="_blank">
     Click here to directly download the Windows Executable (AAT.exe)
