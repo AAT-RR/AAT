@@ -4,13 +4,13 @@
 ## [1.06.03] - 2025-06-19
 ### Added
 - add more remote for IPC
-- New manual box
+- New manual book
 
 ### [1.6.1] - 2025-06-18
 - Tonal noise scan improved
  
 
-### Changed
+### Changed- 2025-5-1
 - Updated API version to v1.6.0
  
 ## 🚀 Features
