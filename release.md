@@ -1,0 +1,23 @@
+
+# Changelog
+
+## [1.06.03] - 2025-06-19
+### Added
+- add more remote for IPC
+- New manual box
+
+### [1.6.1] - 2025-06-18
+- Tonal noise scan improved
+ 
+
+### Changed
+- Updated API version to v1.6.0
+ 
+## 🚀 Features
+- Improve test automation pipeline
+
+## 🐛 Bug Fixes
+ 
+## 🧰 Maintenance
+- Bump dependencies
+- Update test  
