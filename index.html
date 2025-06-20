@@ -122,7 +122,7 @@
 
 <p><strong>Version:</strong> V1.6.1_ 2025/6/19</p>
 <button onclick="loadReleaseNote()">Show Release Notes</button>
-<div id="release-note" style="display:none; margin-top: 1em; border: 1px solid #ccc; padding: 1em;"></div>
+<div id="release-note" style="display:none; margin-top: 1em; border: 1px solid #ccc; padding: 1em; font-size: 12px; line-height: 1.5; font-family: Arial, sans-serif;"></div>
 
 <script>
 function loadReleaseNote() {
@@ -141,13 +141,13 @@ function loadReleaseNote() {
     .then(markdown => {
       // Simple conversion: replace Markdown headers and bullets
       const html = markdown
-        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/^### (.*$)/gim, '<h3 style="font-size:13px; margin-top:1em;">$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2 style="font-size:14px; margin-top:1em;">$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1 style="font-size:16px; margin-top:1em;">$1</h1>')
         .replace(/^\- (.*$)/gim, '<li>$1</li>')
         .replace(/\n/g, '<br>');
 
-      container.innerHTML = html;
+      container.innerHTML = `<ul style="padding-left: 1.2em;">${html}</ul>`;
       container.style.display = "block";
     })
     .catch(error => {
