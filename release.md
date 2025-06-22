@@ -274,7 +274,8 @@
 
 ## 🚀 [1.00.01] - 2023-04-12
 ### Features & Why create
+- **Initial GUI Framework:** Laid the groundwork for the main application window.
 - **Project Setup:** Established the core project structure, including module imports and basic application initialization.
 - AAT (Acoustic Analysis Tool) was born out of a shared frustration among acoustic and test engineers, particularly within certain tech companies in the US Bay Area, whose names remain unmentionable for confidentiality reasons. Witnessing firsthand the daily struggles they faced with inadequate or overly complex tools for visualizing and analyzing acoustic data, I envisioned a straightforward, intuitive application. The primary motivation was to create a tool that made it 'easy to see the picture' 
-– to quickly and clearly visualize complex acoustic measurements, empowering engineers to identify issues and validate designs with greater efficiency and less hassle.- **Initial GUI Framework:** Laid the groundwork for the main application window.
+– to quickly and clearly visualize complex acoustic measurements, empowering engineers to identify issues and validate designs with greater efficiency and less hassle.
 
