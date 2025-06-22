@@ -1,9 +1,13 @@
 
 # Changelog
+## 🐛[1.06.06] - 2025-06-20
+- GUI bug fixed
+## 🐛[1.06.05] - 2025-06-20
+- reboot through IPC 
 ## 🐛[1.06.04] - 2025-06-20
 - muti channels one file working for scan tonal noise & FFT plot and improve code logical
 ## 🐛[1.06.03] - 2025-06-19
-- add more remote for IPC（inter channel phase）
+- GUI bug 
 - New manual book 1.06.02
 - channel select for tonal noise test
 ###  🐛 Bug Fixes[1.6.2] - 2025-06-18
