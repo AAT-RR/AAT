@@ -121,40 +121,95 @@
  </h1>
 
 <p><strong>Version:</strong> _please check release note and will upload the latest verison</p>
-<button onclick="loadReleaseNote()">Show Release Notes</button>
+
+  <button onclick="loadReleaseNote()">Show Release Notes</button>
 <div id="release-note" style="display:none; margin-top: 1em; border: 1px solid #ccc; padding: 1em; font-size: 12px; line-height: 1.5; font-family: Arial, sans-serif;"></div>
 
 <script>
 function loadReleaseNote() {
-  const container = document.getElementById("release-note");
-  if (container.innerHTML !== "") {
-    // Toggle display
-    container.style.display = (container.style.display === "none") ? "block" : "none";
-    return;
-  }
+    const container = document.getElementById("release-note");
+    if (container.innerHTML !== "") {
+        // Toggle display if content is already loaded
+        container.style.display = (container.style.display === "none") ? "block" : "none";
+        return;
+    }
 
-  fetch('https://raw.githubusercontent.com/AAT-RR/AAT/main/release.md')
-    .then(response => {
-      if (!response.ok) throw new Error("Network response was not ok");
-      return response.text();
-    })
-    .then(markdown => {
-      // Simple conversion: replace Markdown headers and bullets
-      const html = markdown
-        .replace(/^### (.*$)/gim, '<h3 style="font-size:13px; margin-top:1em;">$1</h3>')
-        .replace(/^## (.*$)/gim, '<h2 style="font-size:14px; margin-top:1em;">$1</h2>')
-        .replace(/^# (.*$)/gim, '<h1 style="font-size:16px; margin-top:1em;">$1</h1>')
-        .replace(/^\- (.*$)/gim, '<li>$1</li>')
-        .replace(/\n/g, '<br>');
+    fetch('https://raw.githubusercontent.com/AAT-RR/AAT/main/release.md')
+        .then(response => {
+            if (!response.ok) throw new Error("Network response was not ok");
+            return response.text();
+        })
+        .then(markdown => {
+            let finalHtml = '';
+            let inList = false; // Flag to track if we are inside a <ul> list
 
-      container.innerHTML = `<ul style="padding-left: 1.2em;">${html}</ul>`;
-      container.style.display = "block";
-    })
-    .catch(error => {
-      container.innerHTML = "Failed to load release notes.";
-      container.style.display = "block";
-      console.error("Error loading release notes:", error);
-    });
+            // Split the markdown content into lines to process each line individually
+            const lines = markdown.split('\n');
+
+            lines.forEach(line => {
+                line = line.trim(); // Remove leading/trailing whitespace from the line
+
+                // 1. Convert Markdown links [text](url) to HTML <a> tags.
+                // This ensures links are clickable and only the text is visible.
+                // target="_blank" opens in a new tab; rel="noopener noreferrer" enhances security.
+                line = line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+
+                // 2. Process different types of Markdown lines
+                if (line.startsWith('### ')) {
+                    // If previously in a list, close it before adding a new heading
+                    if (inList) {
+                        finalHtml += '</ul>';
+                        inList = false;
+                    }
+                    finalHtml += `<h3 style="font-size:13px; margin-top:1em; font-weight: bold;">${line.substring(4)}</h3>`;
+                } else if (line.startsWith('## ')) {
+                    if (inList) {
+                        finalHtml += '</ul>';
+                        inList = false;
+                    }
+                    finalHtml += `<h2 style="font-size:14px; margin-top:1em; font-weight: bold;">${line.substring(3)}</h2>`;
+                } else if (line.startsWith('# ')) {
+                    if (inList) {
+                        finalHtml += '</ul>';
+                        inList = false;
+                    }
+                    finalHtml += `<h1 style="font-size:16px; margin-top:1em; font-weight: bold;">${line.substring(2)}</h1>`;
+                } else if (line.startsWith('- ')) {
+                    // If not currently in a list, start a new one
+                    if (!inList) {
+                        finalHtml += '<ul style="padding-left: 1.2em;">';
+                        inList = true;
+                    }
+                    finalHtml += `<li>${line.substring(2)}</li>`; // Add list item
+                } else if (line === '') { // Handle empty lines (for spacing)
+                    if (inList) { // If an empty line breaks a list, close it
+                        finalHtml += '</ul>';
+                        inList = false;
+                    }
+                    finalHtml += '<br>'; // Add a line break for spacing between blocks
+                } else if (line.length > 0) { // Handle regular text lines as paragraphs
+                    if (inList) { // If regular text appears after a list, close the list
+                        finalHtml += '</ul>';
+                        inList = false;
+                    }
+                    // For the introductory sentence in the changelog, wrap it in a paragraph
+                    finalHtml += `<p>${line}</p>`;
+                }
+            });
+
+            // Ensure the last list is closed if the markdown ends within a list
+            if (inList) {
+                finalHtml += '</ul>';
+            }
+
+            container.innerHTML = finalHtml; // Set the processed HTML content
+            container.style.display = "block"; // Make the container visible
+        })
+        .catch(error => {
+            container.innerHTML = "Failed to load release notes. Please try again later.";
+            container.style.display = "block";
+            console.error("Error loading release notes:", error);
+        });
 }
 </script>
   
