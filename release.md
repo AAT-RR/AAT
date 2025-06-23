@@ -1,8 +1,10 @@
 # Changelog
-
-## 🐛 [1.06.06] - 2025-06-20
+## 🐛 [1.06.07] - 2025-06-21
 ### Downloads
 - [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
+### Fixes
+- Addressed various GUI bugs like smooth.  
+## 🐛 [1.06.06] - 2025-06-20
 ### Fixes
 - Addressed various GUI bugs.
 ## 🐛 [1.06.05] - 2025-06-20
