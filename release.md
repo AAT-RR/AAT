@@ -1,7 +1,12 @@
 # Changelog
-## 🐛 [1.06.07] - 2025-06-21
+## 🐛 [1.07.04] - 2025-06-27
 ### Downloads
 - [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
+### Fixes
+- fix display wav bug
+- add language change per user request
+- fix the bug of phase through ICP
+## 🐛 [1.06.07] - 2025-06-21
 ### Fixes
 - Addressed various GUI bugs like smooth.  
 ## 🐛 [1.06.06] - 2025-06-20
