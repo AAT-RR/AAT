@@ -2,7 +2,7 @@
 ## 🐛 [1.07.04] - 2025-06-27
 ### Downloads
 - [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
--[IPC_phase_sample.py script](https://github.com/AAT-RR/AAT/releases/download/Window_OS/IPC_phase_sample.py)
+- [IPC_phase_sample.py script](https://github.com/AAT-RR/AAT/releases/download/Window_OS/IPC_phase_sample.py)
 ### Fixes
 - fix display wav bug
 - add language change per user request
