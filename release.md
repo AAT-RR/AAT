@@ -1,12 +1,16 @@
 # Changelog
-## 🐛 [1.07.04] - 2025-06-27
+## 🐛 [1.07.05] - 2025-06-29
 ### Downloads
 - [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
-- [IPC_phase_sample.py script](https://github.com/AAT-RR/AAT/releases/download/Window_OS/IPC_phase_sample.py)
+### Fixes
+- change UI layout and add ini use manual
+## 🐛 [1.07.04] - 2025-06-27
 ### Fixes
 - fix display wav bug
 - add language change per user request
 - fix the bug of phase through ICP
+### Downloads
+- [IPC_phase_sample.py script](https://github.com/AAT-RR/AAT/releases/download/Window_OS/IPC_phase_sample.py)
 ## 🐛 [1.06.07] - 2025-06-21
 ### Fixes
 - Addressed various GUI bugs like smooth.  
