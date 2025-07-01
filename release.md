@@ -1,6 +1,11 @@
 # Changelog
+## 🐛 [1.07.07] - 2025-07-01
+### MAC OS Downloads
+- [AAT.dmg application](https://github.com/AAT-RR/AAT/releases/download/MAC_OS/AAT.dmg)
+### Fixes
+- change UI layout and add fix ini issue for macos
 ## 🐛 [1.07.06] - 2025-06-29
-### Downloads
+### Windos Downloads
 - [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
 ### Fixes
 - change UI layout and add ini use manual
