@@ -1,5 +1,5 @@
 # Changelog
-## 🐛 [1.07.05] - 2025-06-29
+## 🐛 [1.07.06] - 2025-06-29
 ### Downloads
 - [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
 ### Fixes
