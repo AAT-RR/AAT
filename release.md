@@ -1,4 +1,11 @@
 # Changelog
+
+## 🐛 [1.07.10] - 2025-07-11
+### Windos facoty vesion Downloads
+- [AAT_factory.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT_factory.exe)
+- [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
+### Fixes
+- updload the factory vesion.
 ## 🐛 [1.07.07] - 2025-07-01
 ### MAC OS Downloads
 - [AAT.dmg application](https://github.com/AAT-RR/AAT/releases/download/MAC_OS/AAT.dmg)
