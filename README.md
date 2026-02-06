@@ -1,6 +1,6 @@
 
 # Welcome to Download Audio Analysis Tool (AAT) Software for free! 100% Green software! Not malware and other breaches
-
+3 year key: github-2Tl-2jt-68765384dbbd5f36       expired date:11/2/2028
 **Version:** _please check release note and will upload the latest verison
 
 The Windows version is available for direct download（latest）:
@@ -96,4 +96,4 @@ AAT.exe --console --input_wav "test.wav" --output_result "result.json" --save_pl
 
 If you find AAT useful, consider supporting the development. Donations help maintain and improve this tool.
 
-For a free license, email Renee: [shirleyxuxiang@gmail.com](mailto:shirleyxuxiang@gmail.com)
+For a free license, email Renee: [shirleyxuxiang@gmail.com](mailto:reneeaat@gmail.com)
