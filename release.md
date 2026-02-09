@@ -1,7 +1,8 @@
 # Changelog
-## 🐛 [1.08.01] - 2026-02-11
-### Windos facoty vesion Downloads
+## 🐛 [1.08.05] - 2026-02-11
+### Windows factory vesion Downloads
 ### Fixes
+-add design hub
 - updload the factory vesion and add teams test.
 - [AAT_factory.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT_factory.exe)
 - [AAT.exe application](https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.exe)
