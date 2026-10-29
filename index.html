@@ -135,7 +135,7 @@
 
   .hero { padding: 56px 0 40px; }
   .hero-head { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
-  .hero-head img { width: 64px; height: 64px; border-radius: 13px; box-shadow: var(--shadow); flex-shrink: 0; }
+  .hero-head img { width: 88px; height: 88px; border-radius: 18px; box-shadow: var(--shadow); flex-shrink: 0; }
   .hero h1 {
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
@@ -273,7 +273,7 @@
 
   .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
     gap: 14px;
   }
 
@@ -330,6 +330,7 @@
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 14px;
   }
+  .shots.two-up { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
   .shots figure { margin: 0; }
   .shots img { width: 100%; border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow); display: block; }
   .shots figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
@@ -379,14 +380,16 @@
 
   <section class="hero" id="download">
     <div class="hero-head">
-      <img src="aat_pro_icon.png" alt="AAT Pro icon">
+      <img src="android-chrome-512x512.png" alt="AAT logo">
       <h1>AAT Pro</h1>
     </div>
-    <p class="tagline">A Windows desktop application for <strong>recording, viewing and analysing audio</strong> — for acoustic engineering, product validation and production-line testing. Load or record a WAV file, pick a channel, and every chart, meter and analysis tool works on that signal.</p>
-    <p class="tagline">The new, faster native version of the Audio Analysis Tool: rebuilt from the ground up in C++, it starts quickly, handles long multi-channel recordings (16 channels and more) and runs many analyses in parallel on all CPU cores.</p>
+    <p class="tagline"><strong>Professional audio analysis, from the first recording to the PASS/FAIL report.</strong> AAT Pro brings a complete acoustic test lab to your Windows PC — spectrum, spectrogram, THD, Rub &amp; Buzz, tonal noise, direction of arrival, noise reduction and one-click PDF reports, all in one window.</p>
+    <p class="tagline">Rebuilt from the ground up as a native C++ engine, it opens in seconds, handles long, high-channel-count recordings with ease and runs many analyses in parallel across every CPU core — built for acoustic engineering, product validation and the production line.</p>
     <div class="badge-row">
-      <span class="badge">Windows 10 / 11 · 64-bit</span>
-      <span class="badge">No admin rights needed</span>
+      <span class="badge">Native C++ engine</span>
+      <span class="badge">Multi-channel at scale</span>
+      <span class="badge">Parallel on all CPU cores</span>
+      <span class="badge">One-click PDF reports</span>
       <span class="badge">365-day free trial</span>
     </div>
 
@@ -462,38 +465,55 @@
 
   <section class="chapter" id="features">
     <h2>Main features</h2>
+    <p class="lede">Everything an audio engineer reaches for — capture, measure, judge and report — in one fast, focused tool.</p>
     <div class="feature-grid">
       <div class="card">
-        <h4>Signal in and out</h4>
+        <h4>Capture anything</h4>
         <ul>
-          <li>Load mono or multi-channel WAV, or record from any input device — even two at once</li>
-          <li>Live level meter and <strong>Realtime Spectrum</strong> with dBA readout and calibrator support</li>
+          <li>Load mono or multi-channel WAV, or record from any input device — even <strong>two devices at once</strong></li>
+          <li><strong>Realtime Spectrum</strong> analyser with live dBA sound-level readout and calibrator support</li>
           <li>Playback with draggable playhead and loop</li>
-          <li>Per-file analysis time range and gain, without changing the original file</li>
-          <li>Generate test signals; merge mono files into multi-channel or split them</li>
+          <li>Per-file analysis time range and gain — your original file is never touched</li>
+          <li>Built-in signal generator; merge mono files into multi-channel, or split them back</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Analysis</h4>
+        <h4>Measure with precision</h4>
         <ul>
-          <li><strong>Plot FFT</strong>, <strong>Spectrogram</strong>, <strong>3D Waterfall (CSD)</strong>, <strong>Histogram</strong></li>
-          <li><strong>Waveform Statistics</strong> — peak, RMS, dB SPL, dBA, max RMS dBA, peak dBA</li>
-          <li><strong>Sweep Analysis</strong> — THD, Rub &amp; Buzz and level vs. frequency</li>
-          <li><strong>Tonal Noise</strong> and <strong>Tonal Teams</strong> PASS/FAIL tonal-spike check</li>
-          <li><strong>Scan Test</strong>, <strong>Chamber Response</strong>, <strong>Chamber Isolation</strong></li>
-          <li><strong>DOA Analysis</strong> and <strong>Intel Channel Phase</strong></li>
-          <li>Spectral Subtraction, Adaptive Noise Cancellation, Extract Audio Difference</li>
+          <li><strong>FFT</strong>, <strong>Spectrogram</strong>, <strong>3D Waterfall (CSD)</strong> and <strong>Histogram</strong> views</li>
+          <li><strong>Waveform Statistics</strong> — peak, RMS, dB SPL, dBA, max RMS dBA and peak dBA for every channel</li>
+          <li><strong>Sweep Analysis</strong> — THD, Rub &amp; Buzz and level versus frequency</li>
+          <li><strong>DOA Analysis</strong> (direction of arrival) and <strong>Intel Channel Phase</strong> for microphone arrays</li>
+          <li><strong>Scan Test</strong>, <strong>Chamber Response</strong> and <strong>Chamber Isolation</strong></li>
         </ul>
       </div>
       <div class="card">
-        <h4>Reporting and design helpers</h4>
+        <h4>Judge PASS / FAIL automatically</h4>
         <ul>
-          <li><strong>Export Report</strong> — runs the selected tools and saves all results in one PDF</li>
-          <li>CSV export of curves and results</li>
-          <li><strong>Design</strong> menu: MEMS microphone, speaker and acoustic design calculators and guides</li>
+          <li><strong>Tonal Noise</strong> — detects and tracks hums, whines and whistles over time</li>
+          <li><strong>Tonal Teams</strong> — production-style PASS/FAIL check of narrow tonal spikes against each channel's own baseline</li>
+          <li>Overlay view to compare channels or units side by side</li>
+          <li>Noise reduction: <strong>Spectral Subtraction</strong>, <strong>Adaptive Noise Cancellation</strong>, <strong>Extract Audio Difference</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Report and design</h4>
+        <ul>
+          <li><strong>Export Report</strong> — runs the tools you pick and delivers every result in a single PDF</li>
+          <li>CSV export of curves and results for your own pipeline</li>
+          <li><strong>Design</strong> menu: MEMS microphone, speaker and acoustic design calculators and reference guides</li>
           <li><strong>Unit Converter</strong> — dB, distance attenuation, wavelength, mic spacing / aliasing, dBu/dBV and more</li>
         </ul>
       </div>
+    </div>
+
+    <h3 class="sub-head">Tonal noise analysis</h3>
+    <p>Tonal noise — a steady hum, whine, buzz or whistle concentrated at specific frequencies — is one of the most common reasons a product fails an acoustic test. AAT slices the recording into short spectra, finds peaks that stand out above the neighbouring bands (in the spirit of ISO&nbsp;1996-1), tracks them over time and decides PASS or FAIL from how loud and how long they last — no one has to listen to every unit.</p>
+    <div class="shots two-up">
+      <figure><img src="tonal_noise1.png" alt="Scan Tonal Noise Analysis comparing six microphone files, all PASS" loading="lazy"><figcaption>Scan tonal noise across many files at once — each one judged PASS / FAIL</figcaption></figure>
+      <figure><img src="5ktonal.png" alt="Spectrogram of a recording with a 5 kHz tone" loading="lazy"><figcaption>A continuous 5 kHz tone standing out in the spectrogram</figcaption></figure>
+      <figure><img src="5ktonal_1.png" alt="Tonal noise detection based on the ISO definition" loading="lazy"><figcaption>Detection of spectral peaks above the neighbouring bands</figcaption></figure>
+      <figure><img src="tonal_noise_analysis_animation.gif" alt="Animation of tonal noise analysis over time" loading="lazy"><figcaption>Tonal noise tracked over time</figcaption></figure>
     </div>
 
     <h3 class="sub-head">Screenshots</h3>
@@ -544,7 +564,7 @@ license_key = YOUR-KEY-HERE</pre>
         <tr><td>"Windows protected your PC" when starting the installer or the program</td><td>The files are not code-signed. Click <strong>More info → Run anyway</strong>.</td></tr>
         <tr><td>Portable version does not start, or recordings fail to save</td><td>Make sure the folder was fully extracted (not run from inside the zip) and is somewhere you can write to, e.g. Desktop or Documents.</td></tr>
         <tr><td>No input device / no sound</td><td>Connect the device first, then <strong>Tools → Refresh Audio Devices</strong>. Check Windows sound settings and microphone privacy permissions.</td></tr>
-        <tr><td>Charts are slow with many channels</td><td>Normal for very long 16+ channel files; select fewer channels or set a shorter <strong>Select Time Range…</strong>.</td></tr>
+        <tr><td>Charts are slow with many channels</td><td>Normal for very long recordings with many channels; select fewer channels or set a shorter <strong>Select Time Range…</strong>.</td></tr>
         <tr><td>"Evaluation Period Ended"</td><td>See <a href="#license">Trial already ended?</a> above.</td></tr>
       </table>
     </div>
