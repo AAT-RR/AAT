@@ -111,6 +111,27 @@
       color: #FF0000;
       font-weight: bold;
     }
+
+    /* Collapsible donation section: Stripe button shows only after clicking "Donate" */
+    .donation-toggle {
+      margin: 20px 0;
+    }
+    .donation-toggle summary {
+      display: inline-block;
+      cursor: pointer;
+      list-style: none; /* Hide default disclosure triangle */
+      background-color: #FFD700;
+      color: #000000;
+      font-weight: bold;
+      padding: 8px 20px;
+      border-radius: 5px;
+    }
+    .donation-toggle summary::-webkit-details-marker {
+      display: none;
+    }
+    .donation-toggle[open] summary {
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
@@ -503,31 +524,15 @@ Please feel free to contact the author Renee at <a href="mailto:reneeaat@gmail.c
   src="https://js.stripe.com/v3/buy-button.js">
 </script>
 
-<stripe-buy-button
-  buy-button-id="buy_btn_1RS7WuJwY3XWlUCTuyHbboBK"
-  publishable-key="pk_live_51RS45KJwY3XWlUCTK5Ubv0ciOdJyXndysgmTb3S6FBrHhO5d4piOdAWFWgczM0n8I1DskRmDGUjPSlUOoz5YR1wK00XFM8Q6rS"
->
-</stripe-buy-button>
-
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<stripe-buy-button
-  buy-button-id="buy_btn_1RS7WuJwY3XWlUCT2ArtB8Wt"
-  publishable-key="pk_live_51RS45KJwY3XWlUCTK5Ubv0ciOdJyXndysgmTb3S6FBrHhO5d4piOdAWFWgczM0n8I1DskRmDGUjPSlUOoz5YR1wK00XFM8Q6rS"
->
-</stripe-buy-button>
-
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<stripe-buy-button
-  buy-button-id="buy_btn_1RT3EHJwY3XWlUCTjFyUEyCR"
-  publishable-key="pk_live_51RS45KJwY3XWlUCTK5Ubv0ciOdJyXndysgmTb3S6FBrHhO5d4piOdAWFWgczM0n8I1DskRmDGUjPSlUOoz5YR1wK00XFM8Q6rS"
->
-</stripe-buy-button>
+<!-- Donation button ($19.99) is hidden until the visitor clicks "Donate" -->
+<details class="donation-toggle">
+  <summary>Donate</summary>
+  <stripe-buy-button
+    buy-button-id="buy_btn_1RT3EHJwY3XWlUCTjFyUEyCR"
+    publishable-key="pk_live_51RS45KJwY3XWlUCTK5Ubv0ciOdJyXndysgmTb3S6FBrHhO5d4piOdAWFWgczM0n8I1DskRmDGUjPSlUOoz5YR1wK00XFM8Q6rS"
+  >
+  </stripe-buy-button>
+</details>
 
 
 </body>
