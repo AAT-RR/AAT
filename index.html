@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>AAT Pro — Audio Analysis Tool</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AAT Pro 1.5.0 — record, view and analyse audio on Windows: FFT, spectrogram, THD, Rub & Buzz, tonal noise, DOA and more.">
+<meta name="description" content="AAT Pro 1.5.1 — record, view and analyse audio on Windows: FFT, spectrogram, THD, Rub & Buzz, tonal noise, DOA and more.">
 <link rel="icon" type="image/png" href="aat_pro_icon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
@@ -330,6 +330,44 @@
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 14px;
   }
+  /* ---------- Version history ---------- */
+
+  details.release {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 10px;
+  }
+  details.release summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+  }
+  details.release summary::-webkit-details-marker { display: none; }
+  details.release summary::before {
+    content: "\25B8";
+    color: var(--accent);
+    transition: transform 0.15s;
+  }
+  details.release[open] summary::before { transform: rotate(90deg); }
+  .rel-ver { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 16px; }
+  .rel-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-radius: 999px;
+    padding: 1px 9px;
+  }
+  .rel-date { margin-left: auto; color: var(--muted); font-size: 13px; font-family: "JetBrains Mono", monospace; }
+  .rel-body { padding: 0 20px 16px 44px; font-size: 14.5px; }
+  .rel-links { margin: 12px 0 0; font-size: 14px; }
+
   .shots.two-up { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
   .shots figure { margin: 0; }
   .shots img { width: 100%; border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow); display: block; }
@@ -370,6 +408,7 @@
       <a href="#download">Download</a>
       <a class="optional" href="#features">Features</a>
       <a class="optional" href="#license">License</a>
+      <a class="optional" href="#history">History</a>
       <a href="guide/how_to_use.html">User Guide</a>
       <a href="classic.html">Classic AAT</a>
     </nav>
@@ -393,22 +432,22 @@
       <span class="badge">365-day free trial</span>
     </div>
 
-    <p class="dl-version">Latest version: <span class="mono">1.5.0</span> · <a href="#whatsnew">What's new</a></p>
+    <p class="dl-version">Latest version: <span class="mono">1.5.1</span> · <a href="#whatsnew">What's new</a> · <a href="#history">Version history</a></p>
     <div class="downloads">
       <div class="dl-card">
         <h3>Installer</h3>
-        <span class="size">AAT_Pro_Setup_1.5.0.exe · 20.0 MB</span>
+        <span class="size">AAT_Pro_Setup_1.5.1.exe · 20.1 MB</span>
         <p>You can install software on the PC. Adds Start-menu shortcuts and an uninstaller.</p>
-        <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.0/AAT_Pro_Setup_1.5.0.exe">Download installer</a>
+        <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Setup_1.5.1.exe">Download installer</a>
       </div>
       <div class="dl-card">
         <h3>Portable</h3>
-        <span class="size">AAT_Pro_Portable_1.5.0.zip · 26.8 MB</span>
+        <span class="size">AAT_Pro_Portable_1.5.1.zip · 26.8 MB</span>
         <p>Locked-down PC (no installation, no registry access, no admin rights), or run it from a USB drive. Unzip and run.</p>
-        <a class="btn secondary" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.0/AAT_Pro_Portable_1.5.0.zip">Download portable</a>
+        <a class="btn secondary" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Portable_1.5.1.zip">Download portable</a>
       </div>
     </div>
-    <p class="dl-note">Both contain exactly the same program — you only need one. All files and release notes are on the <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.0">GitHub release page</a>. Looking for the original AAT (Windows 32-bit / macOS)? See <a href="classic.html">Classic AAT</a>.</p>
+    <p class="dl-note">Both contain exactly the same program — you only need one. All files and release notes are on the <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.1">GitHub release page</a>; older versions are in the <a href="#history">version history</a>. Looking for the original AAT (Windows 32-bit / macOS)? See <a href="classic.html">Classic AAT</a>.</p>
 
     <img class="screenshot" src="guide/images/main_window.png" alt="AAT Pro main window with spectrum and waveform views">
   </section>
@@ -420,7 +459,7 @@
       <div class="card">
         <h4>Option A — Installer</h4>
         <ol>
-          <li>Double-click <span class="val">AAT_Pro_Setup_1.5.0.exe</span>.</li>
+          <li>Double-click <span class="val">AAT_Pro_Setup_1.5.1.exe</span>.</li>
           <li>If Windows shows <em>"Windows protected your PC"</em> (SmartScreen), click <strong>More info → Run anyway</strong> — the installer is not code-signed.</li>
           <li>Follow the wizard. It installs for the current user only (under <span class="val">%LOCALAPPDATA%\Programs\AAT Pro</span>), so no administrator password is asked for.</li>
           <li>Start <strong>AAT Pro</strong> from the Start menu or the desktop.</li>
@@ -430,7 +469,7 @@
       <div class="card">
         <h4>Option B — Portable (no installation)</h4>
         <ol>
-          <li>Copy <span class="val">AAT_Pro_Portable_1.5.0.zip</span> to a folder you can write to — Desktop, Documents or a USB drive. Not <span class="val">C:\Program Files</span>: recordings are saved next to the program.</li>
+          <li>Copy <span class="val">AAT_Pro_Portable_1.5.1.zip</span> to a folder you can write to — Desktop, Documents or a USB drive. Not <span class="val">C:\Program Files</span>: recordings are saved next to the program.</li>
           <li>Right-click the zip → <strong>Extract All…</strong></li>
           <li>Open the extracted folder and double-click <span class="val">AAT_Pro.exe</span>.</li>
         </ol>
@@ -490,7 +529,7 @@
       <div class="card">
         <h4>Judge PASS / FAIL automatically</h4>
         <ul>
-          <li><strong>Tonal Noise</strong> — detects and tracks hums, whines and whistles over time</li>
+          <li><strong>Tonal Noise</strong> — detects and tracks hums, whines and whistles over time, across many channels and files at once, with a PASS/FAIL comparison table</li>
           <li><strong>Tonal Teams</strong> — production-style PASS/FAIL check of narrow tonal spikes against each channel's own baseline</li>
           <li>Overlay view to compare channels or units side by side</li>
           <li>Noise reduction: <strong>Spectral Subtraction</strong>, <strong>Adaptive Noise Cancellation</strong>, <strong>Extract Audio Difference</strong></li>
@@ -525,17 +564,56 @@
   </section>
 
   <section class="chapter" id="whatsnew">
-    <h2>What's new in 1.5.0</h2>
+    <h2>What's new in 1.5.1</h2>
     <ul class="plain">
-      <li><strong>Free trial extended to one year</strong> (365 days).</li>
-      <li><strong>Portable version</strong> — runs without installation on locked-down PCs.</li>
-      <li>The Visual C++ runtime is now included, so AAT Pro runs on PCs where it was never installed (previously <em>"msvcp140.dll is missing"</em>).</li>
-      <li><strong>Tonal Teams</strong> results are interactive: hover readout, zoom, log frequency axis, <em>Reset Zoom</em> and an <em>Overlay all channels</em> view.</li>
-      <li><strong>All charts:</strong> hold the right mouse button and drag to move the view.</li>
-      <li>Faster display of many-channel files (narrow spectrum peaks are kept); faster Histogram and DOA on multi-channel data.</li>
-      <li><em>Apply to all loaded files</em> for time range and gain now leaves every file unchanged if one of them cannot take the setting.</li>
-      <li>Much more detailed user guide, with a complete table of contents.</li>
+      <li><strong>Tonal Noise now compares many channels and files at once.</strong> Tick the channels you want in <em>Loaded Files</em> — from one or several WAV files — and open <em>Tools → Tonal Noise</em>. Every channel is analysed in parallel, and the result window shows a <strong>comparison table</strong> (abnormal noise events, longest event, most cumulative noise and PASS/FAIL per channel), one chart per channel, and an <em>Overlay all channels</em> view that draws every channel on one chart. Export Report includes all ticked channels as well.</li>
+      <li><strong>Trial ended?</strong> AAT Pro now asks for the license key directly at start-up instead of just closing.</li>
     </ul>
+  </section>
+
+  <section class="chapter" id="history">
+    <h2>Version history</h2>
+    <p class="lede">Every AAT Pro release stays available. Click a version to see what changed and download it.</p>
+
+    <!-- Newest first. For a new release: add a <details class="release"> block at the top, move "open" to it,
+         and mark only that one "Latest". Downloads live on the GitHub release tag AAT_Pro_v<version>. -->
+    <details class="release" open>
+      <summary><span class="rel-ver">1.5.1</span><span class="rel-tag">Latest</span><span class="rel-date">2026-10-29</span></summary>
+      <div class="rel-body">
+        <ul class="plain">
+          <li><strong>Tonal Noise</strong> compares several channels and files at once: parallel analysis, comparison table with PASS/FAIL per channel, one chart per channel and an <em>Overlay all channels</em> view. Export Report includes all ticked channels.</li>
+          <li>When the trial has ended, the program asks for the license key at start-up instead of closing.</li>
+        </ul>
+        <p class="rel-links">
+          <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Setup_1.5.1.exe">Installer (.exe)</a> ·
+          <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Portable_1.5.1.zip">Portable (.zip)</a> ·
+          <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.1">Release notes</a>
+        </p>
+      </div>
+    </details>
+
+    <details class="release">
+      <summary><span class="rel-ver">1.5.0</span><span class="rel-date">2026-10-29</span></summary>
+      <div class="rel-body">
+        <ul class="plain">
+          <li><strong>Free trial extended to one year</strong> (365 days).</li>
+          <li><strong>Portable version</strong> — runs without installation on locked-down PCs.</li>
+          <li>The Visual C++ runtime is now included, so AAT Pro runs on PCs where it was never installed (previously <em>"msvcp140.dll is missing"</em>).</li>
+          <li><strong>Tonal Teams</strong> results are interactive: hover readout, zoom, log frequency axis, <em>Reset Zoom</em> and an <em>Overlay all channels</em> view.</li>
+          <li><strong>All charts:</strong> hold the right mouse button and drag to move the view.</li>
+          <li>Faster display of many-channel files (narrow spectrum peaks are kept); faster Histogram and DOA on multi-channel data.</li>
+          <li><em>Apply to all loaded files</em> for time range and gain now leaves every file unchanged if one of them cannot take the setting.</li>
+          <li>Much more detailed user guide, with a complete table of contents.</li>
+        </ul>
+        <p class="rel-links">
+          <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.0/AAT_Pro_Setup_1.5.0.exe">Installer (.exe)</a> ·
+          <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.0/AAT_Pro_Portable_1.5.0.zip">Portable (.zip)</a> ·
+          <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.0">Release notes</a>
+        </p>
+      </div>
+    </details>
+
+    <p class="dl-note">Earlier, pre-Pro versions of AAT (Windows 32-bit and macOS) are on the <a href="classic.html">Classic AAT</a> page. All files: <a href="https://github.com/AAT-RR/AAT/releases">GitHub releases</a>.</p>
   </section>
 
   <section class="chapter" id="license">
@@ -544,14 +622,11 @@
     <div class="grid-2">
       <div class="card">
         <h4>Enter a license key</h4>
-        <p style="margin-top:0">Request a key (see <a href="#support">Support</a>) and enter it via <strong>Help → Enter License Key</strong> while the trial is still running. The dialog tells you immediately whether the key is valid and until when.</p>
+        <p style="margin-top:0">Request a key (see <a href="#support">Support</a>) and enter it via <strong>Help → Enter License Key</strong> while the trial is still running. The dialog tells you immediately whether the key is valid and until when. The key is remembered, so you only enter it once.</p>
       </div>
       <div class="card">
         <h4>Trial already ended?</h4>
-        <p style="margin-top:0">The program will not open, so add the key by hand: close AAT Pro, open <span class="val">%APPDATA%\AAT\settings.ini</span> in Notepad, and put the key in the <span class="val">[LICENSE]</span> section (add it at the end if missing):</p>
-        <pre class="code">[LICENSE]
-license_key = YOUR-KEY-HERE</pre>
-        <p style="margin-top:0">Save the file and start AAT Pro again.</p>
+        <p style="margin-top:0">When you start AAT Pro, an <em>Evaluation Period Ended</em> message appears. Click <strong>Enter License Key…</strong>, paste your key and click <strong>Activate</strong> — the program then opens normally and remembers the key. (Click <strong>Exit</strong> to close it instead.)</p>
       </div>
     </div>
   </section>
@@ -570,9 +645,9 @@ license_key = YOUR-KEY-HERE</pre>
     </div>
 
     <h3 class="sub-head">File checksums (SHA-256)</h3>
-    <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.0.exe</span> in PowerShell and compare:</p>
-    <pre class="code">AAT_Pro_Setup_1.5.0.exe     41E69580F779E570B4212A0677A7E418EBFC7A4F047E291904F80647ED0911F3
-AAT_Pro_Portable_1.5.0.zip  92292EA19EC59D527F9C0B05E0013D88456AFEE6B6F7C2112B8C3EA6C81FDA99</pre>
+    <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.1.exe</span> in PowerShell and compare:</p>
+    <pre class="code">AAT_Pro_Setup_1.5.1.exe     8E10177E757CBFF9DBEDBC50DA996133E1CB4DFA206E6B921720B919558B5AD6
+AAT_Pro_Portable_1.5.1.zip  9226F7BAE0033AA6C930599B3A9C933819A04D3A65243DF20DA71ACC5C3493A9</pre>
   </section>
 
   <section class="chapter" id="support">
@@ -594,7 +669,7 @@ AAT_Pro_Portable_1.5.0.zip  92292EA19EC59D527F9C0B05E0013D88456AFEE6B6F7C2112B8C
   </section>
 
   <footer>
-    AAT Pro 1.5.0 · <a href="guide/how_to_use.html">User Guide</a> · <a href="https://github.com/AAT-RR/AAT/releases">All releases</a> · <a href="classic.html">Classic AAT</a>
+    AAT Pro 1.5.1 · <a href="guide/how_to_use.html">User Guide</a> · <a href="https://github.com/AAT-RR/AAT/releases">All releases</a> · <a href="classic.html">Classic AAT</a>
   </footer>
 
 </main>
