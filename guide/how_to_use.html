@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AAT Pro User Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #eef3f2;
+    --surface: #ffffff;
+    --surface-2: #e1eae8;
+    --ink: #142422;
+    --muted: #526864;
+    --accent: #0e7a78;
+    --accent-ink: #ffffff;
+    --accent-strong: #b14c1a;
+    --border: #cfdbd8;
+    --border-strong: #a9bcb8;
+    --code-ink: #0a2d2b;
+    --shadow: 0 1px 2px rgba(20, 36, 34, 0.06), 0 8px 24px rgba(20, 36, 34, 0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a1615;
+      --surface: #0f1e1c;
+      --surface-2: #14302c;
+      --ink: #e6f3f0;
+      --muted: #8fada8;
+      --accent: #3fd9c4;
+      --accent-ink: #04211f;
+      --accent-strong: #e88240;
+      --border: #1e3936;
+      --border-strong: #2c4c47;
+      --code-ink: #cdece6;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0a1615;
+    --surface: #0f1e1c;
+    --surface-2: #14302c;
+    --ink: #e6f3f0;
+    --muted: #8fada8;
+    --accent: #3fd9c4;
+    --accent-ink: #04211f;
+    --accent-strong: #e88240;
+    --border: #1e3936;
+    --border-strong: #2c4c47;
+    --code-ink: #cdece6;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  code, .mono {
+    font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+  }
+
+  /* ---------- Shell layout ---------- */
+
+  .shell {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    max-width: 1180px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; }
+    .toc { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  }
+
+  /* ---------- Sidebar / TOC ---------- */
+
+  .toc {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 28px 20px 40px;
+    border-right: 1px solid var(--border);
+  }
+
+  .toc-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .toc-brand img { width: 34px; height: 34px; border-radius: 7px; box-shadow: var(--shadow); }
+
+  .toc-brand .name {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+  }
+
+  .toc-brand .sub { font-size: 11px; color: var(--muted); }
+
+  .toc nav { display: flex; flex-direction: column; gap: 2px; }
+
+  .toc-group-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 16px 0 6px;
+  }
+  .toc-group-label:first-child { margin-top: 0; }
+
+  .toc a {
+    display: block;
+    padding: 5px 8px;
+    margin: 0 -8px;
+    border-radius: 6px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 13.5px;
+  }
+  .toc a:hover { background: var(--surface-2); }
+  .toc a.sub-link { font-size: 12.5px; color: var(--muted); padding-left: 18px; }
+  .toc a.sub-link:hover { color: var(--ink); }
+
+  /* ---------- Main content ---------- */
+
+  main { padding: 44px clamp(20px, 4vw, 56px) 100px; min-width: 0; }
+
+  .hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero img { width: 56px; height: 56px; border-radius: 11px; box-shadow: var(--shadow); flex-shrink: 0; }
+
+  .hero h1 {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: clamp(24px, 3.4vw, 32px);
+    margin: 0 0 6px;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .hero p { margin: 0; color: var(--muted); max-width: 62ch; font-size: 15px; }
+
+  .hero .badge-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+  section.chapter { margin-bottom: 52px; scroll-margin-top: 20px; }
+
+  section.chapter > h2 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  section.chapter > h2 .menu-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 2px 9px;
+    letter-spacing: 0.04em;
+  }
+
+  section.chapter > .lede {
+    color: var(--muted);
+    max-width: 68ch;
+    margin: 0 0 22px;
+    font-size: 15px;
+  }
+
+  h3.sub-head {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 30px 0 12px;
+  }
+
+  /* ---------- Prerequisite badges ---------- */
+
+  .req {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-strong);
+    background: color-mix(in srgb, var(--accent-strong) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-strong) 40%, transparent);
+    border-radius: 6px;
+    padding: 3px 8px;
+    line-height: 1.3;
+  }
+  .req::before { content: "\2192"; }
+  .req.none {
+    color: var(--muted);
+    background: transparent;
+    border-color: var(--border-strong);
+  }
+  .req.none::before { content: "\2713"; }
+
+  /* ---------- Item cards (Tools / Design) ---------- */
+
+  .item-grid { display: flex; flex-direction: column; gap: 0; }
+
+  .item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+    gap: 18px;
+    scroll-margin-top: 20px;
+  }
+  .item:last-child { border-bottom: none; }
+
+  @media (max-width: 720px) {
+    .item { grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  .item .name {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 600;
+    font-size: 14px;
+    padding-top: 1px;
+  }
+
+  .item .body p { margin: 0 0 8px; font-size: 14.5px; }
+  .item .body p:last-child { margin-bottom: 0; }
+
+  /* Bold lead-in at the start of a paragraph ("What it checks:", "Select Time Range..." ...)
+     acts as a mini heading, so give it the accent-strong colour to stand out from body text. */
+  .item .body p > strong:first-child,
+  .widget-card p > strong:first-child {
+    color: var(--accent-strong);
+  }
+
+  /* ---------- Compact tables (File / Edit / INI-CONFIG / Help) ---------- */
+
+  table.simple {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  table.simple th {
+    text-align: left;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 0 12px 8px 0;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  table.simple td {
+    padding: 12px 12px 12px 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.simple tr:last-child td { border-bottom: none; }
+  table.simple td.item-name {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 600;
+    white-space: nowrap;
+    width: 1%;
+  }
+
+  .table-wrap { overflow-x: auto; }
+
+  /* ---------- Workflow widget cards (Core Workflow section) ---------- */
+
+  .widget-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+  .widget-card h4 {
+    margin: 0 0 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .widget-card h4 .num {
+    font-size: 11px;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-radius: 5px;
+    padding: 1px 6px;
+  }
+  .widget-card p { margin: 0; font-size: 14.5px; color: var(--ink); }
+  .widget-card p + p { margin-top: 8px; }
+  .widget-card .kv { color: var(--muted); }
+
+  .workflow-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    margin: 18px 0 28px;
+    color: var(--muted);
+  }
+  .workflow-strip .step {
+    background: var(--surface-2);
+    border-radius: 7px;
+    padding: 6px 11px;
+    color: var(--ink);
+  }
+  .workflow-strip .arrow { color: var(--accent); }
+
+  /* ---------- Data pill (units / values called out inline) ---------- */
+
+  .val {
+    font-family: "JetBrains Mono", monospace;
+    background: var(--surface-2);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.92em;
+    color: var(--code-ink);
+  }
+
+  .note {
+    border-left: 3px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    margin: 14px 0;
+  }
+  .note strong { color: var(--accent); }
+
+  pre.ini-example {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 14px 0;
+    overflow-x: auto;
+    font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    white-space: pre;
+  }
+  pre.ini-example .cm { color: var(--muted); }
+  pre.ini-example .hd { color: var(--accent); font-weight: 600; }
+
+  .screenshot {
+    max-width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin: 14px 0;
+    display: block;
+  }
+
+  footer {
+    max-width: 68ch;
+    color: var(--muted);
+    font-size: 12.5px;
+    border-top: 1px solid var(--border);
+    padding-top: 18px;
+    margin-top: 8px;
+  }
+
+  @media print {
+    .toc { display: none; }
+    .shell { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="toc">
+    <div class="toc-brand">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABJTSURBVHhepZp3WxvJlsb9GdYgFFqtnLMQIJJIThhjgyPGBjzGBmwTjBPZmYzDdQQ8Hs/c2bt7Z/ZDvvtUdaquLgm8+8dLd1e3us77O6eC9HDE6bTD6XQYcilyuZxwSWZJVC5FbkNuVrIEt5sRuZYlyJy0Nus9t+meRfq7lf5oDFo8bLwkflWKH8Ob4deOI+TEwUJgHtRfYgGgHhkIBgg1ODZY3gQHoKL4d6l96P1qCVHjKwfAal7xfYT8MQHgq4CrBK0T2iFn3lINfCVUgGE2zcsK2zCvJYYBQOM2J5PPvOabAaBCMFWAGIJwODAVYYYgAMEa5a95YGq2WcAiAKb4RAC4zAsBiIaCDoHvhAVQZjhYYMgSIhEvTnTGceV8GjeuZjEykMWlcyl0lKIIhTx6xjVZTJsAcJmn5pV4y2e/DAADhHkoKC+0QjBVgAACayKT9uPOjTz2t9vwx4cSXj6pxcztNCZGUlT3xzJYnS/gPz+14etmCbeHskjEvQeYNyrAmn0VAFvRXOlTOQgAh3IiBKBDYCaVslVgnhOIsmk/Vh404Pd3rRi9lkAuI9Pn9GFBy9wARd5fm/Xg9vUEfrxvwfx0AcmEAsIi1rDJPG/amnXN/E8A4EDw1Pn5wO3CyEAGf/yjBZfPRSHLbEVops1jnnyGLXlZdmKgL4rf37dgoD9hnmv4zOsJInEy2deleTsEAAsE01xgHQqKeQOAz+fGyycNePm4FqGgdSyTpa+pGMaFsykKicwD53tTaC6G4fEwy5v6fDQiYW2hFgsztRSkZdyz1Vkm+yLjOgC7o8YAUK4SmBfrAJhq0ALy+STsPGvExAjJmDEkiJFScxhPHzbg31878PZ5Ax5OZDA+lMTYUBIPJjJ486we//21HSsP69HaFNKrQvm8E/fHUlhdKOgQ+OyzMfJVLCp94pvoiF294KugHAQzcTOAMycjWJzJG0PC7UI85sGruSL2tprQfzoMr8e4x1YHafN6nTjfE8bXjUa8fFKPWNRjKvkXj2txqiskzH458+WyzwBQTvjSUABUWBYZAERu2YW1hQb861MrinUBGnSpOYR//qMVgxeiwklSJApEcuLaxRgd/y2NQXrd1BDEX7slrMzmOQDmChVmXVD6BwPQIVirgAdBApq6lcP8ZAbdXSTQNixM1+HH+2YUC2wWGTGZN10zbcU6L368a8LiTAF/75VwvN2P13N53LqeFJf/AWWvGDfMmwAIQfAAykDoagvh81oRoaCE3c1mXOwN42RngE6CyvAQmBe18VAkJ33Hqc4ABs9H8HG1iHBIwteNBrQ0+s0AGOOVAZj9HrHba0BVDoRoTmAAkEnp23YTCjkZj+/mMD6sToDcJKgdK4l91gxEKfnpW0lMjabRVO+lECSJL3+xaUWcR9W3AYCDwFeCAsA6JK70x/FwggTlx9eNIp2xSbCj19L41+d2/LXXgb/3O+iR6N+7Shs93+vA/+x34G/tqEq7/9deO/7rSxtmx3MUgsfjxN5WA/JZD+Yn0+jviXDlLwbAJ5f1LKwAQksROxQYAAz13c1GJONuvJ4v0LInJZmMe/Db20Z4ZLvxbvZIz9WssAkQPCtJdrx7UYeWolLyZ08FsTidRS4t4+Pr+vIABFVQGQAfRNlhYFRBsc6HjaU8UgmZZobOCZITtTkvtp8WjLWa2TCFQzIGL6bg9UrMEmqUuT7DM9eLMzl0tAbUawd+3WlAJCThzbNa5LMyU5VW4+WyX2O3wW634Qg5US7KQbAOBw3CzcE4rl2MYvhyHGNDcX1SzGc82NEAMEsl0dxkDt/fNGLkSsJk8lx3DN3HImZo6iS3MJ1FRyupAGXeuXsjgQu9YYxcjmLoUrRM6YuNa+apahgAPwuhkPPiy3oDtlbqqSHyba6+1kcDJGOUVgC/aXI58OeHFnS0+LC1Uqe3B/wS/vmhGX98aFbmENPW26EDIKXeUPDRrfHuZgM2lwr4tFpPK9EUn8C0yLwCgJyUg2Ayb0BobfRjf6sBfd0BdJV86Cp56fn3t0UU8l7kMmIAqYSHjltSxn9+aNINnjkRwcJ0hhprblAybSyzCoD2Fj8dWt92GnCuO4DOVi9V7wk/vqwXcLwjcAgAjFcTgEoQdBBG9smkVJdzm8YeCbi/J4Sp0SQdAvvbRQxfTmDkShItRWVy7D0ZxuO7aXpOMhePuanByZtpDPRFcPdGElf6orQtEfegsxRCZymI9aVatDf7MDGSxIXekNGnqmTchb2tOn3y5s2znljzZgCHhEDOf7xroB273Q5q6vK5GMJhNzpLfsyOJ2kFkEzduhbF6GAUP94VkYjJ9EeQS2fDFMDSTBZdJQLGgfWFAhrrPDh9LIgn9zJIxNz47W0RSzMpLE6nsLdVj/YWH4V7qtOvG2fH/YdXeQQDTuGY141z2bcC4EDwALQXf39bTwPfXKnDk7tJ3L4Wxe5mPc51h3DnRpz+8LGxmNeXzFvXYvRHjv3tBiTjEm0zJjAHfrxrpDAjYYmCm7uXxdX+sF5hTybTtAImbyZ0AMQ42Rf0HA9SAG+f5xAKqgAOYfznATD69U09jrX7sTCdop2TgM6eCuD+7SQtwWxapsujZiAScuG3t+Q3gozeRgwt3c8gmyYrhvHsjSsRPLqTgOw2NlxP7qUUAKMJnOz0U/M+rxNrCzm8eZalfZJjMOA4tHFbTbUCgJzYBA9UGg6/7tTjfE8Io1ejehk2FDxYmSUG7RTA+mKOmSMccLvtcLmMPYRHduDbTj0G+qMYux5T29kNl/asHY/vptDW5MX4cAwdLV4E/C5sLecwfDmIt88VAPV5icm+OX7eG/Gr+K6uAEAVb57ozAkf+k4HcfNqRAdQX0sApGlFEAAkO4YJkeyY/CWGPz80IJcmE6roWaXt0Z0U2pq9SCXc6OsOYXslh75uH7wyKf0sBbvyIAO/X6mAcsYNAIp5m40AsKkX5UAIKoAQJwAmRuIIh9wIhSS0N/sVAE47DfTdi1qBKfZaqYho2GnJvLbZ0o6kspobPLh7I4b5yTjammUag9fjoKVP3nP5rB8zt2MGAJNhsXkBgHIQzEvJ0OUoBfBtu0Az8PZZFh9f57Eym8Kx9gBiURcWppL4+LqOLmEbqsj5+qJxvbnMtC/l9SOZP8hxbSGPnWfkM2m4JTsFcLzdqy/JXo9SAdO3YjjZ4cXH1SycDisAkXEzgENUAVtW+1u1FMCNgTAdb2TskX3B8v0UHk4k0N7spW2RkAOJmNOkpCq+XbvHHoliEVLWNmr4zkgMJ9rJrk9ZkciXrZ2naZw+7sMvV0NYnU/RPvn4TQk+CAD/YRYAnVxqbNjdrKU7vxtXwvrmoy4vY34qidmxOEpNHmZXxu3T1XMyix9vD+JUVxABv9P8fBlNjETVCjAAbK+kce+XKE60e/B5jQwHgXnNH2deCICVFYBSXrubebQ1emiZawDonDAcwdxkEsWC2xK8ImNHSSa+l49TePEohVxaKvOsIWJ4YjiKpftJuv3WAGwtp+CWbOg77ceD8YjV/KEBsCDUo6gSCIS5yTg6WjxYuZ+gE9TUaALvX2aRz0j48CoLSWI2TvwXKfWafB9oKfrQ2uijmyDNpFDq3EOGw6lODzV96WxQrYAUjYuY9/tq1FgrG6/WVSUAwIIQQCCBJONOarjUKKO1KOF4m4xCVsLruTR6T3iVgDkTkbALV86FMdAfoXsCUgF7m3nsbuZQl3ebPyNYeomuXwyhpSjD66nBq8cJ3LoWxuayAkCYeYF5BUDV4QGIQJC5IJ1wYnE6hk9rOXxczWF9IYWukmqEl6MGiZgLw5dCGLkcopkjszr5lZdIVn850qrD8nl1/hm7HkZXyUPb3FINFqejWF9MMsbLz/bEsMl8dRXVEe2GRbp5bhjoQ0E5drbKuH09rFeHUI4aZJIS5idTeHIvSc3nM278/r4Wv78voDYr0YmQLKWf1/JorJM588o56aerRO4pfbucNrQ3Sz8PgJhXjxTAwRC4ocCsCsdKXty+HtGzpAUbCTnpHp4YJl9SyIZn8HwAA30ByHQISPjxrpaKDB/ymVKTly6h5HdAM0Tl3RPDYbQ1uU1LsiKxacO8UfI6AL0CNBrqQ/yHDfPmVeFqf4iu+S8ep7DzNEPPZ8cS8PuU7Sgx+P1NniqVcCGVkLA6n8HafAY+rwN55j6pgHDQif2tPL5t51Bf60Yo4MTqnPJ8JuWiAF48SiIRta7zSvYFsZsAMBBMAPSbivgPaxD4KohH7SgWXIpqlePNq0GMDpLNkQLg27ZiiACoz7vxfUcxTKojmzIDCAUc2N/KYZ8CkJCIkh85yHUWjXVuOlE+fxizGNfNcwDYmV6UeXMFaGIoWQCUAcGWI9mEPH8Yx0B/EJmkC59WM/j4mvzA4UQu7cKXtQxtC/odSCeU+0TZlAsBH/lRI42Pr9Mo5CS6oyPnq/NJ+uVrcymJTNKcfZFxw3xl40RVFgAMBP6lBgBrBlgYbrcN40NBvHmWoXv30WsR+ssQ1WAEo4PkWmm7eTVsXNN7xjU9Xo/g+aMkXj6OCczbzMn5SQDEPDlaARwEQlQFAvm8NXSPQGZtsjyyx2P0XEZXqxudraTNbTrvpM8pbcm4nfbLv7+8cfFkx5vXdAAAAQRmZVBAWIOrKGYJNUm9Z3mekdbfoUqf92MBcJTqUAA08R3yQNhgyVfV08e8VC6XtkU1gyDHtiYZ3V0eurHS2lqLbnR3kc+SH0oNkedKjW4FBh/HAQC0kmfNV1UdxRGtFPgPiEBonZQDwEI4e8qPX3dy+LaTo+VuAVBjgyzX4OtGBt92sngwHtXbl2fitO3bdhb7W+pxmxwzWL4fNWWfjUsHwHs4LICyIHQIB1QEA2FpJo4va2lqZHbM/C1NE8kyMfdpNY3dzQzd45P2upwTrY0SSo0uvH+Rovdaiy56XZdzWMpfidHY3hpGeSmmWR3RGykV42ELBAEMCwBVQb+dZmzqZghPZ2PUgEeusawgT+5G8WU9jQs9HuxtZtBz3GO6T4xuLSfpM6Rvvp+DMq5L88eZVwDo5n8CgAmEtQrO9/ipITKTXzjjowDI+GXN+bx27G6QHaTyNZacL0wpw4Cd5LZWEvi8lrIA0CuRj48HQP2pR4EUAIIKqAiBgcFnhejZAxJ0GpJkQyRkpwDmJpWxqwHoPeGjpk91yrR9fjKCrxtphAJ2U4lvLivvYgFUGu9lM89VwFELAFaHBSGYE8iPFvvbGbx9nsT4cJjq42oaXzbSCPhVczXVWJhWhsbM7TDGhkJ48ShOAZzv8Zpgbi7H8Wk1qfanmtZ0kPkKqgyAA6G9nO+QDUIL+Eof+VeZNPa2DO1uprG7kUZft2IuHHTQZ0j7nqatNL5upPDsYcwEYGMpjo8iAOWMlxnrvHFyJKoMgEJQQJSFoIFQh8PqXAKfVlNwuYwshAI2fNlIKUuYrRoXenwUwOljblNfj++Sf5JMIRFzGAAWYxwAa+nzFWvxwEgzrp0fGoA2UVrMM8okndTY/bGQKYtExPzn9TSiYTuezsbpxOb3mTc0Z47LtH3gnE8dUlVYX4zjw+skqqqsmf9Z86wOXwG6zB3xgRC5nGQJrIZbMpsnkt3kng1OZzWtiIBqnl1FHA7lGY9szPB+XzUCPvFsbzbPx1temnkKQCsH7Qb/sEVcx3xQurgJUs/eYdtpm9i4BQAfo0D82D96lAFQTvxLDAjMURCYRarRtiYJw5d8uH7Bh6C/BqFADYYu+nGp10u/Rg+c82Kw349k3GF9h8g4NV8++6xptu1QAPiXWSTYPJWFYatCbZb8JujFQJ8X53tkjA8FkEs56PHyWQ/6uj1YnomgPu/E3L2w9R1lAQhiE8jkj5g/CMD/FQQfrCaSZZL5TNKOset+jF4N0PPXc1G8ehKj3/tX52J48TCKsydly+d/1jgbu9D80f+gOqKcGES0Dx4aAKsKEDqaJVzq9WD0qh9TNwPo75aRTdkxdNGLRxMhxMI1WJgKo+c4+R8Aj9j0TwIoK9U8A0CT4GHmhXwnQvGBMhAu9soY7PfgUq+SYclVjWi4BgG/DZGgDdkk+TZYRcFYAJCxrq1EfJ+HMX0wAMGDjEQd8QFYIKjnpjKuqryXMD1bNuPGNRsHH7NhmKlwU8ItFcCA4IYFa/pAAHygTCXwVcHLZNpi3KqKAIgfEwTeKwtAp8M8WKW0i17OB1JRejVYV47/j3lNfGxCAGybEIAOgXuIfwHTKR/IT4kaZE0ypi33xOLj0uM3mdXarNkn+l9KrYyYjQfF7QAAAABJRU5ErkJggg==" alt="">
+      <div>
+        <div class="name">AAT Pro</div>
+        <div class="sub">Audio Analysis Tool</div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="toc-group-label">Start here</div>
+      <a href="#core-workflow">Core Workflow</a>
+      <a class="sub-link" href="#core-load-wav-record">&nbsp;Load WAV / Record</a>
+      <a class="sub-link" href="#core-loaded-files">&nbsp;Loaded Files (left dock)</a>
+      <a class="sub-link" href="#core-channel-combo-settings">&nbsp;Channel: combo + Settings</a>
+      <a class="sub-link" href="#core-spectrum-waveform-charts">&nbsp;Spectrum &amp; Waveform charts</a>
+      <a class="sub-link" href="#core-default-devices">&nbsp;Default Devices</a>
+      <a class="sub-link" href="#core-realtime-spectrum">&nbsp;Realtime Spectrum</a>
+      <a class="sub-link" href="#core-play">&nbsp;Play</a>
+
+      <div class="toc-group-label">Menu bar</div>
+      <a href="#file">File</a>
+      <a href="#edit">Edit</a>
+      <a href="#ini-config">INI-CONFIG</a>
+      <a href="#tools">Tools</a>
+      <a class="sub-link" href="#tools-refresh-audio-devices">&nbsp;Refresh Audio Devices</a>
+      <a class="sub-link" href="#tools-unit-converter">&nbsp;Unit Converter</a>
+      <a class="sub-link" href="#tools-doa">&nbsp;DOA Analysis (Pairwise)</a>
+      <a class="sub-link" href="#tools-sweep-analysis">&nbsp;Sweep Analysis</a>
+      <a class="sub-link" href="#tools-intel-channel-phase">&nbsp;Intel Channel Phase</a>
+      <a class="sub-link" href="#tools-scan-test">&nbsp;Scan Test</a>
+      <a class="sub-link" href="#tools-histogram">&nbsp;Histogram</a>
+      <a class="sub-link" href="#tools-chamber-response">&nbsp;Chamber Response</a>
+      <a class="sub-link" href="#tools-chamber-isolation">&nbsp;Chamber Isolation</a>
+      <a class="sub-link" href="#tools-tonal-noise">&nbsp;Tonal Noise</a>
+      <a class="sub-link" href="#tools-tonal-teams">&nbsp;Tonal Teams</a>
+      <a class="sub-link" href="#tools-process-loaded-audio">&nbsp;Process Loaded Audio</a>
+      <a class="sub-link" href="#tools-generate-signal">&nbsp;Generate Signal</a>
+      <a class="sub-link" href="#tools-merge-mono-wavs-to-multi-channel">&nbsp;Merge Mono WAVs to Multi-Channel</a>
+      <a class="sub-link" href="#tools-split-multi-channel-wav-to-mono">&nbsp;Split Multi-Channel WAV to Mono</a>
+      <a class="sub-link" href="#tools-extract-audio-difference">&nbsp;Extract Audio Difference</a>
+      <a class="sub-link" href="#tools-spectral-subtraction">&nbsp;Spectral Subtraction</a>
+      <a class="sub-link" href="#tools-adaptive-noise-cancellation">&nbsp;Adaptive Noise Cancellation</a>
+      <a class="sub-link" href="#tools-waveform-statistics">&nbsp;Waveform Statistics</a>
+      <a class="sub-link" href="#tools-spectrogram">&nbsp;Spectrogram</a>
+      <a class="sub-link" href="#tools-plotfft">&nbsp;Plot FFT</a>
+      <a class="sub-link" href="#tools-waterfall">&nbsp;3D Waterfall (CSD)</a>
+      <a href="#design">Design</a>
+      <a class="sub-link" href="#design-mems-mic-design">&nbsp;Mems Mic Design</a>
+      <a class="sub-link" href="#design-speaker-design">&nbsp;Speaker Design</a>
+      <a class="sub-link" href="#design-speaker-test-sop">&nbsp;Speaker Test SOP</a>
+      <a class="sub-link" href="#design-speaker-selection-sim">&nbsp;Speaker Selection Sim</a>
+      <a class="sub-link" href="#design-acoustic-design-guide">&nbsp;Acoustic Design Guide</a>
+      <a class="sub-link" href="#design-acoustic-methodology-manual">&nbsp;Acoustic Methodology Manual</a>
+      <a href="#help">Help</a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="hero">
+      <img src="data:image/png;base64,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" alt="AAT icon">
+      <div>
+        <h1>AAT Pro User Guide</h1>
+        <p>Load or record a WAV, pick a channel, and every meter, chart, and analysis tool in this window reads from that one signal. This guide walks the menu bar left to right &mdash; <span class="mono">File</span> to <span class="mono">Help</span> &mdash; the same order the toolbar reads.</p>
+        <div class="badge-row">
+          <span class="req none">No audio loaded yet? Start at Core Workflow</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <section class="chapter" id="core-workflow">
+      <h2>Core Workflow <span class="menu-tag">start here</span></h2>
+      <p class="lede">Everything below the menu bar exists to get a signal in, look at it, and hand it to a tool. Every analysis in <span class="mono">Tools</span> reads from whatever is loaded here.</p>
+
+      <div class="workflow-strip">
+        <span class="step">Load WAV / Record</span><span class="arrow">&rarr;</span>
+        <span class="step">pick a channel</span><span class="arrow">&rarr;</span>
+        <span class="step">read the charts</span><span class="arrow">&rarr;</span>
+        <span class="step">run a Tools/Design feature</span><span class="arrow">&rarr;</span>
+        <span class="step">save WAV / image / CSV</span>
+      </div>
+
+      <img class="screenshot" src="images/main_window.png" alt="AAT Pro main window">
+
+      <h3 class="sub-head">Getting a signal in</h3>
+      <div class="widget-card" id="core-load-wav-record">
+        <h4><span class="num">1</span>Load WAV... / Record</h4>
+        <p><span class="mono">Load WAV...</span> opens a file picker for an existing <span class="val">.wav</span>. <span class="mono">Record</span> captures fresh audio from the device chosen in <span class="mono">Input device:</span>, for the duration set in <span class="mono">Settings...</span> (default <span class="val">3.0s</span>, range <span class="val">0.5&ndash;30s</span>). Check <span class="mono">Record 2 Mics</span> and pick a <span class="mono">2nd Device:</span> to capture two devices at once into one multi-channel buffer.</p>
+        <div class="note">Every recording is auto-saved to <span class="val">recordings\rec_YYYYMMDD_HHMMSS_NNN.wav</span> next to the executable the moment it finishes (the log panel shows the exact path) &mdash; on top of showing up in Loaded Files for immediate analysis. <span class="mono">File &gt; Save WAV...</span> is still there for saving a copy somewhere else.</div>
+        <p><span class="mono">Check Mic Input</span> runs a one-shot input-level check on the selected device &mdash; useful for confirming a mic is actually picking up sound before committing to a full recording.</p>
+      </div>
+
+      <h3 class="sub-head">Working with the loaded signal</h3>
+      <div class="widget-card" id="core-loaded-files">
+        <h4><span class="num">2</span>Loaded Files (left dock)</h4>
+        <p>Every file you load or recording you make is added here as a per-channel checklist &mdash; a multi-channel file expands into one checkable row per channel; a mono file is a single checkable leaf. Checking a channel doesn't just select it for preview: it also feeds <span class="mono">Spectrogram</span>'s and <span class="mono">Plot FFT</span>'s <span class="mono">Plot All</span> mode, so you can check channels from several files at once and analyze that exact combination.</p>
+        <p>Clicking directly on a channel row (not just checking its box) also switches the main <span class="mono">Channel:</span> combo to preview that channel immediately. <span class="mono">Add File(s)...</span>, <span class="mono">Remove</span>, and <span class="mono">Clear List</span> manage the list.</p>
+        <p><span class="mono">Remove</span> behaves differently depending on what row is selected: removing a whole file's row deletes it from the list entirely, but removing a single channel row instead unchecks and hides just that channel &mdash; its audio isn't deleted, later analyses (and Play, see below) simply skip it. Use this to exclude one bad channel from a multi-channel file without discarding the whole recording.</p>
+        <p><strong>Select Time Range...</strong> &mdash; the button under the file list analyses only part of the active file, for example to skip the first second (a start-up click, the moment you pressed record) or to drop the tail. Click it to open a dialog showing the whole waveform:</p>
+        <ul>
+          <li>Drag the two <strong>red lines</strong> on the waveform, or type exact values into <span class="mono">Start</span> and <span class="mono">End</span> (seconds, to the millisecond). The two stay in sync, and the part outside the range is greyed out. <span class="mono">End</span> equal to the file duration means &ldquo;to the end&rdquo;.</li>
+          <li><span class="mono">Use Full File</span> resets the range to the whole file. Click <span class="mono">OK</span> to apply, or <span class="mono">Cancel</span> to leave things as they were. A range with zero length is not accepted.</li>
+          <li>When more than one file is loaded, <span class="mono">Apply this range to all loaded files</span> sets the same range on every file &mdash; handy for comparing files over the same time slice. If the range falls outside one of the files (for example the start is after the end of a shorter file), the range is not applied to any file &mdash; every file keeps its previous range &mdash; and a message appears in the status bar.</li>
+        </ul>
+        <p>The range belongs to each file separately and the original audio is never modified or discarded: you can reopen the dialog at any time to move it or click <span class="mono">Use Full File</span> to get everything back. The active file's label shows the range, e.g. <span class="val">File: test.wav [range 1.000 - 8.500 s]</span>, and the audio-info line below the waveform shows the shortened length. The range lasts for the session (it is not saved in <span class="val">settings.ini</span> and not remembered after you remove the file or restart), and files you load, record or generate afterwards start with the full length.</p>
+
+        <p><strong>Gain...</strong> &mdash; the button next to <span class="mono">Select Time Range...</span> raises or lowers the level of the active file, for when a recording is too quiet to see or hear properly. Type a value in dB (positive = louder, negative = quieter) or use the quick buttons (<span class="val">&minus;6</span>, <span class="val">+6</span>, <span class="val">+12</span>, <span class="val">+20</span>, <span class="val">+40</span> dB, each added to the current value). <span class="mono">Normalize peak to -1 dBFS</span> picks the gain that brings the loudest sample (within the selected time range, if one is set) to &minus;1&nbsp;dBFS, and <span class="mono">Reset (0 dB)</span> removes the gain. The dialog shows the file's peak before and after the gain so you can see how much room there is. With more than one file loaded, <span class="mono">Apply this gain to all loaded files</span> sets the same gain on every file.</p>
+        <ul>
+          <li><strong>Only the data in the program is changed.</strong> The original <span class="val">.wav</span> on disk is never touched, and the gain is forgotten when you close the program (it is not saved in <span class="val">settings.ini</span>); reload the file and you get the original level. The gain only reaches a file if you save it yourself with <span class="mono">File &gt; Save WAV...</span> or <span class="mono">Edit &gt; Save Data to CSV</span>, which then contain the amplified data.</li>
+          <li><strong>It works together with the time range.</strong> You can set both; the range is cut first and the gain applied to what is left. Each can be changed or cleared at any time without affecting the other. The active file's label shows both, e.g. <span class="val">File: test.wav [range 1.000 - 8.500 s] [gain +12.0 dB]</span>.</li>
+          <li><strong>It applies to the same features as the time range</strong> (see the table below): the charts, <span class="mono">Play</span>, every analysis and processing tool, and Export Report all see the amplified signal. Level readings in dBFS therefore go up by the gain you set.</li>
+          <li><strong>No clipping in analysis.</strong> Samples that exceed full scale after the gain are kept as they are, so analysis results are not distorted. <span class="mono">Play</span> cannot output more than full scale, so playback is clipped there (a message appears in the log); lower the gain if it sounds distorted.</li>
+          <li><strong>Waveform Statistics keeps dB SPL true.</strong> Its <span class="mono">dB SPL</span>, <span class="mono">dBA</span>, <span class="mono">Max RMS dBA</span> and <span class="mono">Peak dBA</span> rows subtract the gain you added, so they still show the real sound level at the microphone, while the dBFS rows (Peak Amplitude, Min/Max/Avg/Total RMS Power) show the amplified signal. The line at the top of that window says so whenever a gain is in effect. Other tools that report absolute levels do not compensate &mdash; the gain is part of the signal they see.</li>
+        </ul>
+
+        <p><strong>What the range applies to.</strong> It is applied once, to the file itself, so everything that reads that file's audio sees only the selected part &mdash; there is no per-tool setting to remember:</p>
+        <div class="table-wrap">
+          <table class="simple">
+            <thead><tr><th>Uses the selected range</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="item-name">Main spectrum and waveform charts, <span class="mono">Play</span>, the audio-info line</td><td>The charts redraw immediately when you click OK. <span class="mono">Play</span> plays only the selected part, which is a quick way to hear whether you cut in the right place.</td></tr>
+              <tr><td class="item-name"><span class="mono">File &gt; Save WAV...</span>, <span class="mono">Edit &gt; Save Data to CSV</span></td><td>Save the selected part, not the original file. This makes Save WAV a simple way to export a trimmed copy.</td></tr>
+              <tr><td class="item-name"><span class="mono">File &gt; Export Report...</span></td><td>Every tool in the report analyses the selected range.</td></tr>
+              <tr><td class="item-name">Analysis tools: <span class="mono">Waveform Statistics</span>, <span class="mono">Histogram</span>, <span class="mono">Spectrogram</span>, <span class="mono">Plot FFT...</span>, <span class="mono">Sweep Analysis</span>, <span class="mono">3D Waterfall (CSD)...</span>, <span class="mono">DOA Analysis (Pairwise)</span>, <span class="mono">Intel Channel Phase</span>, <span class="mono">Scan Test</span>, <span class="mono">Chamber Response</span>, <span class="mono">Chamber Isolation</span>, <span class="mono">Tonal Noise</span>, <span class="mono">Tonal Teams...</span></td><td>They analyse only the selected part. When several channels or files are checked, each file uses its own range; so for a fair comparison between files, use <span class="mono">Apply this range to all loaded files</span>.</td></tr>
+              <tr><td class="item-name">Processing tools: <span class="mono">Process Loaded Audio...</span>, <span class="mono">Extract Audio Difference...</span>, <span class="mono">Spectral Subtraction...</span>, <span class="mono">Adaptive Noise Cancellation...</span>, <span class="mono">Split Multi-Channel WAV to Mono...</span></td><td>Work on the selected part, so their output is only that length.</td></tr>
+              <tr><td class="item-name"><span class="mono">Merge Mono WAVs to Multi-Channel...</span></td><td>Merges the selected part of each file. All the files must end up the same length, otherwise the merge is refused with a message &mdash; use <span class="mono">Apply this range to all loaded files</span> to make them equal.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Not affected, because they do not read a loaded file: <span class="mono">Show Mic Realtime</span>, recording, microphone checks, <span class="mono">Generate Signal...</span>, <span class="mono">Unit Converter...</span>, and the <span class="mono">Design</span> menu calculators.</p>
+        <div class="note"><strong>One exception &mdash; the 3D Waterfall window.</strong> It is a single reusable window that takes a snapshot of the loaded files when it is first opened, and choosing the menu item again just brings the existing window to the front. If you change a range or a gain while it is open, it keeps showing the old data: close the window and open it again from <span class="mono">Tools</span> to pick up the change. Results already on screen in other windows (for example a Plot FFT you left open) are likewise not redrawn; rerun the tool to apply the change.</div>
+      </div>
+      <div class="widget-card" id="core-channel-combo-settings">
+        <h4><span class="num">3</span>Channel: combo + Settings...</h4>
+        <p>Selects which channel of the active file the charts, meters, and single-file analyses read. <span class="mono">Settings...</span> opens the shared analysis parameters every <span class="mono">Tools</span> feature reads from: <span class="mono">Duration</span> (or check <span class="mono">Use Loaded File Duration</span> to match the file itself), <span class="mono">Sample Rate</span> (<span class="val">44100</span> / <span class="val">48000</span> / <span class="val">96000</span> Hz), <span class="mono">FFT Size</span> (<span class="val">256&ndash;65536</span>), <span class="mono">Window</span> (Hann/Hamming/Blackman/Flattop), and <span class="mono">Overlap %</span> (<span class="val">0&ndash;95</span>).</p>
+        <img class="screenshot" src="images/settings_dialog.png" alt="Recording &amp; Analysis Settings dialog">
+      </div>
+      <div class="widget-card" id="core-spectrum-waveform-charts">
+        <h4><span class="num">4</span>Spectrum &amp; Waveform charts</h4>
+        <p>Two stacked, resizable charts &mdash; frequency spectrum on top, linear-time waveform below &mdash; with <span class="mono">Fit to Data</span> (reset zoom) and <span class="mono">Pop Out</span> (undock into its own window) on each. Every analysis result and status message is recorded in the log, which opens from <span class="mono">Edit &gt; View Log...</span>.</p>
+        <p><strong>Log frequency axis</strong> &mdash; the checkbox above the spectrum switches its frequency axis between logarithmic (the default, ticked) and linear. Logarithmic spreads the low frequencies out and suits most audio work; linear is easier to read for evenly spaced harmonics or high-frequency detail. Switching resets the spectrum's zoom. The choice lasts for the session only and is not saved in <span class="val">settings.ini</span>; the <span class="mono">Plot FFT...</span> window has its own independent checkbox.</p>
+        <p><strong>Many channels at once.</strong> With <span class="mono">All Channels</span> selected, every channel is drawn on the same charts, and drawing tens of thousands of points per line gets slow as the channel count grows. To keep the window responsive the waveform chart shares a fixed number of points among the channels: 1&ndash;2 channels get the full 25,000 points each, more channels split a total of 64,000 (for example 8,000 each for 8 channels, 4,000 each for 16, never fewer than 2,000). The waveform is thinned by taking evenly spaced samples, so with many channels a very short click can fall between two drawn points and not show on the chart &mdash; this affects only the drawing; the analyses in <span class="mono">Tools</span> always use the full data. From 8 channels upward, antialiasing (line smoothing) is also turned off on both charts &mdash; with that many overlapping lines the difference is not visible, but redrawing is noticeably faster; as a side effect <span class="mono">File &gt; Save Plot to Image...</span> then exports unsmoothed lines. The spectrum keeps all its points so narrow peaks are never lost.</p>
+      </div>
+      <div class="widget-card" id="core-default-devices">
+        <h4><span class="num">5</span>Default Devices</h4>
+        <p>Two sliders controlling the real Windows default playback and recording device volume (via Core Audio) &mdash; not this app's own signal gain, and not the <span class="mono">Mic level:</span> meter, which is a read-only display. Check <span class="mono">Apply to All Playback/Recording Devices</span> to push a slider's value to every active device of that type at once, not just the current default.</p>
+      </div>
+
+      <div class="widget-card" id="core-realtime-spectrum">
+        <h4><span class="num">6</span>Realtime Spectrum</h4>
+        <p>Opens a live-updating FFT view of the microphone currently selected in <span class="mono">Input device:</span> &mdash; independent of Loaded Files, for monitoring/measuring a mic directly rather than analyzing a recording. Streaming starts the moment the window opens. <span class="mono">FFT Size</span> (<span class="val">1024&ndash;8192</span>) and <span class="mono">Log Freq</span> control the spectrum's resolution and frequency axis; <span class="mono">Weighting</span> (<span class="val">Z</span>/<span class="val">A</span>) applies the A-weighting curve to the displayed spectrum and its peak list, not just the meter below. The top 3 peaks are marked on the chart itself and listed underneath with their exact frequency and level.</p>
+        <p>A large <span class="mono">dBA</span> readout acts like a hand-held sound level meter &mdash; smoothed with a selectable <span class="mono">Time Weighting</span> (<span class="val">Fast</span> 125ms / <span class="val">Slow</span> 1s, the same IEC 61672 pair a real SPL meter offers; this also smooths the spectrum chart itself, not just the number). To calibrate it against a reference acoustic calibrator: set <span class="mono">Reference SPL</span> to the calibrator's printed level (typically <span class="val">94</span> dB), hold the calibrator on the microphone, and click <span class="mono">Calibrate...</span> &mdash; it averages the level for a few seconds and solves <span class="mono">Mic Sensitivity</span> so the reading matches that reference. Calibration is saved per microphone (by device name, in <span class="val">settings.ini</span>'s <span class="val">[MIC_CALIBRATION]</span> section) and reloaded automatically the next time this is opened against that same mic.</p>
+        <div class="note"><strong>Input overflows</strong> should stay at <span class="val">0</span>. If it keeps climbing while a steady input is playing, the spectrum/level readings will look unstable &mdash; a peak flickering or fading even though the input itself isn't changing &mdash; because the audio capture is dropping data, not because of anything wrong with the input signal. A separately steady tone that visibly decays over a few seconds with the overflow count still at <span class="val">0</span> instead points to the microphone's own driver/OS-level automatic gain control or noise suppression (check its &ldquo;Enhancements&rdquo; settings), or the hardware itself.</div>
+      </div>
+      <div class="widget-card" id="core-play">
+        <h4><span class="num">7</span>Play</h4>
+        <p>Plays back the channel currently selected in <span class="mono">Channel:</span>. With <span class="mono">All Channels</span> selected, it mean-downmixes whichever channels are checked in Loaded Files (or just the first channel if none are checked) into one mono stream, rather than trying to open one output channel per loaded channel &mdash; which fails outright once the file has more channels than the output device supports. Check <span class="mono">Loop</span> to have playback restart from the beginning automatically each time it finishes, instead of stopping (unchecking it takes effect at the next natural end, not mid-playback).</p>
+        <p>A red playhead line on the Waveform chart tracks position during playback. Click and drag directly on that line to scrub &mdash; while playing, dragging seeks live; while stopped, dragging just moves the marker, and the next <span class="mono">Play</span> starts from there. Dragging anywhere else on the chart still does the usual zoom (drag = rubber-band zoom, right-button drag = move the view, right-click = reset zoom), unaffected.</p>
+      </div>
+
+      <div class="note"><strong>No default device found?</strong> The panel greys itself out and shows &ldquo;N/A&rdquo; &mdash; this happens on a machine with no active playback or recording device and doesn't affect anything else in the app.</div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="chapter" id="file">
+      <h2>File</h2>
+      <p class="lede">Saving what you have &mdash; the recorded/loaded audio itself, or a snapshot of what's on screen.</p>
+      <div class="table-wrap">
+        <table class="simple">
+          <thead><tr><th>Item</th><th>What it does</th><th>Requires</th></tr></thead>
+          <tbody>
+            <tr><td class="item-name">Save WAV...</td><td>Saves the currently active buffer to a new <span class="val">.wav</span> file. If a time range is set on the file (<span class="mono">Select Time Range...</span>), only that part is saved, and if a gain is set (<span class="mono">Gain...</span>) the saved audio includes it.</td><td><span class="req">a loaded/recorded file</span></td></tr>
+            <tr><td class="item-name">Save Plot to Image...</td><td>Exports the spectrum + waveform view as PNG/JPEG/BMP (the Fit/Pop Out buttons are hidden during capture so they don't appear in the image).</td><td><span class="req none">none</span></td></tr>
+            <tr><td class="item-name">Export Report...</td><td>Opens a checklist of tools grouped into <span class="mono">Visualization / Statistics</span>, <span class="mono">Spatial Analysis</span>, and <span class="mono">Acoustic Test Suites</span> (12 of the 13 Tools-menu analyses &mdash; everything except Chamber Isolation). Runs every checked tool headlessly (no parameter dialogs shown) using each tool's own remembered settings &mdash; the same values its params dialog would show if you opened it interactively, or that tool's defaults if you've never changed them &mdash; against the current audio, and assembles the results into a single PDF: a cover page, then one page per tool with its title, exactly what it analysed (e.g. <span class="val">myfile.wav - Ch 1</span> vs. <span class="val">myfile.wav - All 3 channel(s)</span> vs. <span class="val">2 channel(s) checked</span>, whichever is actually true for that tool), the real parameter values it ran with, and its chart image (or a skipped-reason note if that tool doesn't apply). Every page carries a faint centered watermark. If any channels are checked in Loaded Files, <span class="mono">Waveform Statistics</span>, <span class="mono">Spectrogram</span>, <span class="mono">Sweep Analysis</span>, <span class="mono">Tonal Teams</span>, and <span class="mono">3D Waterfall (CSD)</span> each cover all of them (one combined page per tool); every other tool always covers just the currently selected file/channel regardless of what's checked.</td><td><span class="req">a loaded file</span></td></tr>
+            <tr><td class="item-name">Engineer Login...</td><td>Password-gated flag reserved for a future advanced-features panel &mdash; doesn't currently unlock anything in this build.</td><td><span class="req none">none</span></td></tr>
+            <tr><td class="item-name">Restart Application</td><td>Saves settings and relaunches with the same arguments. Blocked while a recording or analysis is in progress.</td><td><span class="req none">none</span></td></tr>
+            <tr><td class="item-name">Exit</td><td>Closes the app (same effect as the window's close button). Refuses to close while a background thread &mdash; recording, an analysis, a mic check, or the 3D Waterfall's compute &mdash; is still running.</td><td><span class="req none">none</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="chapter" id="edit">
+      <h2>Edit</h2>
+      <p class="lede">Clearing the workspace, and exporting what's already been plotted.</p>
+      <div class="table-wrap">
+        <table class="simple">
+          <thead><tr><th>Item</th><th>What it does</th><th>Requires</th></tr></thead>
+          <tbody>
+            <tr><td class="item-name">Clear All Plots &amp; Logs</td><td>Resets both charts to their default axis ranges and clears every series plus the log panel.</td><td><span class="req none">none</span></td></tr>
+            <tr><td class="item-name">Save Data to CSV</td><td>Exports the current spectrum and/or waveform curve's raw points to CSV, one file per curve.</td><td><span class="req">specific channel selected + a plotted curve</span></td></tr>
+            <tr><td class="item-name">View Log...</td><td>Opens the log window listing every analysis result and status message with a timestamp (the most recent 500 entries). It stays open alongside the main window; closing it only hides it, and the log keeps recording.</td><td><span class="req none">none</span></td></tr>
+            <tr><td class="item-name">Save All Logs to File...</td><td>Writes the in-memory log list (capped at 500 entries) to a timestamped <span class="val">.txt</span> file.</td><td><span class="req none">none</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img class="screenshot" src="images/edit_menu.png" alt="The Edit menu with Save Data to CSV highlighted">
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="chapter" id="ini-config">
+      <h2>INI-CONFIG</h2>
+      <p class="lede">The <span class="mono">Settings...</span> panel's five values (<span class="val">duration_seconds</span>, <span class="val">sample_rate</span>, <span class="val">fft_size</span>, <span class="val">window_type</span>, <span class="val">overlap_percent</span>) live in <span class="val">settings.ini</span>'s <span class="val">[SETTINGS]</span> section and load automatically at startup, saving automatically on a normal close. This menu manages that file directly.</p>
+      <div class="table-wrap">
+        <table class="simple">
+          <thead><tr><th>Item</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="item-name">Load Settings from INI...</td><td>Applies the <span class="val">[SETTINGS]</span> section of any chosen <span class="val">.ini</span> file to the panel.</td></tr>
+            <tr><td class="item-name">Load Default Settings</td><td>Resets the panel to hardcoded defaults, no file involved.</td></tr>
+            <tr><td class="item-name">Save Current Settings to INI...</td><td>Writes the panel's current values out as a fresh <span class="val">.ini</span> file at a location you choose.</td></tr>
+            <tr><td class="item-name">INI Parameter Help...</td><td>A reference popup listing the five <span class="val">[SETTINGS]</span> keys and their valid ranges.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">DOA Analysis's remembered layout/distances live in the same file under <span class="val">[DOA_ANALYSIS]</span>, saved and loaded the same way &mdash; it isn't listed in <span class="mono">INI Parameter Help</span> since that popup only documents the Settings-panel keys.</div>
+
+      <h3 class="sub-head">settings.ini reference</h3>
+      <p>The menu above manages the <span class="val">[SETTINGS]</span> section through a dialog; every section actually stored in the file is listed here.</p>
+      <div class="table-wrap">
+        <table class="simple">
+          <thead><tr><th>Section</th><th>Keys</th><th>Written by</th></tr></thead>
+          <tbody>
+            <tr><td class="item-name">[SETTINGS]</td><td><span class="mono">duration_seconds</span>, <span class="mono">sample_rate</span>, <span class="mono">fft_size</span>, <span class="mono">window_type</span>, <span class="mono">overlap_percent</span></td><td>The Settings panel (auto-saves on normal close) and this INI-CONFIG menu.</td></tr>
+            <tr><td class="item-name">[FFT_LIMITS]</td><td><span class="mono">upper_limit_points</span>, <span class="mono">lower_limit_points</span></td><td><span class="mono">Tools &gt; Plot FFT... &gt; Edit Limits...</span></td></tr>
+            <tr><td class="item-name">[DOA_ANALYSIS]</td><td><span class="mono">layout_type</span>, <span class="mono">distances_from_reference</span></td><td><span class="mono">Tools &gt; DOA Analysis (Pairwise)</span>, automatically after a successful run.</td></tr>
+            <tr><td class="item-name">[SCAN_TEST], [CHAMBER_RESPONSE], [CHAMBER_ISOLATION], [TONAL_NOISE], [TONAL_TEAMS], [SPECTROGRAM], [PLOT_FFT], [INTEL_CHANNEL_PHASE], [PROCESS_LOADED_AUDIO], [GENERATE_SIGNAL], [HISTOGRAM], [EXTRACT_AUDIO_DIFFERENCE], [SPECTRAL_SUBTRACTION], [ADAPTIVE_NOISE_CANCELLATION]</td><td>Every field of that tool's own params dialog (one key per field, named after it) &mdash; except a file-selection dropdown, which isn't persisted since Loaded Files is populated per run.</td><td>Each tool's own params dialog, the moment you click OK (independent of whether the analysis that follows succeeds), the same way <span class="mono">[DOA_ANALYSIS]</span> does.</td></tr>
+            <tr><td class="item-name">[WAVEFORM_STATISTICS]</td><td><span class="mono">rms_window_ms</span>, <span class="mono">a_weight_skip_ms</span></td><td><span class="mono">Tools &gt; Waveform Statistics</span>, when its dialog is closed (the last <span class="mono">Recalculate</span> values). Defaults 50 / 250.</td></tr>
+            <tr><td class="item-name">[LICENSE]</td><td><span class="mono">first_launch_date</span>, <span class="mono">license_key</span></td><td>Automatically on the very first launch on a machine, and by <span class="mono">Help &gt; Enter License Key</span> on successful activation. See <a href="#help">Help</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        <p>The live file is <span class="val">%APPDATA%\AAT\settings.ini</span> on Windows (macOS: <span class="val">~/Library/Application Support/AAT/settings.ini</span>; Linux: <span class="val">~/.config/AAT/settings.ini</span>), created automatically the first time anything needs it &mdash; there's normally no reason to create or locate it by hand. It's a separate file from the Python build's <span class="val">aat.ini</span>, kept under its own name specifically so the two builds never read or overwrite each other's configuration.</p>
+        <p>If that file doesn't exist yet <em>and</em> a <span class="val">settings.ini</span> is found next to the running executable, its <span class="val">[SETTINGS]</span>/<span class="val">[FFT_LIMITS]</span>/<span class="val">[DOA_ANALYSIS]</span> content is copied in as the starting point for that machine's very first launch &mdash; this is how a fresh install can ship with pre-configured FFT limit curves or a DOA layout already in place, instead of starting blank. <span class="mono">[LICENSE]</span> is deliberately never part of that template: it always gets generated fresh, per machine, the first time the app actually runs there.</p>
+      </div>
+
+      <p>Example file, abridged (a real <span class="val">[FFT_LIMITS]</span> curve runs to dozens of <span class="mono">freq,dB</span> pairs per line &mdash; only the first and last are shown here):</p>
+      <pre class="ini-example"><span class="hd">[SETTINGS]</span>
+duration_seconds = 5.0
+sample_rate = 44100
+fft_size = 32768
+window_type = Hann
+overlap_percent = 75
+
+<span class="hd">[FFT_LIMITS]</span>
+upper_limit_points = 0.00,-92.12;241.70,-114.67<span class="cm">;...;</span>23755.37,-154.02;23998.54,-151.40
+lower_limit_points = 0.00,-82.82;241.70,-105.37<span class="cm">;...;</span>23755.37,-144.72;23998.54,-142.10
+
+<span class="hd">[DOA_ANALYSIS]</span>
+layout_type = circular
+distances_from_reference = 0.0,0.05,0.05,0.04,0.04,0.04,0.05,0.9
+
+<span class="hd">[LICENSE]</span>
+first_launch_date = 2026-09-06
+license_key = <span class="cm">ACME-P_1a2Z_xyz789...  (illustrative only &mdash; not a valid key)</span></pre>
+      <div class="note"><strong>Format notes:</strong> <span class="mono">fft_size</span> is a power of two, 256&ndash;65536; <span class="mono">window_type</span> is one of <span class="mono">Hann</span>, <span class="mono">Hamming</span>, <span class="mono">Blackman</span>, <span class="mono">Flattop</span>; <span class="mono">*_limit_points</span> is a <span class="mono">freq_hz,db</span> pair list separated by <span class="mono">;</span>, sorted ascending by frequency; <span class="mono">distances_from_reference</span> is a comma-separated list of meters, one entry per channel, with the reference channel's own entry (always <span class="mono">0.0</span>) included; <span class="mono">license_key</span> is copied verbatim from what <span class="mono">Help &gt; Enter License Key</span> accepted &mdash; don't hand-type one here, since a single wrong character fails signature verification.</div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="chapter" id="tools">
+      <h2>Tools</h2>
+      <p class="lede">Every measurement, analysis, and signal-processing feature that reads the loaded audio. Listed in menu order.</p>
+      <img class="screenshot" src="images/tools_menu.png" alt="The Tools menu, grouped into utilities, visualization, spatial analysis, test suites and audio processing">
+
+      <div class="item-grid">
+        <div class="item" id="tools-refresh-audio-devices"><div class="name">Refresh Audio Devices</div><div class="body"><p>Re-scans available input devices into the device combo.</p><span class="req">idle (not recording/checking mic/playing)</span></div></div>
+        <div class="item" id="tools-unit-converter"><div class="name">Unit Converter...</div><div class="body"><p>A standalone calculator for the conversions that come up in acoustic and audio work. Pick a <span class="mono">Category</span> and type a value; the result updates as you type. Categories: <span class="mono">Length / Distance</span>, <span class="mono">Temperature</span>, <span class="mono">Pressure</span> and <span class="mono">Frequency</span> unit conversions; <span class="mono">dB &harr; Linear Ratio</span> (choose amplitude 20&middot;log10 or power 10&middot;log10); <span class="mono">Distance Attenuation</span> (dB change between two distances, and the SPL at the second distance); <span class="mono">Speed of Sound &amp; Wavelength</span> (speed from air temperature, wavelength &harr; frequency); <span class="mono">Mic Spacing &harr; Aliasing Frequency</span> (highest alias-free frequency for a mic spacing, and the reverse); <span class="mono">Multi-Source dB Sum</span> (total level of several sources); <span class="mono">A-Weighting Correction</span>; <span class="mono">Audio Electrical Levels</span> (dBu / dBV / dBm); and <span class="mono">RMS / Peak / Peak-to-Peak Voltage</span>.</p><span class="req none">none</span></div></div>
+
+        <div class="item" id="tools-doa"><div class="name">DOA Analysis (Pairwise)</div><div class="body"><p>Prompts a mic layout type (circular/linear &mdash; remembers your last choice) and distances-from-reference in meters, comma-separated (remembers your last input, even if it later turns out invalid, so you can just fix it rather than retype it). The channel currently selected in the main <span class="mono">Channel:</span> combo is the reference mic.</p><p>Computes each channel's arrival angle relative to the reference via cross-correlation, logs every pair, then opens a visualization: mic positions, one ray per pair's angle, the averaged direction as a solid arrow, a 0&deg; reference line, and the resulting angle as an arc &mdash; with a <span class="mono">Save Image...</span> button. The angle diagram is a stylised flat-plane projection (a subtle skew, not real 3D) since the geometry itself is inherently flat.</p><span class="req">multi-channel file (2+ channels), specific channel selected as reference</span></div></div>
+
+        <div class="item" id="tools-sweep-analysis"><div class="name">Sweep Analysis</div><div class="body"><p>Runs a sweep/THD analysis and opens a dedicated window with THD and power curves &mdash; one panel per channel if any are checked in Loaded Files (any combination across any loaded files), otherwise just the current file and channel.</p><span class="req">loaded file, specific channel (or checked channels for multiple)</span></div></div>
+
+        <div class="item" id="tools-intel-channel-phase"><div class="name">Intel Channel Phase</div><div class="body"><p>Cross-channel phase analysis against the channel currently selected as reference; supports overlaying curves from repeated runs for comparison. A settings dialog offers <span class="mono">Unwrap Phase</span> (continuous phase vs. wrapped to &plusmn;180&deg;, on by default), an optional custom frequency-axis range, and optional AP Step Matching &mdash; resample every curve onto a fixed list of target frequencies loaded from a CSV file (one frequency per line), matching the reference tool's <span class="mono">--ap_step_file</span> workflow. <span class="mono">Export CSV...</span> saves every plotted curve's frequency/phase points, one column pair per curve.</p><span class="req">multi-channel file (2+ channels), specific channel</span></div></div>
+
+        <div class="item" id="tools-scan-test"><div class="name">Scan Test</div><div class="body"><p><strong>What it checks:</strong> not a pass/fail test &mdash; a <em>classifier</em>. It looks at the signal's frequency-vs-time shape and identifies which of a fixed set of known stimulus types it matches: a single-step or multi-step frequency sweep, a continuous sweep tone, or a final-check pure tone; plus, separately, whether a short reference &ldquo;pilot tone&rdquo; is present near the start (often used to mark where the real test signal begins, or to confirm a device/mic is calibrated before the actual measurement). Use it to confirm a recording actually contains the test stimulus your protocol called for, before trusting any other analysis run on it.</p><p><strong>How the detection works:</strong> the signal is broken into frequency &ldquo;steps&rdquo; using <span class="mono">Freq Tolerance</span> (how close two frames' frequencies must be to count as the same step) and <span class="mono">Jump Threshold</span> (how big a frequency change must be to count as a new step); a step only counts as genuine if it's stable enough (<span class="mono">Variance</span>) for at least <span class="mono">Min Step Duration</span>, and there must be at least <span class="mono">Min Distinct Steps</span> of them to call it a step-sweep. If enabled, pilot detection separately scans the first <span class="mono">Max Pilot Search Duration</span> seconds for a tone stable enough (<span class="mono">Pilot Variance</span>) for at least <span class="mono">Min Pilot Duration</span>.</p><p><strong>Reading the result:</strong> the label under the chart shows the classification text &mdash; one of six fixed strings, including two different <span class="val">&ldquo;Unknown&rdquo;</span> variants (bare <span class="val">Unknown</span> means the pilot tone consumed the whole recording or left too little afterward to analyze; <span class="val">Unknown (Could not classify)</span> means it genuinely tried and couldn't match a known pattern) &mdash; plus the pilot tone's frequency and duration, or <span class="val">Pilot: not detected</span>. The chart itself plots the smoothed tracked frequency over time; eyeball it against what your protocol's stimulus should look like (a staircase for a step sweep, a ramp for a continuous sweep). There is no computed pass/fail here &mdash; you judge correctness by comparing the classification and step count against what you expected to record.</p><p><strong>Steps:</strong> load the recording, select the channel to check, open <span class="mono">Tools &gt; Scan Test</span>, confirm or adjust the detection parameters (they're remembered from last time), click OK, then read the classification label and frequency-tracking chart.</p><span class="req">loaded file, specific channel</span></div></div>
+
+        <div class="item" id="tools-histogram"><div class="name">Histogram</div><div class="body"><p>Prompts a bin count, then plots an amplitude histogram for every checked channel (or the single selected channel if none are checked).</p><span class="req">loaded file</span></div></div>
+
+        <div class="item" id="tools-chamber-response"><div class="name">Chamber Response</div><div class="body"><p><strong>What it checks:</strong> how the acoustic level at a handful of specific frequencies of interest behaves <em>over the duration of the recording</em> &mdash; e.g. confirming a chamber's target test tones stay present and stable for the whole measurement, spotting a dropout, drift, or an unexpected spike partway through. It does not summarize the whole file into one number; it plots one full level-vs-time curve per requested frequency so you can see exactly when and how each one changes.</p><p><strong>How it's computed:</strong> the signal is turned into a spectrogram (a short-time Fourier transform), then for each frequency you list, the bin nearest that frequency is tracked frame-by-frame and converted to dB relative to the loudest point anywhere in the whole recording &mdash; so 0 dB always means &ldquo;the loudest moment in this file,&rdquo; not an absolute level. Optional <span class="mono">A-Weighting</span>/<span class="mono">Gain</span> are applied before that; optional <span class="mono">Rolling Average</span> smooths each curve afterward.</p><p><strong>Reading the result:</strong> one curve per target frequency, overlaid, labeled by frequency in the legend. There's no built-in pass/fail line &mdash; you compare the curves against your own acceptance criteria (e.g. &ldquo;every target tone should stay within N dB of its starting level for the whole recording,&rdquo; or &ldquo;no target tone should ever drop more than N dB below the loudest moment&rdquo;). Watch for a curve that dips, cuts out, or spikes relative to the others.</p><p><strong>Steps:</strong> load the recording, select the channel, open <span class="mono">Tools &gt; Chamber Response</span>, edit the target frequency list (comma-separated Hz, default <span class="val">200/500/1000/3000/7000/10000</span>) and the A-weighting/gain/rolling-average options, click OK, then read the level-vs-time curves.</p><span class="req">loaded file, specific channel</span></div></div>
+
+        <div class="item" id="tools-chamber-isolation"><div class="name">Chamber Isolation</div><div class="body"><p><strong>What it checks:</strong> how many dB of sound isolation exists between two different moments in the <em>same</em> recording, across a range of frequencies &mdash; the classic use case is a &ldquo;before/after&rdquo; measurement: mark a window while a chamber door/lid is open (or a seal untreated) and a second window after it's closed (or treated), and this tells you, frequency by frequency, how much quieter the second window is than the first.</p><p><strong>How it's computed:</strong> for each frequency in your scanned range (<span class="mono">Start</span>/<span class="mono">End</span>/<span class="mono">Step</span> Hz), the level inside <span class="mono">Time Window 1</span> is averaged, the level inside <span class="mono">Time Window 2</span> is averaged separately, and isolation at that frequency is simply the absolute difference between the two averages, in dB. A larger number means a bigger level difference between the two windows at that frequency &mdash; i.e. more isolation.</p><p><strong>Reading the result:</strong> an Isolation (dB) vs. Frequency (Hz) curve, one point per scanned frequency. There's no automatic pass/fail &mdash; compare the curve against your own isolation spec (e.g. &ldquo;need at least 20 dB of isolation across 500&ndash;5000 Hz&rdquo;) and look for any frequency band where isolation is lower than expected.</p><p><strong>Steps:</strong> load the recording, select the channel, open <span class="mono">Tools &gt; Chamber Isolation</span>, set the two time windows (start/end seconds each) to bracket the &ldquo;before&rdquo; and &ldquo;after&rdquo; moments you want to compare, set the frequency sweep range and step, click OK, then read the isolation-vs-frequency curve.</p><span class="req">loaded file, specific channel</span></div></div>
+
+        <div class="item" id="tools-tonal-noise"><div class="name">Tonal Noise</div><div class="body"><p><strong>What it checks:</strong> whether an unwanted, persistent single-frequency (&ldquo;tonal&rdquo;) noise &mdash; a motor whine, a switching-supply whistle, a fan tone, etc. &mdash; shows up and lingers <em>over time</em> in the recording. This always tracks and plots the signal's dominant frequency frame-by-frame; two further, optional layers add real detection on top of that: <span class="mono">Abnormal Noise Detection</span> flags any tone within a frequency band you specify that stays above a dB threshold for at least a minimum duration, and <span class="mono">Cumulative Noise Analysis</span> takes the single worst (longest) such event and checks it against a maximum-allowed duration &mdash; this last check is the one place this tool gives you an explicit <span class="val">PASS</span>/<span class="val">FAIL</span>.</p><p><strong>How it's computed:</strong> a spectrogram tracks the dominant frequency every frame (smoothed for the main curve). When abnormal detection is on, each frame is also searched for a noise peak inside your <span class="mono">Freq Range</span> that clears both a prominence and width threshold and stays within <span class="mono">Freq Tolerance</span> of the previous frame's peak (so a real persistent tone can be told apart from one that just happens to be loud for an instant); a peak track is only promoted to a reported &ldquo;abnormal noise event&rdquo; once it holds for at least <span class="mono">Min Abnormal Duration</span>. If cumulative analysis is also on, the single longest such event's duration is compared against <span class="mono">Max Cumulative Duration</span>.</p><p><strong>Reading the result:</strong> the chart always shows the dominant-frequency curve; with abnormal detection on, it adds a shaded band showing the searched frequency range and shaded regions marking each detected event. Below the chart, one line tells you the actual verdict: <span class="val">&ldquo;Cumulative noise analysis: disabled&rdquo;</span> if that check is off, <span class="val">&ldquo;...no qualifying noise detected&rdquo;</span> if it's on but nothing crossed the threshold long enough, or <span class="val">&ldquo;X Hz, Y s (PASS)&rdquo;</span> / <span class="val">&ldquo;(FAIL)&rdquo;</span> stating the worst event's frequency and duration and whether it stayed under your allowed maximum.</p><p><strong>Steps:</strong> load the recording, select the channel, open <span class="mono">Tools &gt; Tonal Noise</span>, set the frequency range and dB threshold, tune peak-detection sensitivity if needed, check <span class="mono">Abnormal Noise Detection</span> and/or <span class="mono">Cumulative Noise Analysis</span> if you want the event/duration checks (leave both unchecked for a plain frequency-tracking view), click OK, then read the chart and the verdict line underneath it.</p><span class="req">loaded file, specific channel</span></div></div>
+
+        <div class="item" id="tools-tonal-teams"><div class="name">Tonal Teams...</div><div class="body">
+<p><strong>What it checks:</strong> per channel, whether the recording's overall frequency spectrum has a narrow tonal spike &mdash; a whine, hum, whistle, coil noise or resonance &mdash; that stands out abnormally against <em>the channel's own</em> general spectral shape. Nothing is compared against an external reference curve or spec: the channel is its own reference, so the test works on any recording without a golden sample. Each channel is judged independently and comes back <span class="val">PASS</span> or <span class="val">FAIL</span>, which makes this the closest thing in this app to a production-line pass/fail test.</p>
+<p><strong>Tonal Teams vs. Tonal Noise:</strong> two separate tools, deliberately not merged, because they answer different questions. <span class="mono">Tonal Noise</span> follows the dominant frequency <em>over time</em> to find noise events (when it starts, how long it lasts). <span class="mono">Tonal Teams</span> averages the whole recording into one spectrum and asks <em>which frequencies</em> stick out, with no time dimension. Use Tonal Teams for a steady recording (a device running, a fan, an idle-noise capture); use Tonal Noise when the tone comes and goes. (Hover either menu item to see the same distinction in the status bar.)</p>
+
+<p><strong>Quick start:</strong></p>
+<ol>
+  <li>Load the recording. To test one channel, select it in the <span class="mono">Channel:</span> combo and leave nothing checked in Loaded Files. To test several channels at once (from one or several files), check their boxes in Loaded Files instead &mdash; each checked channel is tested separately with the same settings.</li>
+  <li>If you only want part of the recording, set it first with <span class="mono">Select Time Range...</span>; Tonal Teams analyses only that part.</li>
+  <li>Open <span class="mono">Tools &gt; Tonal Teams...</span>. The defaults (threshold 6&nbsp;dB, 100&nbsp;Hz&ndash;16&nbsp;kHz, 1&nbsp;s lead trim) are a reasonable starting point. Click <span class="mono">OK</span>.</li>
+  <li>Read each panel's title for <span class="val">PASS</span>/<span class="val">FAIL</span>, and the red <span class="mono">Top fails:</span> line under a failing panel for the worst frequencies.</li>
+</ol>
+
+<p><strong>Settings:</strong> every value is remembered in <span class="val">settings.ini</span> (<span class="val">[TONAL_TEAMS]</span>) when you click OK, and reused next time and by Export Report. The FFT size is not set here: it is the <span class="mono">FFT Size</span> in the main <span class="mono">Settings...</span> dialog.</p>
+<div class="table-wrap">
+  <table class="simple">
+    <thead><tr><th>Setting</th><th>Default</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td class="item-name">Threshold</td><td>6 dB</td><td>How far the curve may rise above the baseline before that frequency counts as a failure. Lower = stricter (more fails), higher = more tolerant. A point fails only when it is <em>more than</em> this many dB above the baseline.</td></tr>
+      <tr><td class="item-name">Gain Offset</td><td>51 dB</td><td>A fixed number of dB added to the signal before analysis, so the plotted levels land in a convenient range (for example close to the SPL your rig produces). It shifts the curve and the baseline by exactly the same amount, so it <strong>never changes PASS/FAIL</strong> &mdash; only the numbers on the level axis and in the CSV. Because of this offset the level axis reads &ldquo;dBFS + Gain Offset&rdquo;, not plain dBFS.</td></tr>
+      <tr><td class="item-name">Lead Trim</td><td>1 s</td><td>Seconds cut from the start before analysis, to skip the click or ramp-up at the beginning of a recording. If the recording is shorter than this, nothing is trimmed. Applied in addition to any <span class="mono">Select Time Range...</span>.</td></tr>
+      <tr><td class="item-name">A-Weighting</td><td>off</td><td>Applies an A-weighting filter (0&nbsp;dB at 1&nbsp;kHz) before the spectrum is computed, so the curve reflects how loud each frequency sounds to the ear. A smooth filter tilts the curve and the baseline together, so it has little effect on which narrow spikes fail; it mainly changes the shape and levels you see. This filter belongs to this tool and is not shared with other tools.</td></tr>
+      <tr><td class="item-name">Window</td><td>Hann</td><td>Window applied to each FFT frame. <span class="val">Hann</span> keeps a tone's energy in a few neighbouring bins and is the right choice almost always; <span class="val">Rectangular</span> gives the sharpest bins but lets a strong tone leak across the spectrum, which can lift the baseline around it.</td></tr>
+      <tr><td class="item-name">Judge Fmin / Judge Fmax</td><td>100 Hz / 16 kHz</td><td>The frequency range that is analysed, plotted and judged. Spikes outside it are ignored. Narrow it to exclude a region you know is irrelevant (for example a test tone you injected, or the band below what your microphone or chamber can measure).</td></tr>
+      <tr><td class="item-name">High-Res Fraction (1/N oct)</td><td>192</td><td>Resolution of the plotted curve: the FFT spectrum is regrouped into bands 1/N octave wide (1/192 octave is about 0.36&nbsp;% of the frequency, e.g. 3.6&nbsp;Hz wide at 1&nbsp;kHz). Each band's level is the average power of the FFT bins inside it.</td></tr>
+      <tr><td class="item-name">Baseline Smoothing (bands/oct)</td><td>3</td><td>Width of the averaging window that makes the baseline: at each frequency the baseline is the average level over a window 1/N octave wide centred there (1/3 octave by default). This decides <strong>what counts as &ldquo;narrow&rdquo;</strong>: a spike much narrower than the window stands out above the baseline and can fail; a bump as wide as the window or wider is absorbed into the baseline and does not. A smaller number (wider window, e.g. 1) also catches broader resonances; a larger number (narrower window, e.g. 6) makes the baseline follow the curve more closely, so only very sharp tones fail.</td></tr>
+      <tr><td class="item-name">Overlap</td><td>50 %</td><td>Overlap between consecutive FFT frames when averaging over time. Higher overlap uses the recording more evenly and gives a slightly smoother curve, at the cost of compute time.</td></tr>
+      <tr><td class="item-name">Export Bins/Oct</td><td>96</td><td>Points per octave on the grid used for the <strong>PASS/FAIL verdict</strong>, the <span class="mono">Top fails</span> list and the CSV. The curve and baseline are interpolated onto this grid and compared there.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p><strong>How it's computed:</strong></p>
+<ol>
+  <li>Cut the <span class="mono">Lead Trim</span> from the start, apply <span class="mono">Gain Offset</span> and, if enabled, the A-weighting filter.</li>
+  <li>Compute one time-averaged spectrum for the whole remaining signal: FFT frames of the main <span class="mono">FFT Size</span> with the chosen <span class="mono">Window</span> and <span class="mono">Overlap</span>; the power of each frequency bin is averaged over all frames, so a steady tone keeps its true level and random noise settles to its average.</li>
+  <li>Regroup that spectrum into 1/N-octave bands (<span class="mono">High-Res Fraction</span>) between Judge Fmin and Fmax. This is the cyan <span class="val">Signal</span> curve.</li>
+  <li>Smooth the Signal curve over the <span class="mono">Baseline Smoothing</span> window to get the orange <span class="val">Baseline</span>: the channel's general shape with narrow spikes averaged away.</li>
+  <li>The threshold guide line is the baseline plus <span class="mono">Threshold</span>. Every plotted point above it gets a red marker.</li>
+  <li>For the verdict, curve and baseline are resampled onto the <span class="mono">Export Bins/Oct</span> grid and, at each point, the excess (curve &minus; baseline) is compared with the threshold. If at least one point in the judge range exceeds it, the channel is <span class="val">FAIL</span>. The three points with the largest excess are listed as <span class="mono">Top fails</span>: <span class="val">1000.7Hz(+40.8dB)</span> means that at 1000.7&nbsp;Hz the curve is 40.8&nbsp;dB above its baseline.</li>
+</ol>
+<p>Because the verdict uses the Export grid and the red markers use the plotted grid, a spike that only just touches the threshold can occasionally show a red marker on a <span class="val">PASS</span> channel, or the reverse. The verdict and the <span class="mono">Top fails</span> list are authoritative.</p>
+
+<p><strong>Reading the result:</strong> each tested channel gets its own panel, titled with the channel's name and its verdict:</p>
+<ul>
+  <li><span class="val">Signal</span> (cyan) &mdash; the measured spectrum.</li>
+  <li><span class="val">Baseline</span> (thin orange) &mdash; the smoothed shape the signal is compared with.</li>
+  <li><span class="val">Threshold</span> (thicker orange) &mdash; baseline + threshold; anything above this line fails.</li>
+  <li><span class="val">Red markers</span> &mdash; the points above the threshold line.</li>
+</ul>
+<p>Under a failing panel, the red <span class="mono">Top fails:</span> line names the worst three frequencies and their excess over the baseline. A single sharp failure usually means one discrete tone (a whine, an electrical frequency, a resonance); several failures at regular spacing (for example 100, 200, 300&nbsp;Hz&hellip;) usually point to one source with harmonics.</p>
+
+<p><strong>Looking closer:</strong> every chart is interactive. Rest the mouse on a curve or a red marker to read its exact frequency and level (the label names the line: <span class="val">Signal</span>, <span class="val">Baseline</span>, <span class="val">Threshold</span> or <span class="val">Fail</span>). Drag a box with the left button to zoom into that area, turn the mouse wheel to zoom in/out around the cursor, hold the right button and drag to move the view, and right-click (without dragging) to return to the full view. The controls under the charts:</p>
+<ul>
+  <li><span class="mono">Overlay all channels</span> (two or more channels) &mdash; replaces the stacked panels with one chart that draws every channel's Signal curve in its own colour, to compare channels or units directly. The legend shows each channel's name with its verdict, and failing points are marked with dots in the channel's colour; baseline and threshold lines are shown only in the separate panels. Uncheck it to go back.</li>
+  <li><span class="mono">Log frequency axis</span> &mdash; switches every chart between a linear (default) and a logarithmic frequency axis; logarithmic gives the low frequencies more room. Switching resets the zoom.</li>
+  <li><span class="mono">Reset Zoom</span> &mdash; returns every chart to its full view at once if you got lost while zooming or moving.</li>
+  <li><span class="mono">Save CSV...</span> &mdash; see <em>CSV export</em> below.</li>
+</ul>
+<p>The mouse wheel zooms while the pointer is over a chart, so scroll the list of panels with the scroll bar or with the pointer between charts. Export Report always uses the separate panels, never the overlay.</p>
+
+<p><strong>Tuning and troubleshooting:</strong></p>
+<ul>
+  <li><strong>Everything fails, or there are many scattered red markers.</strong> The threshold may be too strict for this kind of recording, or the noise floor is rough because there are few frames to average. Try a longer recording, a higher <span class="mono">Threshold</span>, or a higher <span class="mono">Overlap</span>.</li>
+  <li><strong>A clearly audible tone passes.</strong> It may be outside the judge range, or wider than the baseline window so the baseline rises with it &mdash; lower <span class="mono">Baseline Smoothing</span> (e.g. 1&ndash;2 bands/oct) so the baseline is averaged over a wider window.</li>
+  <li><strong>The curve looks like a staircase at low frequencies.</strong> There the 1/192-octave bands are narrower than one FFT bin, so several bands repeat the same bin value. Increase <span class="mono">FFT Size</span> in the main <span class="mono">Settings...</span> (frequency resolution = sample rate &divide; FFT size, e.g. 48&nbsp;kHz &divide; 65536 &asymp; 0.73&nbsp;Hz), or lower the High-Res Fraction.</li>
+  <li><strong>A failure right at the edge of the range.</strong> Near Judge Fmin and Fmax the baseline window is cut off on one side, so the baseline is less reliable there. Set the judge range slightly wider than the band you care about.</li>
+  <li><strong>Comparing units fairly.</strong> Use the same settings and the same time range for every file (<span class="mono">Select Time Range...</span> with <span class="mono">Apply this range to all loaded files</span>), then use the overlay view.</li>
+</ul>
+
+<p><strong>CSV export:</strong> <span class="mono">Save CSV...</span> writes one file covering every channel in the window. Three header lines (export type, time, number of curves) are followed by a table with one row per point on the <span class="mono">Export Bins/Oct</span> grid (<span class="mono">Frequency_Hz</span>) and, for each channel, two columns: <span class="mono">&lt;name&gt;_dBFS</span> (the Signal level at that frequency, including Gain Offset) and <span class="mono">&lt;name&gt;_Result</span> (<span class="val">PASS</span>, <span class="val">FAIL</span>, or <span class="val">N/A</span> where the point is outside the judge range or has no valid baseline). Baseline and excess values are not exported.</p>
+<span class="req">loaded file, specific channel (or checked channels for multiple)</span></div></div>
+
+        <div class="item" id="tools-process-loaded-audio"><div class="name">Process Loaded Audio...</div><div class="body"><p>Two modes &mdash; add a sine tone at a chosen frequency, or modify the THD at one &mdash; plus a level-control target. The requested frequency is validated against the file's actual Nyquist limit (half its real sample rate, not a fixed assumption) before processing. Saves the result as a new WAV.</p><span class="req">loaded file, specific channel</span></div></div>
+
+        <div class="item" id="tools-generate-signal"><div class="name">Generate Signal...</div><div class="body"><p>Prompts a signal type (tone / white noise / pink noise), sample rate, duration, frequency, optional THD or buzz injection, an optional comparison file, and a level-control target. Saves the result as a new WAV and adds it straight to Loaded Files.</p><span class="req none">no audio required</span></div></div>
+
+        <div class="item" id="tools-merge-mono-wavs-to-multi-channel"><div class="name">Merge Mono WAVs to Multi-Channel...</div><div class="body"><p>Merges every file currently in Loaded Files, in list order, into a single multi-channel WAV. Remove any files you don't want included first &mdash; there's no separate multi-select step.</p><span class="req">1+ loaded file</span></div></div>
+
+        <div class="item" id="tools-split-multi-channel-wav-to-mono"><div class="name">Split Multi-Channel WAV to Mono...</div><div class="body"><p>Prompts which loaded file to split, then writes one mono WAV per channel to a folder you choose.</p><span class="req">1+ loaded file</span></div></div>
+
+        <div class="item" id="tools-extract-audio-difference"><div class="name">Extract Audio Difference...</div><div class="body"><p>Two modes: the L/R channels of one file, or two separate files. Subtracts the threshold-gated difference and saves it as a new mono WAV.</p><span class="req">2 files (cross-file mode) or 1 file with 2+ channels (single-file mode)</span></div></div>
+
+        <div class="item" id="tools-spectral-subtraction"><div class="name">Spectral Subtraction...</div><div class="body"><p>Pick a main file and a noise-reference file; runs FFT-domain spectral subtraction with a reduction factor and gain control, and saves the denoised result.</p><span class="req">2+ loaded files, matching sample rate</span></div></div>
+
+        <div class="item" id="tools-adaptive-noise-cancellation"><div class="name">Adaptive Noise Cancellation...</div><div class="body"><p>Pick a main file and a noise-reference file; runs an LMS/NLMS adaptive filter (filter length, learning rate, epsilon). Detects filter divergence and reports it rather than saving a corrupted result.</p><span class="req">2+ loaded files, matching sample rate</span></div></div>
+
+        <div class="item" id="tools-waveform-statistics"><div class="name">Waveform Statistics</div><div class="body">
+          <p>A per-channel level report in the style of Adobe Audition's <em>Amplitude Statistics</em> panel, plus a switchable RMS-vs-time / frequency-response chart. It answers: <em>how loud is this recording, how big are its peaks, is there a DC offset, and what does that come to in dB SPL and dBA for a calibrated microphone?</em> It opens one dialog with one table column per channel.</p>
+
+          <p><strong>What it analyses.</strong> If any channels are checked in <span class="mono">Loaded Files</span> (any combination across any loaded files, sample rates may differ), one column per checked channel is shown; otherwise it covers the current file, one column per channel. If you set a time range with <span class="mono">Select Time Range...</span>, only that range is analysed. Columns are computed in parallel, so many channels take roughly as long as the slowest one.</p>
+
+          <p><strong>Reading the table.</strong> All levels are relative to full scale, with a full-scale <em>square</em> wave = 0 dB (so a full-scale sine reads about &minus;3 dB RMS). A silent channel reads <span class="val">-inf</span>. <span class="val">N/A</span> means the value cannot be computed (see the notes below).</p>
+          <div class="table-wrap">
+            <table class="simple">
+              <thead><tr><th>Row</th><th>Unit</th><th>What it means</th></tr></thead>
+              <tbody>
+                <tr><td class="item-name">Min Sample Value</td><td>16-bit counts</td><td>The most negative single sample, shown on the 16-bit scale (&minus;32768 to +32767) regardless of the file's real bit depth. A value near &minus;32768 means the signal touches full scale (clipping risk).</td></tr>
+                <tr><td class="item-name">Max Sample Value</td><td>16-bit counts</td><td>The most positive single sample, same scale.</td></tr>
+                <tr><td class="item-name">Peak Amplitude (dB)</td><td>dBFS</td><td>The largest absolute sample, <span class="mono">20&middot;log10(max|x|)</span>. <span class="val">0</span> means a sample reached full scale; &minus;6 means half scale. Instantaneous, not averaged, so a single click sets it.</td></tr>
+                <tr><td class="item-name">DC Offset (16-bit)</td><td>16-bit counts</td><td>The average of all samples. Ideally 0; a large value means the microphone or ADC adds a constant bias, which wastes headroom. It is removed before every RMS calculation below, so it does not inflate them.</td></tr>
+                <tr><td class="item-name">Min RMS Power (dB)</td><td>dBFS</td><td>The quietest moment. The signal (DC removed) is measured with a sliding window (default 50&nbsp;ms, advancing one sample at a time); each window gives one RMS value, and this is the lowest of them. Good for judging the noise floor between events.</td></tr>
+                <tr><td class="item-name">Max RMS Power (dB)</td><td>dBFS</td><td>The loudest moment on the same sliding-window curve. Less jumpy than Peak Amplitude because it averages over the window.</td></tr>
+                <tr><td class="item-name">Avg RMS Power (dB)</td><td>dBFS</td><td>The average of the window RMS values, averaged in linear amplitude first and only then converted to dB (not an average of dB values, which would under-read signals that vary a lot).</td></tr>
+                <tr><td class="item-name">Total RMS Power (dB)</td><td>dBFS</td><td>One RMS over the whole channel (DC removed), no windowing. For a steady signal it is close to Avg RMS; for a signal with loud bursts and long quiet gaps the two differ.</td></tr>
+                <tr><td class="item-name">dB SPL (broadband)</td><td>dB SPL</td><td><span class="mono">Avg RMS Power + Cal_Offset</span>: the average sound pressure level at the microphone, all frequencies counted equally. Needs correct calibration values (below).</td></tr>
+                <tr><td class="item-name">dBA</td><td>dBA</td><td>The average level after <strong>A-weighting</strong> (the IEC 61672 curve that discounts low and very high frequencies the way human hearing does), plus Cal_Offset. This is the number comparable to a sound level meter's A-weighted equivalent level. The signal is DC-removed, A-weighted first, then run through the same window / linear-average / dB steps as Avg RMS.</td></tr>
+                <tr><td class="item-name">Max RMS dBA</td><td>dBA</td><td>The highest A-weighted window RMS (plus Cal_Offset): the loudest moment as the ear would rate it, similar in spirit to a meter's maximum-level reading. The window length sets how short a burst it can resolve.</td></tr>
+                <tr><td class="item-name">Peak dBA</td><td>dBA</td><td>The largest single A-weighted sample (plus Cal_Offset). Catches short clicks and pops that Max RMS dBA averages away: a brief loud click can give a high Peak dBA but a much lower Max RMS dBA. For a pure sine, Peak is about 3&nbsp;dB above Max RMS.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>Calibration (dB SPL, dBA, Max RMS dBA, Peak dBA).</strong> The first eight rows are in dB relative to full scale and need no calibration. The last four convert to real sound pressure by adding a constant <span class="mono">Cal_Offset</span>:</p>
+          <p><span class="mono">Cal_Offset = Reference SPL &minus; (Mic Sensitivity + Convention offset)</span></p>
+          <ul>
+            <li><span class="mono">Mic Sensitivity (dBFS)</span> &mdash; the microphone's output level, in dBFS, at the reference sound level (from its datasheet, or from the <span class="mono">Calibrate...</span> function of the real-time level meter). Default <span class="val">-26</span>.</li>
+            <li><span class="mono">Reference SPL (dB)</span> &mdash; the sound level that sensitivity figure was specified at. Default <span class="val">94</span> (a standard acoustic calibrator).</li>
+            <li><span class="mono">Convention offset (dB)</span> &mdash; reconciles the two level conventions: this table puts a full-scale square at 0&nbsp;dB while microphone datasheets quote sensitivity against a full-scale sine. Default <span class="val">-3.01</span>; leave it unless you know your reference differs.</li>
+          </ul>
+          <p>With the defaults Cal_Offset is <span class="val">123.01</span> dB. If you set a <span class="mono">Gain...</span> on a file in Loaded Files, its column's last four rows subtract that gain, so they still show the real level at the microphone (the first eight rows include the gain, because they describe the signal as analysed). These three boxes recalculate the last four rows instantly as you type, and the resulting Cal_Offset is displayed under them. They are session-only and return to the defaults next time.</p>
+
+          <p><strong>RMS window and A-weight skip.</strong> Two settings control how the RMS rows are computed. After changing either, click <span class="mono">Recalculate</span> (they are not applied while typing, because recalculating re-runs the A-weighting on every channel).</p>
+          <ul>
+            <li><span class="mono">RMS window</span> (default <span class="val">50 ms</span>) &mdash; length of the sliding window. A shorter window follows fast level changes and gives higher Max / lower Min values; a longer one smooths them. It affects Min / Max / Avg RMS Power, dBA, Max RMS dBA, and the RMS curve in the chart.</li>
+            <li><span class="mono">A-weight skip first</span> (default <span class="val">250 ms</span>) &mdash; how much of the start of the A-weighted signal to ignore. The A-weighting filter starts from silence, so its first moments contain a start-up transient that is not part of the real signal; skipping avoids it polluting the average and peak. It affects dBA, Max RMS dBA and Peak dBA. Set it to <span class="val">0</span> to ignore nothing (for example, when a loud event happens at the very start of the file). If the skip is longer than the clip, the whole clip is used.</li>
+          </ul>
+          <p>The current values are shown in the line at the top of the dialog and are included when you copy the table. Both are remembered in <span class="val">settings.ini</span>'s <span class="val">[WAVEFORM_STATISTICS]</span> section (<span class="val">rms_window_ms</span>, <span class="val">a_weight_skip_ms</span>) and reused next time, including by <span class="mono">File &gt; Export Report</span>.</p>
+
+          <p><strong>The chart.</strong> Use the <span class="mono">View</span> dropdown to switch:</p>
+          <ul>
+            <li><span class="mono">RMS vs Time</span> &mdash; the sliding-window RMS curve of every column, so you can see <em>when</em> the loud and quiet parts are. The <span class="mono">dB amplitude axis</span> checkbox switches the vertical axis between dB and linear amplitude.</li>
+            <li><span class="mono">Response vs Frequency</span> &mdash; the magnitude spectrum of each whole channel from 20&nbsp;Hz up to half the sample rate. The checkbox changes to <span class="mono">Log frequency axis</span> and switches the horizontal axis between logarithmic and linear.</li>
+          </ul>
+          <p>Click a table column to emphasise that channel's curve and fade the others; drag a rectangle or scroll the wheel to zoom, drag with the right button to move the view, right-click or <span class="mono">Fit to Data</span> to reset, hover for exact values. The chart is not affected by the calibration boxes. Because RMS is computed on the plain (not A-weighted) signal, the chart's curve matches the Min/Max/Avg RMS rows, not the dBA rows.</p>
+          <p><span class="mono">Copy to Clipboard</span> copies the whole table (with the header line, calibration values and one tab-separated column per channel) for pasting into a spreadsheet.</p>
+
+          <div class="note"><strong>Why a value shows N/A:</strong> the RMS and dBA-family rows need at least one full window of audio, so a channel shorter than the RMS window shows <span class="val">N/A</span> for them (the sample, peak, DC and Total RMS rows still work). Shorten the window or analyse a longer range. A channel with no audio at all is N/A in every row.</div>
+          <span class="req">loaded file, specific channel (or checked channels for multiple)</span></div></div>
+
+        <div class="item" id="tools-spectrogram"><div class="name">Spectrogram</div><div class="body"><p>Prompts A-weighting, a <span class="mono">Plot All</span> toggle, an optional custom frequency range, and an optional binary/threshold mode, then renders a time-frequency heatmap. With <span class="mono">Plot All</span> checked, it reads whatever channels are checked in Loaded Files &mdash; any combination across any files; unchecked, it uses just the current file and channel.</p><span class="req">1+ loaded file</span></div></div>
+
+        <div class="item" id="tools-plotfft"><div class="name">Plot FFT...</div><div class="body"><p>Same <span class="mono">Plot All</span> behavior as Spectrogram, rendering overlaid FFT magnitude curves instead of a heatmap. Hover the mouse over a curve to read its exact frequency and level; the <span class="mono">Log frequency axis</span> checkbox under the chart switches between a logarithmic and a linear frequency axis. Optionally overlays pass/fail limit bands from <span class="mono">Edit Limits...</span>, which reads and writes <span class="val">settings.ini</span>'s <span class="val">[FFT_LIMITS]</span> section.</p><span class="req">1+ loaded file</span></div></div>
+
+        <div class="item" id="tools-waterfall"><div class="name">3D Waterfall (CSD)...</div><div class="body"><p>A single reusable window &mdash; reopening this menu item while one is already open brings the existing window to the front rather than opening a second. <span class="mono">File</span>/<span class="mono">Ch</span> dropdowns read from Loaded Files (no separate file browser); <span class="mono">Compute</span> runs the time-frequency analysis in the background. <span class="mono">Log Freq</span> toggles log- vs. linear-spaced frequency; <span class="mono">Color Range...</span> and <span class="mono">Freq Points...</span> tune the display; <span class="mono">Start (ms)</span>/<span class="mono">Length (ms)</span> pick the time window shown.</p><p>The surface itself: drag to rotate, scroll to zoom, <span class="mono">Reset View</span> (or press <span class="val">R</span>) to recentre. X is log-frequency, Y is level in dB (also the surface colour), Z is time.</p><p>This window itself always shows one file/channel at a time via its own <span class="mono">File</span>/<span class="mono">Ch</span> dropdowns &mdash; but when run via <span class="mono">File &gt; Export Report</span> with channels checked in Loaded Files, it computes and stitches together one surface capture per checked channel into that report's page instead.</p><img class="screenshot" src="images/csd_waterfall.png" alt="3D Waterfall (CSD) surface plot"><span class="req none">reads Loaded Files, no separate browser</span></div></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="chapter" id="design">
+      <h2>Design</h2>
+      <p class="lede">Datasheet and simulation calculators for speaker/microphone hardware selection &mdash; distinct from <span class="mono">Tools</span>' measurement features in that none of these need a loaded audio file. Each opens as a single reused window; reopening its menu item brings the same window forward rather than stacking a new one.</p>
+
+      <div class="item-grid">
+        <div class="item" id="design-mems-mic-design"><div class="name">Mems Mic Design...</div><div class="body"><p>Compares two MEMS microphone datasheets side by side &mdash; Sensitivity, SNR, AOP, LFRO, Peak &mdash; against an SPL/distance slider. Can open a linked Sealing Analyzer for port/cavity sealing cross-section analysis.</p></div></div>
+
+        <div class="item" id="design-speaker-design"><div class="name">Speaker Design...</div><div class="body"><p>A loudspeaker-array datasheet analyzer with a beam-map chart showing how the array's directivity changes with its control parameters.</p></div></div>
+
+        <div class="item" id="design-speaker-test-sop"><div class="name">Speaker Test SOP...</div><div class="body"><p>A production-line test-development reference: pick an architecture and a loudness level, and it shows the expected SPL chart, a pass/fail coupling-metrics grid (THD/PRB against limits), an architecture-specific coupling-analysis panel, and the matching SOP text.</p></div></div>
+
+        <div class="item" id="design-speaker-selection-sim"><div class="name">Speaker Selection Sim...</div><div class="body"><p>A driver-selection simulator &mdash; pick a driver type and tune Target SPL, Install Size, Enclosure Volume, and DSP Bass Boost sliders and a Quality setting to see the resulting frequency response and physical excursion.</p></div></div>
+
+        <div class="item" id="design-acoustic-design-guide"><div class="name">Acoustic Design Guide...</div><div class="body"><p>A side-volume calibration guide (English/Traditional Chinese toggle) &mdash; four sliders and a DSP-calibration toggle drive a stereo frequency-response chart and an imaging-shift gauge, with commentary alongside.</p></div></div>
+
+        <div class="item" id="design-acoustic-methodology-manual"><div class="name">Acoustic Methodology Manual...</div><div class="body"><p>A two-step reference covering individual near-field measurement versus array far-field summation &mdash; four sliders drive a frequency-response chart and the same imaging-shift gauge, alongside the full engineering-manual text.</p></div></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="chapter" id="help">
+      <h2>Help</h2>
+      <div class="table-wrap">
+        <table class="simple">
+          <thead><tr><th>Item</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="item-name">About AAT Pro</td><td>Version, license/trial status, and copyright.</td></tr>
+            <tr><td class="item-name">How to Use</td><td>Opens this guide.</td></tr>
+            <tr><td class="item-name">Enter License Key</td><td>Validates a license key string, reporting Valid (with customer ID and expiry), Expired, or Invalid.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img class="screenshot" src="images/enter_key_dialog.png" alt="Enter License Key dialog">
+    </section>
+
+    <footer>AAT Pro &mdash; Audio Analysis Tool. This guide covers the menu bar as of the current build; individual dialogs may show additional inline hints not repeated here.</footer>
+  </main>
+</div>
+</body>
+</html>

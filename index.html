@@ -1,8 +1,12 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Audio Analysis Tool (AAT) Software</title>
+<meta charset="utf-8">
+<title>AAT Pro — Audio Analysis Tool</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="AAT Pro 1.5.0 — record, view and analyse audio on Windows: FFT, spectrogram, THD, Rub & Buzz, tonal noise, DOA and more.">
+<link rel="icon" type="image/png" href="aat_pro_icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FHWNDPXWTZ"></script>
 <script>
@@ -13,534 +17,565 @@
   gtag('config', 'G-FHWNDPXWTZ');
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+  /* Colour tokens match the AAT Pro user guide (guide/how_to_use.html) */
+  :root {
+    --bg: #eef3f2;
+    --surface: #ffffff;
+    --surface-2: #e1eae8;
+    --ink: #142422;
+    --muted: #526864;
+    --accent: #0e7a78;
+    --accent-ink: #ffffff;
+    --accent-strong: #b14c1a;
+    --border: #cfdbd8;
+    --border-strong: #a9bcb8;
+    --code-ink: #0a2d2b;
+    --shadow: 0 1px 2px rgba(20, 36, 34, 0.06), 0 8px 24px rgba(20, 36, 34, 0.05);
+  }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a1615;
+      --surface: #0f1e1c;
+      --surface-2: #14302c;
+      --ink: #e6f3f0;
+      --muted: #8fada8;
+      --accent: #3fd9c4;
+      --accent-ink: #04211f;
+      --accent-strong: #e88240;
+      --border: #1e3936;
+      --border-strong: #2c4c47;
+      --code-ink: #cdece6;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
     }
+  }
 
-    body {
-      background-color: #000000;
-      color: #FFFFFF;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      line-height: 1.6;
-    }
+  :root[data-theme="dark"] {
+    --bg: #0a1615;
+    --surface: #0f1e1c;
+    --surface-2: #14302c;
+    --ink: #e6f3f0;
+    --muted: #8fada8;
+    --accent: #3fd9c4;
+    --accent-ink: #04211f;
+    --accent-strong: #e88240;
+    --border: #1e3936;
+    --border-strong: #2c4c47;
+    --code-ink: #cdece6;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px rgba(0, 0, 0, 0.35);
+  }
 
-    a {
-      color: #ADD8E6;
-    }
+  * { box-sizing: border-box; }
 
-    a:visited {
-      color: #90EE90;
-    }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
 
-    h1, h2, h3, h4 {
-      color: #FFD700;
-      margin-top: 20px;
-    }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 
-    ul {
-      margin-left: 20px;
-      margin-bottom: 20px;
-      list-style-type: disc; /* Ensure bullet points are visible */
-      padding-left: 20px; /* Indent list items */
-    }
-    /* New style for list items within 'Arguments' section */
-    ul.arguments-list li {
-      word-wrap: break-word; /* Allow long words to break */
-      white-space: normal;   /* Allow text to wrap normally */
-      margin-bottom: 10px; /* Space between list items */
-    }
+  code, .mono {
+    font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+  }
 
-    img.responsive-img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 20px auto;
-      border: 2px solid #555;
-    }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
 
-    /* Style for the top-right image container */
-    .top-right-image-container {
-        position: absolute; /* Absolute positioning relative to the nearest positioned ancestor (body in this case) */
-        top: 20px; /* Distance from the top of the page */
-        right: 20px; /* Distance from the right of the page */
-        z-index: 1000; /* Ensure it stays on top of other content */
-    }
+  /* ---------- Top bar ---------- */
 
-    /* Style for the image inside the top-right container */
-    .top-right-image {
-        width: 50px; /* Adjust size as needed, e.g., 50px, 80px */
-        height: auto;
-        border: none; /* No border for this small icon */
-        display: block; /* Remove extra space below image */
-    }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar .wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    height: 56px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 15px;
+    margin-right: auto;
+  }
+  .brand img { width: 28px; height: 28px; border-radius: 6px; }
+  .topbar nav { display: flex; gap: 16px; flex-wrap: wrap; }
+  .topbar nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .topbar nav a:hover { color: var(--ink); }
 
+  @media (max-width: 640px) {
+    .topbar nav .optional { display: none; }
+  }
 
-    pre, code {
-      background-color: #1e1e1e;
-      color: #FFD700;
-      padding: 15px;
-      border-radius: 5px;
-      font-family: Consolas, "Courier New", monospace;
-      overflow-x: auto;
-      white-space: pre-wrap; /* Preserve whitespace but allow breaking lines */
-      word-wrap: break-word; /* Allow long words to break */
-      margin-bottom: 20px; /* Ensure spacing below code blocks */
-    }
+  /* ---------- Hero ---------- */
 
-    .json-output {
-      background-color: #2b2b2b;
-      color: #f8f8f2;
-      padding: 15px;
-      border-left: 3px solid #6272a4;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      margin-bottom: 20px;
-    }
+  .hero { padding: 56px 0 40px; }
+  .hero-head { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+  .hero-head img { width: 64px; height: 64px; border-radius: 13px; box-shadow: var(--shadow); flex-shrink: 0; }
+  .hero h1 {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.15;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 .ver { color: var(--accent); }
+  .hero .tagline { font-size: clamp(17px, 2.2vw, 19px); color: var(--muted); max-width: 64ch; margin: 0 0 14px; }
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .badge {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 2px 10px;
+  }
 
-    .highlight {
-      color: #00FFFF;
-      font-weight: bold;
-    }
-    /* New style for red bold text */
-    .red-bold {
-      color: #FF0000;
-      font-weight: bold;
-    }
+  /* ---------- Download cards ---------- */
 
-    /* Collapsible donation section: Stripe button shows only after clicking "Donate" */
-    .donation-toggle {
-      margin: 20px 0;
-    }
-    .donation-toggle summary {
-      display: inline-block;
-      cursor: pointer;
-      list-style: none; /* Hide default disclosure triangle */
-      background-color: #FFD700;
-      color: #000000;
-      font-weight: bold;
-      padding: 8px 20px;
-      border-radius: 5px;
-    }
-    .donation-toggle summary::-webkit-details-marker {
-      display: none;
-    }
-    .donation-toggle[open] summary {
-      margin-bottom: 15px;
-    }
-  </style>
+  .downloads {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .dl-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dl-card h3 { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 16px; }
+  .dl-card .size { color: var(--muted); font-size: 13px; font-family: "JetBrains Mono", monospace; }
+  .dl-card p { margin: 0; font-size: 14.5px; flex: 1; }
+  .btn {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    margin-top: 6px;
+  }
+  .btn:visited { color: var(--accent-ink); }
+  .btn:hover { filter: brightness(1.08); }
+  .btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .dl-note { color: var(--muted); font-size: 13.5px; margin: 12px 0 0; }
+
+  .screenshot {
+    max-width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin: 36px 0 0;
+    display: block;
+  }
+
+  /* ---------- Sections ---------- */
+
+  section.chapter { padding: 40px 0 8px; scroll-margin-top: 64px; border-top: 1px solid var(--border); }
+  section.chapter > h2 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  section.chapter > .lede { color: var(--muted); max-width: 68ch; margin: 0 0 22px; font-size: 15px; }
+  h3.sub-head {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 28px 0 12px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .card h4 { margin: 0 0 8px; font-family: "JetBrains Mono", monospace; font-size: 15px; }
+  .card ol, .card ul { margin: 0; padding-left: 20px; font-size: 14.5px; }
+  .card li + li { margin-top: 4px; }
+  .card p { margin: 8px 0 0; font-size: 14.5px; }
+  .card p > strong:first-child { color: var(--accent-strong); }
+
+  ul.plain { margin: 0; padding-left: 20px; }
+  ul.plain li + li { margin-top: 4px; }
+
+  .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 14px 38px;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 14px;
+  }
+
+  .val {
+    font-family: "JetBrains Mono", monospace;
+    background: var(--surface-2);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.92em;
+    color: var(--code-ink);
+    overflow-wrap: anywhere;
+  }
+
+  .note {
+    border-left: 3px solid var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14.5px;
+    margin: 14px 0;
+  }
+  .note strong { color: var(--accent); }
+
+  pre.code {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    overflow-x: auto;
+    font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .table-wrap { overflow-x: auto; }
+  table.simple { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  table.simple th {
+    text-align: left;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 0 12px 8px 0;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  table.simple td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.simple tr:last-child td { border-bottom: none; }
+
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .shots figure { margin: 0; }
+  .shots img { width: 100%; border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow); display: block; }
+  .shots figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+  /* ---------- Donation (Stripe button shows only after clicking "Donate") ---------- */
+
+  .donation-toggle { margin: 18px 0 0; }
+  .donation-toggle summary {
+    display: inline-block;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    background: var(--accent-strong);
+    color: #ffffff;
+  }
+  .donation-toggle summary::-webkit-details-marker { display: none; }
+  .donation-toggle[open] summary { margin-bottom: 15px; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    padding: 22px 0 40px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+</style>
 </head>
 <body>
-  <div class="top-right-image-container">
-    <img src="https://github.com/AAT-RR/AAT/raw/main/apple-touch-icon.png" alt="Icon" class="top-right-image">
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="aat_pro_icon.png" alt="">AAT Pro</a>
+    <nav aria-label="Sections">
+      <a href="#download">Download</a>
+      <a class="optional" href="#features">Features</a>
+      <a class="optional" href="#license">License</a>
+      <a href="guide/how_to_use.html">User Guide</a>
+      <a href="classic.html">Classic AAT</a>
+    </nav>
   </div>
-  <h1>Welcome to Download Audio Analysis Tool (AAT) Software for free! 100% Green software! Not malware and other breaches
- </h1>
+</header>
 
-<p><strong>Version:</strong> _please check release note and will upload the latest verison</p>
+<main class="wrap" id="top">
 
-  <button onclick="loadReleaseNote()">Show Release Notes</button>
-<div id="release-note" style="display:none; margin-top: 1em; border: 1px solid #ccc; padding: 1em; font-size: 12px; line-height: 1.5; font-family: Arial, sans-serif;"></div>
+  <section class="hero" id="download">
+    <div class="hero-head">
+      <img src="aat_pro_icon.png" alt="AAT Pro icon">
+      <h1>AAT Pro <span class="ver">1.5.0</span></h1>
+    </div>
+    <p class="tagline">A Windows desktop application for <strong>recording, viewing and analysing audio</strong> — for acoustic engineering, product validation and production-line testing. Load or record a WAV file, pick a channel, and every chart, meter and analysis tool works on that signal.</p>
+    <p class="tagline">The new, faster native version of the Audio Analysis Tool: rebuilt from the ground up in C++, it starts quickly, handles long multi-channel recordings (16 channels and more) and runs many analyses in parallel on all CPU cores.</p>
+    <div class="badge-row">
+      <span class="badge">Windows 10 / 11 · 64-bit</span>
+      <span class="badge">No admin rights needed</span>
+      <span class="badge">365-day free trial</span>
+    </div>
 
-<script>
-function loadReleaseNote() {
-    const container = document.getElementById("release-note");
-    if (container.innerHTML !== "") {
-        // Toggle display if content is already loaded
-        container.style.display = (container.style.display === "none") ? "block" : "none";
-        return;
-    }
+    <div class="downloads">
+      <div class="dl-card">
+        <h3>Installer</h3>
+        <span class="size">AAT_Pro_Setup_1.5.0.exe · 20.0 MB</span>
+        <p>You can install software on the PC. Adds Start-menu shortcuts and an uninstaller.</p>
+        <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.0/AAT_Pro_Setup_1.5.0.exe">Download installer</a>
+      </div>
+      <div class="dl-card">
+        <h3>Portable</h3>
+        <span class="size">AAT_Pro_Portable_1.5.0.zip · 26.8 MB</span>
+        <p>Locked-down PC (no installation, no registry access, no admin rights), or run it from a USB drive. Unzip and run.</p>
+        <a class="btn secondary" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.0/AAT_Pro_Portable_1.5.0.zip">Download portable</a>
+      </div>
+    </div>
+    <p class="dl-note">Both contain exactly the same program — you only need one. All files and release notes are on the <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.0">GitHub release page</a>. Looking for the original AAT (Windows 32-bit / macOS)? See <a href="classic.html">Classic AAT</a>.</p>
 
-    fetch('https://raw.githubusercontent.com/AAT-RR/AAT/main/release.md')
-        .then(response => {
-            if (!response.ok) throw new Error("Network response was not ok");
-            return response.text();
-        })
-        .then(markdown => {
-            let finalHtml = '';
-            let inList = false; // Flag to track if we are inside a <ul> list
+    <img class="screenshot" src="guide/images/main_window.png" alt="AAT Pro main window with spectrum and waveform views">
+  </section>
 
-            // Split the markdown content into lines to process each line individually
-            const lines = markdown.split('\n');
+  <section class="chapter" id="install">
+    <h2>Install</h2>
+    <p class="lede">Requires Windows 10 or 11 (64-bit). No separate runtime to install — the Visual C++ runtime and all Qt libraries are included. A sound card, USB audio interface or microphone is only needed for recording.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Option A — Installer</h4>
+        <ol>
+          <li>Double-click <span class="val">AAT_Pro_Setup_1.5.0.exe</span>.</li>
+          <li>If Windows shows <em>"Windows protected your PC"</em> (SmartScreen), click <strong>More info → Run anyway</strong> — the installer is not code-signed.</li>
+          <li>Follow the wizard. It installs for the current user only (under <span class="val">%LOCALAPPDATA%\Programs\AAT Pro</span>), so no administrator password is asked for.</li>
+          <li>Start <strong>AAT Pro</strong> from the Start menu or the desktop.</li>
+        </ol>
+        <p><strong>Uninstall:</strong> Settings → Apps → Installed apps → AAT Pro → Uninstall, or <em>Uninstall AAT Pro</em> in the Start menu.</p>
+      </div>
+      <div class="card">
+        <h4>Option B — Portable (no installation)</h4>
+        <ol>
+          <li>Copy <span class="val">AAT_Pro_Portable_1.5.0.zip</span> to a folder you can write to — Desktop, Documents or a USB drive. Not <span class="val">C:\Program Files</span>: recordings are saved next to the program.</li>
+          <li>Right-click the zip → <strong>Extract All…</strong></li>
+          <li>Open the extracted folder and double-click <span class="val">AAT_Pro.exe</span>.</li>
+        </ol>
+        <p><strong>Nothing to clean up:</strong> the portable version writes nothing to the registry. To remove it, delete the folder.</p>
+      </div>
+    </div>
 
-            lines.forEach(line => {
-                line = line.trim(); // Remove leading/trailing whitespace from the line
+    <h3 class="sub-head">Where AAT Pro keeps its files</h3>
+    <div class="table-wrap">
+      <table class="simple">
+        <tr><th>What</th><th>Where</th></tr>
+        <tr><td>Settings, tool parameters, trial / license state</td><td><span class="val">%APPDATA%\AAT\settings.ini</span></td></tr>
+        <tr><td>Recordings made with <strong>Record</strong></td><td>the <span class="val">recordings</span> folder next to <span class="val">AAT_Pro.exe</span></td></tr>
+        <tr><td>User guide</td><td><strong>Help → How to Use</strong> inside the program, or <a href="guide/how_to_use.html">online</a></td></tr>
+      </table>
+    </div>
+    <p class="dl-note">The installer and the portable version share the same <span class="val">settings.ini</span> for the same Windows user on the same PC.</p>
+  </section>
 
-                // 1. Convert Markdown links [text](url) to HTML <a> tags.
-                // This ensures links are clickable and only the text is visible.
-                // target="_blank" opens in a new tab; rel="noopener noreferrer" enhances security.
-                line = line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  <section class="chapter" id="start">
+    <h2>Getting started in 2 minutes</h2>
+    <ol class="steps">
+      <li><strong>Load audio</strong> — click <strong>Load WAV…</strong> or drag a <span class="val">.wav</span> file onto the window. Or choose your microphone under <em>Input device</em> and click <strong>Record</strong>.</li>
+      <li><strong>Pick a channel</strong> — use the <strong>Channel</strong> box (or <em>All Channels</em>). Multi-channel files appear in <em>Loaded Files</em>, one row per channel; tick several to analyse them together.</li>
+      <li><strong>Look</strong> — the spectrum (top) and waveform (bottom) update immediately. <strong>Play</strong> plays the selected channel.</li>
+      <li><strong>Analyse</strong> — open any tool from the <strong>Tools</strong> menu, e.g. <em>Plot FFT…</em>, <em>Spectrogram</em>, <em>Waveform Statistics</em> or <em>Tonal Teams…</em>. Each tool remembers its settings.</li>
+      <li><strong>Save</strong> — <em>File → Save WAV…</em>, <em>File → Save Plot to Image…</em>, <em>Edit → Save Data to CSV</em>, or <em>File → Export Report…</em> to put several tools' results into one PDF.</li>
+    </ol>
+    <div class="note"><strong>Working with charts:</strong> drag a box with the left button to zoom, mouse wheel zooms around the pointer, hold the right button and drag to move the view, right-click to return to the full view. Rest the mouse on a curve to read its exact value.</div>
+    <p>Every menu item and tool is described in the <a href="guide/how_to_use.html">AAT Pro User Guide</a>.</p>
+  </section>
 
-                // 2. Process different types of Markdown lines
-                if (line.startsWith('### ')) {
-                    // If previously in a list, close it before adding a new heading
-                    if (inList) {
-                        finalHtml += '</ul>';
-                        inList = false;
-                    }
-                    finalHtml += `<h3 style="font-size:13px; margin-top:1em; font-weight: bold;">${line.substring(4)}</h3>`;
-                } else if (line.startsWith('## ')) {
-                    if (inList) {
-                        finalHtml += '</ul>';
-                        inList = false;
-                    }
-                    finalHtml += `<h2 style="font-size:14px; margin-top:1em; font-weight: bold;">${line.substring(3)}</h2>`;
-                } else if (line.startsWith('# ')) {
-                    if (inList) {
-                        finalHtml += '</ul>';
-                        inList = false;
-                    }
-                    finalHtml += `<h1 style="font-size:16px; margin-top:1em; font-weight: bold;">${line.substring(2)}</h1>`;
-                } else if (line.startsWith('- ')) {
-                    // If not currently in a list, start a new one
-                    if (!inList) {
-                        finalHtml += '<ul style="padding-left: 1.2em;">';
-                        inList = true;
-                    }
-                    finalHtml += `<li>${line.substring(2)}</li>`; // Add list item
-                } else if (line === '') { // Handle empty lines (for spacing)
-                    if (inList) { // If an empty line breaks a list, close it
-                        finalHtml += '</ul>';
-                        inList = false;
-                    }
-                    finalHtml += '<br>'; // Add a line break for spacing between blocks
-                } else if (line.length > 0) { // Handle regular text lines as paragraphs
-                    if (inList) { // If regular text appears after a list, close the list
-                        finalHtml += '</ul>';
-                        inList = false;
-                    }
-                    // For the introductory sentence in the changelog, wrap it in a paragraph
-                    finalHtml += `<p>${line}</p>`;
-                }
-            });
-
-            // Ensure the last list is closed if the markdown ends within a list
-            if (inList) {
-                finalHtml += '</ul>';
-            }
-
-            container.innerHTML = finalHtml; // Set the processed HTML content
-            container.style.display = "block"; // Make the container visible
-        })
-        .catch(error => {
-            container.innerHTML = "Failed to load release notes. Please try again later.";
-            container.style.display = "block";
-            console.error("Error loading release notes:", error);
-        });
-}
-</script>
-  
-  <p>The Windows version（32 bit） is available for direct download（latest）:</p>
-  <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/AAT.msi" target="_blank">
-    Click here to directly download the Windows Intall file (AAT.msi)
-  </a>
-  <p>Download the default configuration file for Windows(not malware,please force download if block by download):</p>
-  <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/aat.ini" target="_blank">
-    Click here to download the aat.ini configuration file
-  </a>
-  <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 20px 0;">
-<p><strong>Version:</strong> V1.08.05</p>
-  <p>The macOS version (ARM64) is available for direct download(limited release for MAC):</p>
-  <a href="https://github.com/AAT-RR/AAT/releases/download/MAC_OS/AAT.dmg" target="_blank">
-    Click here to directly download the macOS Installer (AAT-installer.dmg)
-  </a>
-  <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 20px 0;">
-  <img src="https://github.com/AAT-RR/AAT/raw/main/aat.png" alt="Audio Analysis Tool Logo" class="responsive-img">
-
-  <h2>About the Audio Analysis Tool (AAT)</h2>
-  <p>The Audio Analysis Tool (AAT) is a comprehensive application designed for working with WAV audio files. It supports a range of audio analysis functionalities such as THD, Rub&Buzz, Noise detection, Frequency Response, and Sensitivity calculation. The tool can be run with command-line options or in GUI mode and is compatible with both Windows and macOS.</p>
-
-  <h3>Key Features</h3>
-  <ul>
-    <li><strong>File Management and Playback:</strong> Easily load single or multiple WAV audio files, select an active file for analysis, and play them back with a clear time display. You can also view detailed file information such as sample rate, bit depth, channels, and file size. Loaded files can be managed by deleting selected ones or clearing all.</li>
-    <li><strong>General Processing Options:</strong> Customize your analysis with options like channel selection (left, right, or both), A-weighting to approximate human hearing, and gain adjustment in dB.</li>
-    <li><strong>Audio Analysis Functions:</strong>
-  <ul>
-            <li><strong>Display Audio Waveform:</strong> Visualize the audio signal's amplitude over time, with options for channel selection, A-weighting, gain, and zoom. You can even plot waveforms for all loaded files for comparison.</li>
-            <li><strong>FFT Spectrum Plot:</strong> Analyze frequency components, identify tones, and understand spectral balance using Fast Fourier Transform (FFT). Parameters include FFT Size (N) for resolution, plotting all files or delta for comparison, and logarithmic frequency scaling.</li>
-            <li><strong>Spectrogram Display:</strong> Get a detailed view of how frequency content changes over time, useful for analyzing speech, transient events, or identifying continuous tones.</li>
-            <li><strong>DOA Analysis (Pairwise):</strong> Estimate the direction of a sound source using a microphone array. This feature calculates the Time Delay of Arrival (TDOA) between a selected reference mic and all other mics, providing a 3D visualization of the averaged direction. The array's geometry can be defined precisely via coordinates or hypothetically from distances in the `aat.ini` file.</li>
-            <li><strong>Inter-Channel Phase Analysis:</strong> Compare the phase relationship between two audio signals across the frequency spectrum, useful for identifying timing offsets, polarity inversions, or characterizing stereo image.</li>
-            <li><strong>Sweep Analysis (AAT Test):</strong> Analyze frequency sweeps for distortion metrics (THD, Rub & Buzz) and fundamental signal power, crucial for speaker and microphone testing.</li>
-            <li><strong>Scan Test (Sweep/Step Analysis):</strong> Advanced analysis for frequency sweep or step-sweep signals, focusing on tracking steps and pilot tones with detailed frequency behavior over time.</li>
-            <li><strong>Tonal Noise Analysis:</strong> Specifically designed to identify discrete, stable frequency tones that stand out from background noise. This includes a robust "Scan Tonal Noise" feature for abnormal noise detection, configurable via an `aat.ini` file or pop-up dialogues.</li>
-            <li><strong>Signal Generation & Modification:</strong> Create new audio signals or modify existing ones. Generate pure tones, white noise, or pink noise at specific levels. Add controlled amounts of Total Harmonic Distortion (THD), buzz, or superimpose additional sine waves onto a loaded audio file.</li>
-            <li><strong>Noise Cancellation Tools:</strong> Reduce unwanted noise using two different methods. <strong>Spectral Subtraction</strong> removes noise based on a static noise profile from a reference file. <strong>Adaptive Noise Cancellation (ANC)</strong> uses an adaptive filter (LMS/NLMS) to continuously remove noise correlated with a reference noise input, ideal for dynamic noise environments.</li>
-            <li><strong>WAV Channel Operations:</strong> Easily manage multi-channel audio files. <strong>Merge</strong> multiple single-channel (mono) WAV files into a single multi-channel WAV file, or <strong>Split</strong> a multi-channel file into individual mono WAV files for separate analysis.</li>
-            <li><strong>Chamber Response & Isolation Analysis:</strong> Study acoustic characteristics of enclosures. "Response" analyzes sound energy decay in specific frequency bands, while "Isolation" estimates how well a barrier blocks sound by comparing sound levels in two user-defined time periods.</li>
-            <li><strong>Plot and Data Management:</strong> Capture and overlay multiple plots for comparison using 'Keep Plot'. Export any plot view to an image file or save the underlying numerical data to a CSV file for further analysis in other software.</li>
+  <section class="chapter" id="features">
+    <h2>Main features</h2>
+    <div class="feature-grid">
+      <div class="card">
+        <h4>Signal in and out</h4>
+        <ul>
+          <li>Load mono or multi-channel WAV, or record from any input device — even two at once</li>
+          <li>Live level meter and <strong>Realtime Spectrum</strong> with dBA readout and calibrator support</li>
+          <li>Playback with draggable playhead and loop</li>
+          <li>Per-file analysis time range and gain, without changing the original file</li>
+          <li>Generate test signals; merge mono files into multi-channel or split them</li>
         </ul>
-    </li>
-    <li><strong>Audio Recording:</strong> Capture audio directly from connected microphones, with options for single or dual mic recording, adjustable recording length, and automatic naming.</li>
-    <li><strong>Signal Generation and Modification:</strong> Generate new test signals (pure tones with distortion, white noise) or modify loaded audio by adding tones or distortion.</li>
-    <li><strong>Audio Modification Tools:</strong> Includes adaptive noise cancellation (via a reference noise signal) and spectral subtraction for background noise reduction. You can also merge mono WAVs into multi-channel files or split multi-channel WAVs into separate mono files. A feature to extract common sound from multiple files is also available.</li>
-    <li><strong>Saving Results and Logs:</strong> Save plots as images (PNG, JPG, BMP) or plot data to CSV for further analysis. Session logs containing status updates and errors can also be saved to text files, with an option for auto-saving.</li>
-    <li><strong>Menu Bar Functions:</strong> Access fundamental operations like loading files, engineer login (required for advanced features), clearing plots and logs, and refreshing audio devices.</li>
-  </ul>
+      </div>
+      <div class="card">
+        <h4>Analysis</h4>
+        <ul>
+          <li><strong>Plot FFT</strong>, <strong>Spectrogram</strong>, <strong>3D Waterfall (CSD)</strong>, <strong>Histogram</strong></li>
+          <li><strong>Waveform Statistics</strong> — peak, RMS, dB SPL, dBA, max RMS dBA, peak dBA</li>
+          <li><strong>Sweep Analysis</strong> — THD, Rub &amp; Buzz and level vs. frequency</li>
+          <li><strong>Tonal Noise</strong> and <strong>Tonal Teams</strong> PASS/FAIL tonal-spike check</li>
+          <li><strong>Scan Test</strong>, <strong>Chamber Response</strong>, <strong>Chamber Isolation</strong></li>
+          <li><strong>DOA Analysis</strong> and <strong>Intel Channel Phase</strong></li>
+          <li>Spectral Subtraction, Adaptive Noise Cancellation, Extract Audio Difference</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Reporting and design helpers</h4>
+        <ul>
+          <li><strong>Export Report</strong> — runs the selected tools and saves all results in one PDF</li>
+          <li>CSV export of curves and results</li>
+          <li><strong>Design</strong> menu: MEMS microphone, speaker and acoustic design calculators and guides</li>
+          <li><strong>Unit Converter</strong> — dB, distance attenuation, wavelength, mic spacing / aliasing, dBu/dBV and more</li>
+        </ul>
+      </div>
+    </div>
 
-  <p>For advanced features like signal generation and modification, Engineer Login is required. Please contact Renee at reneeaat@gmail.com for the password and license Key.</p>
+    <h3 class="sub-head">Screenshots</h3>
+    <div class="shots">
+      <figure><img src="guide/images/csd_waterfall.png" alt="3D Waterfall (CSD) surface plot" loading="lazy"><figcaption>3D Waterfall (CSD)</figcaption></figure>
+      <figure><img src="guide/images/tools_menu.png" alt="The Tools menu" loading="lazy"><figcaption>Tools menu</figcaption></figure>
+      <figure><img src="guide/images/settings_dialog.png" alt="Recording and Analysis Settings dialog" loading="lazy"><figcaption>Recording &amp; Analysis Settings</figcaption></figure>
+    </div>
+  </section>
 
-  <h3>Basic Usage (GUI Mode)</h3>
-  <p>You can launch the software without any arguments to use its full graphical user interface:</p>
-  <pre><code>AAT.exe</code></pre>
-
-  <h2>AAT Tool Interface Screenshots: Tonal Noise Scan Example</h2>
-  <p>Here are some screenshots of the AAT Tool interface, including an example of the Tonal Noise Scan visualization:</p>
-
-  <h3>How Scan Tonal Noise Works (A Simplified Explanation)</h3>
-  <p>Our Scan Tonal Noise feature is designed to automatically find those annoying, constant "whines" or "hums" in your audio files, especially useful for checking products on a production line. Think of it like this:</p>
-  <ul>
-    <li>We take your audio file and quickly break it down into tiny slices of sound, like looking at snapshots of what frequencies are present over time.</li>
-    <li>For each snapshot, we look for any specific musical notes or tones that are significantly louder than the surrounding background noise. It's like finding a single loud whistle in a room full of murmurs.</li>
-    <li>Then, we track these loud "notes" over time. If a particular note stays loud and consistent for a certain period, our tool identifies it as a potential "tonal noise."</li>
-    <li>Finally, based on some smart rules we've set (like how loud it has to be or how long it has to last), the system decides if this tone is a problem. It can even count how much "problem tone" occurs in total. This helps us quickly tell if a product passes or fails the noise test, without needing a human to listen to every single one.</li>
-  </ul>
-
-  <img src="https://github.com/AAT-RR/AAT/raw/main/tonal_noise1.png" alt="Audio Analysis Tool Main Interface" class="responsive-img">
-
-  <h3>What is Tonal Noise?</h3>
-  <p>Tonal noise refers to a type of noise characterized by its distinct, stable, and often continuous pitch. Unlike broadband noise, which spreads across a wide range of frequencies, tonal noise is concentrated at one or more specific frequencies, making it sound like a hum, whine, buzz, or whistle.</p>
-
-  <h4>What Causes Tonal Noise?</h4>
-  <p>Tonal noise is usually caused by things that involve repetitive motion or electrical currents. It sounds like a steady hum, whine, buzz, or whistle.
-  Tonal Noise: Simply put, it's noise containing one or more distinct, continuous, and discernible specific frequency components. Compared to broadband background noise, the energy of these specific frequencies is concentrated, making it particularly prominent and piercing.
-  </p>
-  <ul>
-    <li>Tonal noise is identified if a spectral peak is perceptibly higher than neighboring bands.</li>
-    <li>The tone can be detected visually in a spectrum or audibly.</li>
-    <li>ISO 1996-1:2016 uses subjective and empirical rules for identification.</li>
-    <li><strong>Rotating Parts:</strong> Motors, fans, pumps, and gears.</li>
-    <li><strong>Electrical Components:</strong> Transformers and power supplies, often due to electromagnetic vibrations.</li>
-    <li><strong>Fluid Movement:</strong> Steady flow in pipes.</li>
-  </ul>
-
-  <img src="https://github.com/AAT-RR/AAT/raw/main/5ktonal.png" alt="Tonal Noise Example Plot" class="responsive-img">
-  <p>This plot illustrates tonal noise. The prominent line clearly indicates a continuous, stable tone standing out from other frequencies. This line represents the identified tonal noise component.</p>
-
-  <img src="https://github.com/AAT-RR/AAT/raw/main/5ktonal_1.png" alt="Tonal Noise Detection based on ISO Definition" class="responsive-img">
-
-  <p>This image demonstrates how the system identifies tonal noise based on its definition. It highlights spectral peaks that are perceptibly higher than their neighboring frequency bands, indicating the presence of a tonal component as per the ISO standard.</p>
-<img src="https://github.com/AAT-RR/AAT/raw/main/tonal_noise_analysis_animation.gif" alt="Tonal Noise Analysis Animation" class="responsive-img">
-
-<h3>Scan Tonal noise Analysis Parameters Explanation(aat.ini) </h3>
-<button onclick="toggleContent()">Show/Hide Parameter Explanation</button>
-
-<div id="collapsibleContent" style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; font-size: 0.8em; line-height: 1.1; display: none;">
-    <p><code>enable_abnormal_noise_detection = True</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This simply turns on or off the system's ability to <strong>detect specific, sustained abnormal noises</strong> in the audio. Setting it to <code>True</code> means the system will actively look for these noises.</li>
+  <section class="chapter" id="whatsnew">
+    <h2>What's new in 1.5.0</h2>
+    <ul class="plain">
+      <li><strong>Free trial extended to one year</strong> (365 days).</li>
+      <li><strong>Portable version</strong> — runs without installation on locked-down PCs.</li>
+      <li>The Visual C++ runtime is now included, so AAT Pro runs on PCs where it was never installed (previously <em>"msvcp140.dll is missing"</em>).</li>
+      <li><strong>Tonal Teams</strong> results are interactive: hover readout, zoom, log frequency axis, <em>Reset Zoom</em> and an <em>Overlay all channels</em> view.</li>
+      <li><strong>All charts:</strong> hold the right mouse button and drag to move the view.</li>
+      <li>Faster display of many-channel files (narrow spectrum peaks are kept); faster Histogram and DOA on multi-channel data.</li>
+      <li><em>Apply to all loaded files</em> for time range and gain now leaves every file unchanged if one of them cannot take the setting.</li>
+      <li>Much more detailed user guide, with a complete table of contents.</li>
     </ul>
+  </section>
 
-    <p><code>noise_freq_range = (1000, 18000)</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This defines the <strong>frequency band where the system will look for abnormal noise</strong>. In this case, it will only consider sounds between 1000 Hz (like a mid-range tone) and 18000 Hz (a very high-pitched sound). Any noise outside this range will be ignored for abnormal noise detection. You set this based on where you expect the problem noise to occur.</li>
-    </ul>
+  <section class="chapter" id="license">
+    <h2>Free trial and license</h2>
+    <p class="lede">AAT Pro is <strong>free to use for 365 days</strong> from the first time it is started on a PC. The days remaining are shown in <strong>Help → About AAT Pro</strong> and in the log (<strong>Edit → View Log…</strong>).</p>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Enter a license key</h4>
+        <p style="margin-top:0">Request a key (see <a href="#support">Support</a>) and enter it via <strong>Help → Enter License Key</strong> while the trial is still running. The dialog tells you immediately whether the key is valid and until when.</p>
+      </div>
+      <div class="card">
+        <h4>Trial already ended?</h4>
+        <p style="margin-top:0">The program will not open, so add the key by hand: close AAT Pro, open <span class="val">%APPDATA%\AAT\settings.ini</span> in Notepad, and put the key in the <span class="val">[LICENSE]</span> section (add it at the end if missing):</p>
+        <pre class="code">[LICENSE]
+license_key = YOUR-KEY-HERE</pre>
+        <p style="margin-top:0">Save the file and start AAT Pro again.</p>
+      </div>
+    </div>
+  </section>
 
-    <p><code>noise_db_threshold = 15.0</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This is how much <strong>louder a noise has to be compared to the general background noise</strong> for it to be considered "significant" or "abnormal." If a sound is only slightly louder than the background, it might be normal variation. A value of <code>15.0</code> means it needs to be 15 decibels louder to be flagged. You can adjust this to make the detection more or less sensitive.</li>
-    </ul>
-<!-- INSERTED CONTENT START -->
-    <p><strong>Reference for FFT Scan Parameters (Raw/Detailed Scan) in Relation to ISO 1996-2:</strong></p>
-    <ul>
-        <li>When using AAT software for calculations, if ISO 1996-2's 1/3 octave band rule for high-frequency ranges is 5 dB (note: it was 5 dB in the 2007 version, updated to 6 dB in 2017), then in scanning tonal noise analysis (Raw/detailed scan), you might need to define a value of <span class="red-bold">15 dB to 25 dB</span> as a reference for `noise_db_threshold` or `noise_peak_prominence_db`. This higher value accounts for the finer resolution of FFT analysis, where tonal energy is more concentrated, making it stand out significantly more from the localized background noise compared to averaged 1/3 octave band levels.</li>
-    </ul>
-    <!-- INSERTED CONTENT END -->
-    <p><code>min_abnormal_noise_duration = 0.5</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This sets the <strong>minimum length of time a specific noise has to continuously exist</strong> to be counted as an "abnormal noise event." For example, <code>0.5</code> seconds means a very brief pop or click won't be flagged, but a sustained hum or whistle will be if it lasts longer than half a second. This helps filter out transient sounds that aren't sustained problems.</li>
-    </ul>
-    
-    <p><code>noise_peak_prominence_db = 8.0</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This helps the system identify a <strong>clear "peak" within the frequency range</strong>. It means that a noise needs to stand out by at least <code>8.0</code> decibels from the surrounding frequencies to be recognized as a distinct noise component, rather than just a slight bump in the overall sound. It's about how much the noise "sticks out" from its immediate neighbors in the frequency spectrum.</li>
-    </ul>
+  <section class="chapter" id="troubleshooting">
+    <h2>Troubleshooting</h2>
+    <div class="table-wrap">
+      <table class="simple">
+        <tr><th>Problem</th><th>What to do</th></tr>
+        <tr><td>"Windows protected your PC" when starting the installer or the program</td><td>The files are not code-signed. Click <strong>More info → Run anyway</strong>.</td></tr>
+        <tr><td>Portable version does not start, or recordings fail to save</td><td>Make sure the folder was fully extracted (not run from inside the zip) and is somewhere you can write to, e.g. Desktop or Documents.</td></tr>
+        <tr><td>No input device / no sound</td><td>Connect the device first, then <strong>Tools → Refresh Audio Devices</strong>. Check Windows sound settings and microphone privacy permissions.</td></tr>
+        <tr><td>Charts are slow with many channels</td><td>Normal for very long 16+ channel files; select fewer channels or set a shorter <strong>Select Time Range…</strong>.</td></tr>
+        <tr><td>"Evaluation Period Ended"</td><td>See <a href="#license">Trial already ended?</a> above.</td></tr>
+      </table>
+    </div>
 
-    <p><code>noise_peak_width_bins = 2</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This describes <strong>how "wide" a noise peak needs to be</strong> in the frequency spectrum. A value of <code>2</code> means the noise has to span at least two frequency "bins" (small frequency segments) to be considered a valid, distinct noise. This helps avoid detecting extremely narrow, often artificial or insignificant, peaks.</li>
-    </ul>
+    <h3 class="sub-head">File checksums (SHA-256)</h3>
+    <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.0.exe</span> in PowerShell and compare:</p>
+    <pre class="code">AAT_Pro_Setup_1.5.0.exe     41E69580F779E570B4212A0677A7E418EBFC7A4F047E291904F80647ED0911F3
+AAT_Pro_Portable_1.5.0.zip  92292EA19EC59D527F9C0B05E0013D88456AFEE6B6F7C2112B8C3EA6C81FDA99</pre>
+  </section>
 
-    <p><code>noise_freq_tracking_tolerance = 80</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This is a <strong>"wiggle room" for frequency changes</strong> when tracking a continuous noise. If a noise's frequency shifts slightly (e.g., a 5000 Hz hum briefly goes to 5050 Hz or 4980 Hz), this tolerance of <code>80</code> Hz allows the system to still consider it the <em>same</em> continuous noise event. If it shifts too much (more than 80 Hz), it will be considered a new or different noise.</li>
-    </ul>
+  <section class="chapter" id="support">
+    <h2>Support</h2>
+    <p>For a license key, questions or bug reports, contact Renee at <a href="mailto:reneeaat@gmail.com">reneeaat@gmail.com</a>. When reporting a problem, please include the AAT Pro version (<strong>Help → About AAT Pro</strong>) and, if possible, the log (<strong>Edit → Save All Logs to File…</strong>).</p>
 
-    <p><code>noise_peak_smoothing_kernel = 5</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This parameter is purely for <strong>making the frequency plot look smoother</strong>. When the system tracks noise frequencies over time, the raw data can look a bit jagged. This setting helps "average out" those jitters in the visual graph, making the trends easier to see. It doesn't change the detection results, just how they are displayed.</li>
-    </ul>
+    <h3 class="sub-head">Support the development</h3>
+    <p>Developing software like AAT Pro takes significant time and dedication. If you find it useful, please consider a donation — it helps the author keep improving the tool, adding features and providing maintenance. If you are unable or prefer not to donate, that's completely okay: contact the author and, after communication, a license can be provided for free.</p>
 
-    <p><code>max_allowed_cumulative_noise_duration = 7.0</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This is a <strong>pass/fail limit for the total accumulated time of a specific noise frequency</strong>. If any single abnormal noise frequency (like that 5000 Hz hum) adds up to more than <code>7.0</code> seconds of total activity throughout the entire audio file, the system will flag it as a "FAIL." This is a key threshold for your overall quality assessment.</li>
-    </ul>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <details class="donation-toggle">
+      <summary>Donate</summary>
+      <stripe-buy-button
+        buy-button-id="buy_btn_1RT3EHJwY3XWlUCTjFyUEyCR"
+        publishable-key="pk_live_51RS45KJwY3XWlUCTK5Ubv0ciOdJyXndysgmTb3S6FBrHhO5d4piOdAWFWgczM0n8I1DskRmDGUjPSlUOoz5YR1wK00XFM8Q6rS"
+      >
+      </stripe-buy-button>
+    </details>
+  </section>
 
-    <p><code>enable_cumulative_noise_analysis = True</code></p>
-    <ul>
-        <li><strong>Explanation:</strong> This switch turns on or off the system's ability to <strong>calculate the <em>total accumulated time</em> for each unique noise frequency</strong> found. Setting it to <code>True</code> means the system will do this calculation and compare it against the <code>max_allowed_cumulative_noise_duration</code> to give you a pass/fail result.</li>
-    </ul>
-</div>
+  <footer>
+    AAT Pro 1.5.0 · <a href="guide/how_to_use.html">User Guide</a> · <a href="https://github.com/AAT-RR/AAT/releases">All releases</a> · <a href="classic.html">Classic AAT</a>
+  </footer>
 
-<script>
-function toggleContent() {
-  var content = document.getElementById("collapsibleContent");
-  if (content.style.display === "none") {
-    content.style.display = "block"; // Show content
-  } else {
-    content.style.display = "none"; // Hide content
-  }
-}
-</script>
-
-
-  
-  <h2>Command-Line/python Call Usage: Scan Tonal Noise Analysis (For Production Lines)</h2>
-  <button onclick="toggleCommandLineUsage()">Show/Hide Command-Line Usage</button>
-  <div id="commandLineUsage" style="border: 1px solid #ccc; padding: 15px; margin-top: 20px; font-size: 0.8em; line-height: 1.1; display: none;">
-  <p>
-    The Audio Analysis Tool (AAT) features a <span class="highlight">unique, custom-developed Scan Tonal Noise Analysis function</span>,
-    which is specifically designed for high-throughput testing environments
-    like <span class="highlight">production lines</span>.
-    This proprietary algorithm excels at rapidly detecting abnormal tonal noise events
-    in audio files, providing quick Pass/Fail judgments and detailed reports.
-    It can be integrated seamlessly into automated test sequences, requiring no human interaction
-    to perform batch analysis and generate machine-readable output.
-  </p>
-
-
-  <h3>How to Call These Commands with Python(Prefer to use this method,save testing time):</h3>
-  <p>Here's a simple Python sample code that demonstrates how to communicate with the AAT tool via a socket connection and execute audio analysis tasks.</p>
-  <p>The script performs the following actions:</p>
-  <ul>
-    <li>**Connects to the server:** Establishes a socket connection to `127.0.0.1` on port `12345`.</li>
-    <li>**Gets Server Status (Optional):** Sends a `get_status` command to the server.</li>
-    <li>**Loads WAV Files:** Sends an `open_wave_file_gui` command with a list of WAV file paths to be loaded by the server's GUI.</li>
-    <li>**Runs Tonal Noise Analysis:** Sends a `run_scan_tonal_noise` command to analyze the loaded files. This command includes parameters for saving a combined plot image and overriding analysis settings like frequency range and threshold.</li>
-    <li>**Clears Loaded Files:** Sends a `clear_all_loaded_files` command to clear the WAV files from the server's memory.</li>
-    <li>**Saves Log:** Records the entire test process and results into a JSON log file.</li>
-    <li>**Prints Summary:** Displays a summary of the test, including overall status, abnormal noise detection, and file-specific results.</li>
-  </ul>
-  <p>
-    <strong>Using Python to call these commands is a very effective method for automation and integration into your testing workflows.</strong>
-  </p>
-  <p>
-    <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/sample_code_tonal_noise.py" target="_blank">Download Python Sample Code for Tonal Noise Analysis</a>
-  </p>
-  <p>
-    <a href="https://github.com/AAT-RR/AAT/releases/download/Window_OS/5k_tonal.wav" target="_blank">Download Sample 5k Tonal WAV File</a>
-  </p>
-
-
-  <h3>How to Use from Command Line for Tonal Noise Scan:</h3>
-  <p>To leverage the Scan Tonal Noise Analysis function from the command line, use the <code>--console</code> flag along with specific arguments:</p>
-
-  <pre><code>AAT.exe --console --input_wav &lt;file1.wav&gt; [&lt;file2.wav&gt; ...] --output_result &lt;output.json&gt; [--save_plot_image &lt;plot.png&gt;] [--ini_file &lt;config.ini&gt;]</code></pre>
-
-  <h4>Arguments:</h4>
-  <ul class="arguments-list">
-    <li><code>--console</code>: This flag activates the console mode, enabling command-line execution without launching the full graphical user interface.</li>
-    <li><code>--input_wav &lt;file1.wav&gt; [&lt;file2.wav&gt; ...]</code>:
-        Specifies one or more input WAV audio files to be analyzed. Separate multiple file paths with spaces.
-        Example: <code>--input_wav "C:\audio\test1.wav" "C:\audio\batch\test2.wav"</code></li>
-    <li><code>--output_result &lt;output.json&gt;</code>:
-        Specifies the path where the detailed analysis results will be saved in <span class="highlight">JSON format</span>.
-        This structured output is ideal for automated parsing by other test programs.</li>
-    <li><code>--save_plot_image &lt;plot.png&gt;</code> (Optional):
-        If provided, a combined plot image (PNG format) containing the frequency tracking of all analyzed files will be saved to the specified path.
-        If omitted, no plot image will be generated.</li>
-    <li><code>--ini_file &lt;config.ini&gt;</code> (Optional):
-        Specifies the path to an INI configuration file (e.g., <code>aat.ini</code>) containing parameters for the tonal noise detection.
-        If omitted, the tool will look for <code>aat.ini</code> in the current working directory.
-        If <code>aat.ini</code> is not found or is invalid, the tool will use default parameters.</li>
-
-    
-  </ul>
-
-    
-  <h3>Example Commands for Production Line Integration:</h3>
-  <p>To analyze multiple audio files, save detailed results to a JSON file, and generate a combined plot image:</p>
-  <pre><code>AAT.exe --console --input_wav "D:\Test_Audio\Unit_A_Test1.wav" "D:\Test_Audio\Unit_B_Test2.wav" "D:\Test_Audio\Unit_C_Test3.wav"
-
-    --output_result "C:\Production_Logs\Batch_XYZ_Results.json" --save_plot_image "C:\Production_Logs\Batch_XYZ_Plot.png"</code></pre>
-
-  <p>If you only need the JSON output and no plot, simply omit the <code>--save_plot_image</code> argument:</p>
-  <pre><code>AAT.exe --console --input_wav "D:\Test_Audio\Unit_A_Test1.wav" "D:\Test_Audio\Unit_B_Test2.wav" --output_result "C:\Production_Logs\Batch_ABC_Results.json"</code></pre>
-</div>
-
-<script>
-function toggleCommandLineUsage() {
-  var content = document.getElementById("commandLineUsage");
-  if (content.style.display === "none") {
-    content.style.display = "block";
-  } else {
-    content.style.display = "none";
-  }
-}
-</script>
-
-<br><br>
-  <h3>1.3.12. Microsoft Teams Certificate Test (Tonal Noise)</h3>
-
-<p><strong>Purpose:</strong> Automatically assesses tonal noise levels according to Microsoft Teams certification standards. This function performs high-precision spectral analysis to identify tonal components that might be audible and annoying to users. It calculates the <strong>Delta</strong> (difference) between the un-smoothed spectral peaks (U) and the 1/1 Octave smoothed masking threshold (S).</p>
-
-<p><strong>UI Access:</strong> Load the audio file(s) you wish to test. In the menu bar, select <strong>Tools -> Teams Certificate Test</strong>. The tool will automatically bypass manual setup and configure all parameters (FFT 4096, Flat Top Window, 1/1 Octave Smoothing) to ensure strict compliance with MS Teams specifications.</p>
-
-<p><strong>Pass/Fail Criteria:</strong> The tool automatically overlays a <strong>10dB Limit Line</strong> (red dashed line). 
-<br>• <span style="color: #00FF00; font-weight: bold;">PASS</span>: If the entire Delta curve remains below the 10dB limit.
-<br>• <span style="color: #ff4d4d; font-weight: bold;">FAIL</span>: If any peak in the 100Hz-8000Hz range exceeds 10dB.</p>
-
-<p style="text-align: center;">
-    <img src="https://github.com/AAT-RR/AAT/blob/main/Tems_test.png?raw=true" 
-         alt="Teams Test Result" 
-         style="max-width: 100%; border: 1px solid #555; margin-top: 15px;">
-    <br>
-    <span style="color: #888; font-size: 0.8em;">Figure: MS Teams Tonal Noise Analysis with Pass/Fail Status (AAT Watermark)</span>
-</p>
-
-<p><strong>Example Scenario:</strong> To test a laptop fan noise, load the recording and run the tool. If a fan "whine" peak rises 12dB above the noise floor, the tool will display a large red <strong>FAIL</strong> on the plot and log the specific frequency of the violation.</p>
-<br><br>
-
-  
-  <img src="https://github.com/AAT-RR/AAT/raw/main/android-chrome-512x512.png" alt="AAT Tool Interface Screenshot showing Tonal Noise Scan" class="responsive-img">
-  <img src="https://github.com/AAT-RR/AAT/raw/main/aat.jpg" alt="AAT Tool Interface Screenshot 3" class="responsive-img">
-  <hr>
-<h3 style="color: #FFD700;">Support the Development of AAT</h3>
-<p><strong>Developing robust and powerful software like the Audio Analysis Tool takes significant time and dedication.</strong><br>
-
-3 year key: github-2Tl-2jt-68765384dbbd5f36 expired date:11/2/2028
-  
-  
-If you find AAT useful for your audio analysis needs, please consider making a donation. Your support encourages the author to continue improving the tool, adding new features, and providing ongoing maintenance. Thank you for your generosity!</p>
-
-<p><strong>However, if you are unable or prefer not to make a donation, that’s completely okay.</strong>
-Please feel free to contact the author Renee at <a href="mailto:reneeaat@gmail.com">reneeaat@gmail.com</a> — after communication, a license can be provided for free. Your understanding is greatly appreciated.</p>
-
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<!-- Donation button ($19.99) is hidden until the visitor clicks "Donate" -->
-<details class="donation-toggle">
-  <summary>Donate</summary>
-  <stripe-buy-button
-    buy-button-id="buy_btn_1RT3EHJwY3XWlUCTjFyUEyCR"
-    publishable-key="pk_live_51RS45KJwY3XWlUCTK5Ubv0ciOdJyXndysgmTb3S6FBrHhO5d4piOdAWFWgczM0n8I1DskRmDGUjPSlUOoz5YR1wK00XFM8Q6rS"
-  >
-  </stripe-buy-button>
-</details>
-
-
+</main>
 </body>
 </html>
-
-
-
-
-
-
-
