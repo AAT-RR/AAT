@@ -436,13 +436,13 @@
     <div class="downloads">
       <div class="dl-card">
         <h3>Installer</h3>
-        <span class="size">AAT_Pro_Setup_1.5.1.exe · 20.1 MB</span>
+        <span class="size">AAT_Pro_Setup_1.5.1.exe · 20.3 MB</span>
         <p>You can install software on the PC. Adds Start-menu shortcuts and an uninstaller.</p>
         <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Setup_1.5.1.exe">Download installer</a>
       </div>
       <div class="dl-card">
         <h3>Portable</h3>
-        <span class="size">AAT_Pro_Portable_1.5.1.zip · 26.8 MB</span>
+        <span class="size">AAT_Pro_Portable_1.5.1.zip · 27.1 MB</span>
         <p>Locked-down PC (no installation, no registry access, no admin rights), or run it from a USB drive. Unzip and run.</p>
         <a class="btn secondary" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Portable_1.5.1.zip">Download portable</a>
       </div>
@@ -523,7 +523,7 @@
           <li><strong>Waveform Statistics</strong> — peak, RMS, dB SPL, dBA, max RMS dBA and peak dBA for every channel</li>
           <li><strong>Sweep Analysis</strong> — THD, Rub &amp; Buzz and level versus frequency</li>
           <li><strong>DOA Analysis</strong> (direction of arrival) and <strong>Intel Channel Phase</strong> for microphone arrays</li>
-          <li><strong>Scan Test</strong>, <strong>Chamber Response</strong> and <strong>Chamber Isolation</strong></li>
+          <li><strong>Scan Test</strong> across many channels and files in parallel, <strong>Chamber Response</strong> and <strong>Chamber Isolation</strong></li>
         </ul>
       </div>
       <div class="card">
@@ -531,7 +531,7 @@
         <ul>
           <li><strong>Tonal Noise</strong> — detects and tracks hums, whines and whistles over time, across many channels and files at once, with a PASS/FAIL comparison table</li>
           <li><strong>Tonal Teams</strong> — production-style PASS/FAIL check of narrow tonal spikes against each channel's own baseline</li>
-          <li>Overlay view to compare channels or units side by side</li>
+          <li><em>Overlay all channels</em> view to compare channels or units side by side</li>
           <li>Noise reduction: <strong>Spectral Subtraction</strong>, <strong>Adaptive Noise Cancellation</strong>, <strong>Extract Audio Difference</strong></li>
         </ul>
       </div>
@@ -567,8 +567,18 @@
     <h2>What's new in 1.5.1</h2>
     <ul class="plain">
       <li><strong>Tonal Noise now compares many channels and files at once.</strong> Tick the channels you want in <em>Loaded Files</em> — from one or several WAV files — and open <em>Tools → Tonal Noise</em>. Every channel is analysed in parallel, and the result window shows a <strong>comparison table</strong> (abnormal noise events, longest event, most cumulative noise and PASS/FAIL per channel), one chart per channel, and an <em>Overlay all channels</em> view that draws every channel on one chart. Export Report includes all ticked channels as well.</li>
+      <li><strong>Scan Test now checks many channels and files at once</strong>, in parallel: a comparison table (stimulus type, pilot tone, steps or sweep range per channel), one chart per channel, and an <em>Overlay all channels</em> view.</li>
+      <li><strong>More reliable Tonal Teams verdict.</strong> A narrow tone that fell between two points of the export grid could show red fail markers on the chart yet still be judged PASS. The verdict now uses exactly the points drawn on the chart — every earlier failure is still found, and none slip through.</li>
+      <li><strong>Cleaner Tonal Teams <em>Top fails</em>:</strong> a new <em>Top Fails Min Spacing</em> setting (default 100 Hz) keeps the listed frequencies apart, so one peak is no longer repeated.</li>
       <li><strong>Trial ended?</strong> AAT Pro now asks for the license key directly at start-up instead of just closing.</li>
+      <li>User guide: new screenshots of the multi-channel Tonal Noise, Scan Test and Tonal Teams views.</li>
     </ul>
+    <div class="shots two-up">
+      <figure><img src="guide/images/tonal_noise_multi.png" alt="Tonal Noise comparison table for several channels" loading="lazy"><figcaption>Tonal Noise — comparison table, PASS / FAIL per channel</figcaption></figure>
+      <figure><img src="guide/images/tonal_noise_overlay.png" alt="Tonal Noise overlay of all channels" loading="lazy"><figcaption>Tonal Noise — every channel on one chart</figcaption></figure>
+      <figure><img src="guide/images/scan_test_multi.png" alt="Scan Test comparison of several channels" loading="lazy"><figcaption>Scan Test — many channels and files in parallel</figcaption></figure>
+      <figure><img src="guide/images/tonal_teams_overlay.png" alt="Tonal Teams overlay of all channels" loading="lazy"><figcaption>Tonal Teams — overlay of all channels</figcaption></figure>
+    </div>
   </section>
 
   <section class="chapter" id="history">
@@ -582,7 +592,10 @@
       <div class="rel-body">
         <ul class="plain">
           <li><strong>Tonal Noise</strong> compares several channels and files at once: parallel analysis, comparison table with PASS/FAIL per channel, one chart per channel and an <em>Overlay all channels</em> view. Export Report includes all ticked channels.</li>
+          <li><strong>Scan Test</strong> checks several channels and files at once: comparison table, one chart per channel and an <em>Overlay all channels</em> view.</li>
+          <li><strong>Tonal Teams</strong> verdict now uses exactly the points drawn on the chart (no more red markers with a PASS result); new <em>Top Fails Min Spacing</em> setting (default 100 Hz).</li>
           <li>When the trial has ended, the program asks for the license key at start-up instead of closing.</li>
+          <li>User guide: new multi-channel screenshots.</li>
         </ul>
         <p class="rel-links">
           <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Setup_1.5.1.exe">Installer (.exe)</a> ·
@@ -646,8 +659,8 @@
 
     <h3 class="sub-head">File checksums (SHA-256)</h3>
     <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.1.exe</span> in PowerShell and compare:</p>
-    <pre class="code">AAT_Pro_Setup_1.5.1.exe     8E10177E757CBFF9DBEDBC50DA996133E1CB4DFA206E6B921720B919558B5AD6
-AAT_Pro_Portable_1.5.1.zip  9226F7BAE0033AA6C930599B3A9C933819A04D3A65243DF20DA71ACC5C3493A9</pre>
+    <pre class="code">AAT_Pro_Setup_1.5.1.exe     84098EF753B7FC03B12A9EA3050CFB8DC2B69E57B860433C491B61D1E5F5BA9E
+AAT_Pro_Portable_1.5.1.zip  938BCBD49C84B91AB7C1A1A04F661C3A1477D03369CB3484F568B1B909FF0F5E</pre>
   </section>
 
   <section class="chapter" id="support">
