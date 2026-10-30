@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>AAT Pro — Audio Analysis Tool</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AAT Pro 1.5.2 — record, view and analyse audio on Windows: FFT, spectrogram, THD, Rub & Buzz, tonal noise, DOA and more.">
+<meta name="description" content="AAT Pro 1.5.2 — record, view and analyse audio on Windows and macOS: FFT, spectrogram, THD, Rub & Buzz, tonal noise, DOA and more.">
 <link rel="icon" type="image/png" href="aat_pro_icon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
@@ -175,8 +175,40 @@
     gap: 8px;
   }
   .dl-card h3 { margin: 0; font-family: "JetBrains Mono", monospace; font-size: 16px; }
-  .dl-card .size { color: var(--muted); font-size: 13px; font-family: "JetBrains Mono", monospace; }
+  .dl-card .size { color: var(--muted); font-size: 13px; font-family: "JetBrains Mono", monospace; overflow-wrap: anywhere; }
   .dl-card p { margin: 0; font-size: 14.5px; flex: 1; }
+  .dl-card .size .nw { white-space: nowrap; }
+  .dl-card .req { flex: 0; color: var(--muted); font-size: 13px; }
+  .dl-card .os-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-height: 22px; }
+  .os-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+  }
+  .os-chip svg { width: 13px; height: 13px; fill: currentColor; }
+  .for-you {
+    display: none;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border-radius: 999px;
+    padding: 2px 10px;
+  }
+  .dl-card.suggested { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+  .dl-card.suggested .for-you { display: inline-block; }
+  h3.platform-head { display: flex; align-items: center; gap: 8px; }
+  h3.platform-head svg { width: 14px; height: 14px; fill: currentColor; }
+  h3.platform-head .plat-req { text-transform: none; letter-spacing: 0; font-weight: 400; }
   .btn {
     display: inline-block;
     text-align: center;
@@ -422,9 +454,10 @@
       <img src="android-chrome-512x512.png" alt="AAT logo">
       <h1>AAT Pro</h1>
     </div>
-    <p class="tagline"><strong>Professional audio analysis, from the first recording to the PASS/FAIL report.</strong> AAT Pro brings a complete acoustic test lab to your Windows PC — spectrum, spectrogram, THD, Rub &amp; Buzz, tonal noise, direction of arrival, noise reduction and one-click PDF reports, all in one window.</p>
+    <p class="tagline"><strong>Professional audio analysis, from the first recording to the PASS/FAIL report.</strong> AAT Pro brings a complete acoustic test lab to your Windows PC or Mac — spectrum, spectrogram, THD, Rub &amp; Buzz, tonal noise, direction of arrival, noise reduction and one-click PDF reports, all in one window.</p>
     <p class="tagline">Rebuilt from the ground up as a native C++ engine, it opens in seconds, handles long, high-channel-count recordings with ease and runs many analyses in parallel across every CPU core — built for acoustic engineering, product validation and the production line.</p>
     <div class="badge-row">
+      <span class="badge">Windows &amp; macOS</span>
       <span class="badge">Native C++ engine</span>
       <span class="badge">Multi-channel at scale</span>
       <span class="badge">Parallel on all CPU cores</span>
@@ -434,27 +467,50 @@
 
     <p class="dl-version">Latest version: <span class="mono">1.5.2</span> · <a href="#whatsnew">What's new</a> · <a href="#history">Version history</a></p>
     <div class="downloads">
-      <div class="dl-card">
+      <div class="dl-card" data-os="win">
+        <div class="os-row"><span class="os-chip"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.2 6.5 1.3v6.2H0zM7.3 1.2 16 0v7.5H7.3zM0 8.3h6.5v6.3L0 13.7zM7.3 8.3H16V16l-8.7-1.2z"/></svg>Windows</span><span class="for-you">For your system</span></div>
         <h3>Installer</h3>
-        <span class="size">AAT_Pro_Setup_1.5.2.exe · 20.8 MB</span>
+        <span class="size">AAT_Pro_Setup_1.5.2.exe <span class="nw">· 20.8 MB</span></span>
         <p>You can install software on the PC. Adds Start-menu shortcuts and an uninstaller.</p>
+        <p class="req">Windows 10 / 11, 64-bit · no admin rights</p>
         <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Setup_1.5.2.exe">Download installer</a>
       </div>
-      <div class="dl-card">
+      <div class="dl-card" data-os="win">
+        <div class="os-row"><span class="os-chip"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.2 6.5 1.3v6.2H0zM7.3 1.2 16 0v7.5H7.3zM0 8.3h6.5v6.3L0 13.7zM7.3 8.3H16V16l-8.7-1.2z"/></svg>Windows</span></div>
         <h3>Portable</h3>
-        <span class="size">AAT_Pro_Portable_1.5.2.zip · 27.6 MB</span>
+        <span class="size">AAT_Pro_Portable_1.5.2.zip <span class="nw">· 27.6 MB</span></span>
         <p>Locked-down PC (no installation, no registry access, no admin rights), or run it from a USB drive. Unzip and run.</p>
+        <p class="req">Windows 10 / 11, 64-bit · nothing to install</p>
         <a class="btn secondary" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Portable_1.5.2.zip">Download portable</a>
       </div>
+      <div class="dl-card" data-os="mac">
+        <div class="os-row"><span class="os-chip"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M11.2 0c.1 1-.3 2-.9 2.7-.6.7-1.5 1.2-2.4 1.1-.1-1 .4-2 .9-2.6C9.4.5 10.4 0 11.2 0zm2.9 11.6c-.4.9-.6 1.3-1.1 2.1-.7 1.1-1.7 2.4-2.9 2.4-1.1 0-1.4-.7-2.9-.7s-1.8.7-2.9.7c-1.2 0-2.2-1.2-2.9-2.3C-.5 10.9-.7 7.4.5 5.6 1.3 4.3 2.6 3.6 3.9 3.6c1.3 0 2.1.7 3.2.7 1 0 1.7-.7 3.2-.7 1.1 0 2.3.6 3.1 1.7-2.8 1.5-2.3 5.4.7 6.3z"/></svg>macOS</span><span class="for-you">For your system</span></div>
+        <h3>Mac</h3>
+        <span class="size">AAT_Pro_1.5.2_macOS26_arm64.dmg <span class="nw">· 34.5 MB</span></span>
+        <p>Open the disk image and drag AAT Pro into Applications. See <a href="#install-mac">first start on a Mac</a>.</p>
+        <p class="req">Apple silicon (M1 or newer) · macOS 26 or newer</p>
+        <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_1.5.2_macOS26_arm64.dmg">Download for Mac</a>
+      </div>
     </div>
-    <p class="dl-note">Both contain exactly the same program — you only need one. All files and release notes are on the <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.2">GitHub release page</a>; older versions are in the <a href="#history">version history</a>. Looking for the original AAT (Windows 32-bit / macOS)? See <a href="classic.html">Classic AAT</a>.</p>
+    <p class="dl-note">The two Windows files contain exactly the same program — you only need one. License keys work on both Windows and macOS. All files and release notes are on the <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.2">GitHub release page</a>; older versions are in the <a href="#history">version history</a>. Looking for the original AAT (Windows 32-bit / Intel Mac)? See <a href="classic.html">Classic AAT</a>.</p>
+    <script>
+      (function () {
+        var ua = navigator.userAgent || "";
+        var os = /Macintosh|Mac OS X/.test(ua) && !/iPhone|iPad/.test(ua) ? "mac" : /Windows/.test(ua) ? "win" : "";
+        if (!os) return;
+        var card = document.querySelector('.dl-card[data-os="' + os + '"]');
+        if (card) card.classList.add("suggested");
+      })();
+    </script>
 
     <img class="screenshot" src="guide/images/main_window.png" alt="AAT Pro main window with spectrum and waveform views">
   </section>
 
   <section class="chapter" id="install">
     <h2>Install</h2>
-    <p class="lede">Requires Windows 10 or 11 (64-bit). No separate runtime to install — the Visual C++ runtime and all Qt libraries are included. A sound card, USB audio interface or microphone is only needed for recording.</p>
+    <p class="lede">AAT Pro runs on Windows and on Macs with Apple silicon. No separate runtime to install — everything the program needs is included. A sound card, USB audio interface or microphone is only needed for recording.</p>
+
+    <h3 class="sub-head platform-head" id="install-win"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.2 6.5 1.3v6.2H0zM7.3 1.2 16 0v7.5H7.3zM0 8.3h6.5v6.3L0 13.7zM7.3 8.3H16V16l-8.7-1.2z"/></svg>Windows <span class="plat-req">· 10 or 11, 64-bit</span></h3>
     <div class="grid-2">
       <div class="card">
         <h4>Option A — Installer</h4>
@@ -477,13 +533,34 @@
       </div>
     </div>
 
+    <h3 class="sub-head platform-head" id="install-mac"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M11.2 0c.1 1-.3 2-.9 2.7-.6.7-1.5 1.2-2.4 1.1-.1-1 .4-2 .9-2.6C9.4.5 10.4 0 11.2 0zm2.9 11.6c-.4.9-.6 1.3-1.1 2.1-.7 1.1-1.7 2.4-2.9 2.4-1.1 0-1.4-.7-2.9-.7s-1.8.7-2.9.7c-1.2 0-2.2-1.2-2.9-2.3C-.5 10.9-.7 7.4.5 5.6 1.3 4.3 2.6 3.6 3.9 3.6c1.3 0 2.1.7 3.2.7 1 0 1.7-.7 3.2-.7 1.1 0 2.3.6 3.1 1.7-2.8 1.5-2.3 5.4.7 6.3z"/></svg>macOS <span class="plat-req">· 26 or newer, Apple silicon</span></h3>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Option C — Mac</h4>
+        <ol>
+          <li>Double-click <span class="val">AAT_Pro_1.5.2_macOS26_arm64.dmg</span> and drag <strong>AAT_Pro</strong> into the <strong>Applications</strong> folder.</li>
+          <li>The first start is blocked because the app is not signed with an Apple developer certificate: double-click AAT_Pro once and click <strong>Done</strong>.</li>
+          <li>Open <strong>System Settings → Privacy &amp; Security</strong>, scroll down and click <strong>Open Anyway</strong> next to AAT_Pro.</li>
+          <li>The first time you record, macOS asks for microphone access — click <strong>Allow</strong>.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h4>Good to know</h4>
+        <ul>
+          <li>Requires a Mac with <strong>Apple silicon</strong> (M1, M2, M3, M4 …). Intel Macs are not supported — use <a href="classic.html">Classic AAT</a> there.</li>
+          <li><strong>License keys work on both Windows and macOS.</strong></li>
+          <li>To remove the app, drag it from <em>Applications</em> to the Trash.</li>
+        </ul>
+      </div>
+    </div>
+
     <h3 class="sub-head">Where AAT Pro keeps its files</h3>
     <div class="table-wrap">
       <table class="simple">
-        <tr><th>What</th><th>Where</th></tr>
-        <tr><td>Settings, tool parameters, trial / license state</td><td><span class="val">%APPDATA%\AAT\settings.ini</span></td></tr>
-        <tr><td>Recordings made with <strong>Record</strong></td><td>the <span class="val">recordings</span> folder next to <span class="val">AAT_Pro.exe</span></td></tr>
-        <tr><td>User guide</td><td><strong>Help → How to Use</strong> inside the program, or <a href="guide/how_to_use.html">online</a></td></tr>
+        <tr><th>What</th><th>Windows</th><th>macOS</th></tr>
+        <tr><td>Settings, tool parameters, trial / license state</td><td><span class="val">%APPDATA%\AAT\settings.ini</span></td><td><span class="val">~/Library/Application Support/AAT/settings.ini</span></td></tr>
+        <tr><td>Recordings made with <strong>Record</strong></td><td>the <span class="val">recordings</span> folder next to <span class="val">AAT_Pro.exe</span></td><td>—</td></tr>
+        <tr><td>User guide</td><td colspan="2"><strong>Help → How to Use</strong> inside the program, or <a href="guide/how_to_use.html">online</a></td></tr>
       </table>
     </div>
     <p class="dl-note">The installer and the portable version share the same <span class="val">settings.ini</span> for the same Windows user on the same PC.</p>
@@ -569,6 +646,7 @@
   <section class="chapter" id="whatsnew">
     <h2>What's new in 1.5.2</h2>
     <ul class="plain">
+      <li><strong>New: AAT Pro for Mac.</strong> A native macOS version for Macs with Apple silicon and macOS 26 or newer — <a href="#download">download it</a> and see <a href="#install-mac">first start on a Mac</a>. License keys work on both Windows and macOS.</li>
       <li><strong>Scan Test now reads the stimulus for you.</strong> For every channel it reports the sweep type (stepped / continuous log / linear / pure tone), direction, frequency range, step resolution (1/N octave, recognised R-series such as R40, or Hz per step), dwell time and the wake/sync tone. A new high-resolution detection even recognises fine stepped stimuli with very short steps (for example R40 from 20 kHz to 100 Hz). Auto-detect or enter the expected stimulus by hand, <strong>Save Parameters…</strong> to a JSON file, and <strong>Compare with Reference…</strong> to check other recordings against it — PASS/FAIL per parameter.</li>
       <li><strong>New tool: Stimulus Response Test</strong> (<em>Tools → Stimulus Response Test…</em>). Load a recording of a good unit — the stimulus is detected automatically — or a saved golden file, then test your recordings: every step is found and measured (level, THD, rub &amp; buzz, frequency, dwell, dropouts, missing steps) and compared with the golden unit. You get a PASS/FAIL table per unit with the failing steps named, level / THD / R&amp;B charts with the golden tolerance band and failing steps in red, a per-step table and CSV export. Also available in Export Report.</li>
       <li><strong>Generate Signal: design a stimulus like on an audio test system.</strong> Stepped sweeps with R10–R160, 1/N octave or Hz-per-step resolution, min cycles and min duration per step, log or linear sweeps, levels in dBFS peak or RMS with an optional ramp, wake/sync tone, gaps and silence, and an editable step table. The window shows step count, transition frequency, total duration and a waveform preview. <strong>Save Stimulus JSON…</strong> feeds it straight into Scan Test and Stimulus Response Test.</li>
@@ -593,6 +671,7 @@
       <summary><span class="rel-ver">1.5.2</span><span class="rel-tag">Latest</span><span class="rel-date">2026-10-29</span></summary>
       <div class="rel-body">
         <ul class="plain">
+          <li><strong>New: macOS version</strong> for Macs with Apple silicon (macOS 26 or newer); license keys work on both platforms.</li>
           <li><strong>Scan Test</strong> reports the stimulus parameters (sweep type, direction, range, R-series / 1/N-octave resolution, dwell, wake/sync tone); save them as JSON and compare other recordings against them.</li>
           <li>New <strong>Stimulus Response Test</strong>: every step measured (level, THD, rub &amp; buzz, frequency, dwell, dropouts, missing steps) with PASS/FAIL against a golden unit; charts, per-step table, CSV and Export Report.</li>
           <li><strong>Generate Signal</strong>: manual step / sweep stimulus designer, Play button, re-create a stimulus from Scan Test parameters; resizable window.</li>
@@ -601,6 +680,7 @@
         <p class="rel-links">
           <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Setup_1.5.2.exe">Installer (.exe)</a> ·
           <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Portable_1.5.2.zip">Portable (.zip)</a> ·
+          <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_1.5.2_macOS26_arm64.dmg">Mac (.dmg)</a> ·
           <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.2">Release notes</a>
         </p>
       </div>
@@ -650,7 +730,7 @@
 
   <section class="chapter" id="license">
     <h2>Free trial and license</h2>
-    <p class="lede">AAT Pro is <strong>free to use for 365 days</strong> from the first time it is started on a PC. The days remaining are shown in <strong>Help → About AAT Pro</strong> and in the log (<strong>Edit → View Log…</strong>).</p>
+    <p class="lede">AAT Pro is <strong>free to use for 365 days</strong> from the first time it is started on a computer. The days remaining are shown in <strong>Help → About AAT Pro</strong> and in the log (<strong>Edit → View Log…</strong>).</p>
     <div class="grid-2">
       <div class="card">
         <h4>Enter a license key</h4>
@@ -672,14 +752,16 @@
         <tr><td>Portable version does not start, or recordings fail to save</td><td>Make sure the folder was fully extracted (not run from inside the zip) and is somewhere you can write to, e.g. Desktop or Documents.</td></tr>
         <tr><td>No input device / no sound</td><td>Connect the device first, then <strong>Tools → Refresh Audio Devices</strong>. Check Windows sound settings and microphone privacy permissions.</td></tr>
         <tr><td>Charts are slow with many channels</td><td>Normal for very long recordings with many channels; select fewer channels or set a shorter <strong>Select Time Range…</strong>.</td></tr>
+        <tr><td>Mac: <em>"cannot verify the developer"</em> or <em>"AAT_Pro is damaged"</em></td><td>See <a href="#install-mac">Option C — Mac</a>: <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>.</td></tr>
         <tr><td>"Evaluation Period Ended"</td><td>See <a href="#license">Trial already ended?</a> above.</td></tr>
       </table>
     </div>
 
     <h3 class="sub-head">File checksums (SHA-256)</h3>
-    <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.2.exe</span> in PowerShell and compare:</p>
-    <pre class="code">AAT_Pro_Setup_1.5.2.exe     9B9F5DBE755BD2B74BA6DDB58A3BD77FD785A26D552B4A3E0860F311419DFFE5
-AAT_Pro_Portable_1.5.2.zip  F774E3F867AD2070D5E830B1329D71AB076C1336AC53694DDD412C16D494392C</pre>
+    <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.2.exe</span> in PowerShell (on a Mac: <span class="val">shasum -a 256 AAT_Pro_1.5.2_macOS26_arm64.dmg</span> in Terminal) and compare:</p>
+    <pre class="code">AAT_Pro_Setup_1.5.2.exe          9B9F5DBE755BD2B74BA6DDB58A3BD77FD785A26D552B4A3E0860F311419DFFE5
+AAT_Pro_Portable_1.5.2.zip       F774E3F867AD2070D5E830B1329D71AB076C1336AC53694DDD412C16D494392C
+AAT_Pro_1.5.2_macOS26_arm64.dmg  80A891C7AFCD5B6956DF4E750CFE91794BBDF649AA7ADE6F904A9F3781E21B2C</pre>
   </section>
 
   <section class="chapter" id="support">
