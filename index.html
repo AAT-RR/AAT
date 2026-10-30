@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>AAT Pro — Audio Analysis Tool</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AAT Pro 1.5.1 — record, view and analyse audio on Windows: FFT, spectrogram, THD, Rub & Buzz, tonal noise, DOA and more.">
+<meta name="description" content="AAT Pro 1.5.2 — record, view and analyse audio on Windows: FFT, spectrogram, THD, Rub & Buzz, tonal noise, DOA and more.">
 <link rel="icon" type="image/png" href="aat_pro_icon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
@@ -432,22 +432,22 @@
       <span class="badge">365-day free trial</span>
     </div>
 
-    <p class="dl-version">Latest version: <span class="mono">1.5.1</span> · <a href="#whatsnew">What's new</a> · <a href="#history">Version history</a></p>
+    <p class="dl-version">Latest version: <span class="mono">1.5.2</span> · <a href="#whatsnew">What's new</a> · <a href="#history">Version history</a></p>
     <div class="downloads">
       <div class="dl-card">
         <h3>Installer</h3>
-        <span class="size">AAT_Pro_Setup_1.5.1.exe · 20.3 MB</span>
+        <span class="size">AAT_Pro_Setup_1.5.2.exe · 20.8 MB</span>
         <p>You can install software on the PC. Adds Start-menu shortcuts and an uninstaller.</p>
-        <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Setup_1.5.1.exe">Download installer</a>
+        <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Setup_1.5.2.exe">Download installer</a>
       </div>
       <div class="dl-card">
         <h3>Portable</h3>
-        <span class="size">AAT_Pro_Portable_1.5.1.zip · 27.1 MB</span>
+        <span class="size">AAT_Pro_Portable_1.5.2.zip · 27.6 MB</span>
         <p>Locked-down PC (no installation, no registry access, no admin rights), or run it from a USB drive. Unzip and run.</p>
-        <a class="btn secondary" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.1/AAT_Pro_Portable_1.5.1.zip">Download portable</a>
+        <a class="btn secondary" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Portable_1.5.2.zip">Download portable</a>
       </div>
     </div>
-    <p class="dl-note">Both contain exactly the same program — you only need one. All files and release notes are on the <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.1">GitHub release page</a>; older versions are in the <a href="#history">version history</a>. Looking for the original AAT (Windows 32-bit / macOS)? See <a href="classic.html">Classic AAT</a>.</p>
+    <p class="dl-note">Both contain exactly the same program — you only need one. All files and release notes are on the <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.2">GitHub release page</a>; older versions are in the <a href="#history">version history</a>. Looking for the original AAT (Windows 32-bit / macOS)? See <a href="classic.html">Classic AAT</a>.</p>
 
     <img class="screenshot" src="guide/images/main_window.png" alt="AAT Pro main window with spectrum and waveform views">
   </section>
@@ -459,7 +459,7 @@
       <div class="card">
         <h4>Option A — Installer</h4>
         <ol>
-          <li>Double-click <span class="val">AAT_Pro_Setup_1.5.1.exe</span>.</li>
+          <li>Double-click <span class="val">AAT_Pro_Setup_1.5.2.exe</span>.</li>
           <li>If Windows shows <em>"Windows protected your PC"</em> (SmartScreen), click <strong>More info → Run anyway</strong> — the installer is not code-signed.</li>
           <li>Follow the wizard. It installs for the current user only (under <span class="val">%LOCALAPPDATA%\Programs\AAT Pro</span>), so no administrator password is asked for.</li>
           <li>Start <strong>AAT Pro</strong> from the Start menu or the desktop.</li>
@@ -469,7 +469,7 @@
       <div class="card">
         <h4>Option B — Portable (no installation)</h4>
         <ol>
-          <li>Copy <span class="val">AAT_Pro_Portable_1.5.1.zip</span> to a folder you can write to — Desktop, Documents or a USB drive. Not <span class="val">C:\Program Files</span>: recordings are saved next to the program.</li>
+          <li>Copy <span class="val">AAT_Pro_Portable_1.5.2.zip</span> to a folder you can write to — Desktop, Documents or a USB drive. Not <span class="val">C:\Program Files</span>: recordings are saved next to the program.</li>
           <li>Right-click the zip → <strong>Extract All…</strong></li>
           <li>Open the extracted folder and double-click <span class="val">AAT_Pro.exe</span>.</li>
         </ol>
@@ -513,7 +513,8 @@
           <li><strong>Realtime Spectrum</strong> analyser with live dBA sound-level readout and calibrator support</li>
           <li>Playback with draggable playhead and loop</li>
           <li>Per-file analysis time range and gain — your original file is never touched</li>
-          <li>Built-in signal generator; merge mono files into multi-channel, or split them back</li>
+          <li><strong>Generate Signal</strong> — tones, noise and test stimuli defined like on an audio test system: stepped sweeps (R10–R160 or 1/N octave), log / linear sweeps, dBFS peak or RMS levels with ramps, wake/sync tone, an editable step table, preview and Play</li>
+          <li>Merge mono files into multi-channel, or split them back</li>
         </ul>
       </div>
       <div class="card">
@@ -523,7 +524,8 @@
           <li><strong>Waveform Statistics</strong> — peak, RMS, dB SPL, dBA, max RMS dBA and peak dBA for every channel</li>
           <li><strong>Sweep Analysis</strong> — THD, Rub &amp; Buzz and level versus frequency</li>
           <li><strong>DOA Analysis</strong> (direction of arrival) and <strong>Intel Channel Phase</strong> for microphone arrays</li>
-          <li><strong>Scan Test</strong> across many channels and files in parallel, <strong>Chamber Response</strong> and <strong>Chamber Isolation</strong></li>
+          <li><strong>Scan Test</strong> — identifies the stimulus in a recording and reports its parameters (sweep type, range, R40-style step resolution, dwell, wake tone), across many channels and files in parallel</li>
+          <li><strong>Chamber Response</strong> and <strong>Chamber Isolation</strong></li>
         </ul>
       </div>
       <div class="card">
@@ -531,6 +533,7 @@
         <ul>
           <li><strong>Tonal Noise</strong> — detects and tracks hums, whines and whistles over time, across many channels and files at once, with a PASS/FAIL comparison table</li>
           <li><strong>Tonal Teams</strong> — production-style PASS/FAIL check of narrow tonal spikes against each channel's own baseline</li>
+          <li><strong>Stimulus Response Test</strong> — measures every step of a known stimulus (level, THD, rub &amp; buzz, dropouts, missing steps) and judges each unit against a golden unit</li>
           <li><em>Overlay all channels</em> view to compare channels or units side by side</li>
           <li>Noise reduction: <strong>Spectral Subtraction</strong>, <strong>Adaptive Noise Cancellation</strong>, <strong>Extract Audio Difference</strong></li>
         </ul>
@@ -564,20 +567,19 @@
   </section>
 
   <section class="chapter" id="whatsnew">
-    <h2>What's new in 1.5.1</h2>
+    <h2>What's new in 1.5.2</h2>
     <ul class="plain">
-      <li><strong>Tonal Noise now compares many channels and files at once.</strong> Tick the channels you want in <em>Loaded Files</em> — from one or several WAV files — and open <em>Tools → Tonal Noise</em>. Every channel is analysed in parallel, and the result window shows a <strong>comparison table</strong> (abnormal noise events, longest event, most cumulative noise and PASS/FAIL per channel), one chart per channel, and an <em>Overlay all channels</em> view that draws every channel on one chart. Export Report includes all ticked channels as well.</li>
-      <li><strong>Scan Test now checks many channels and files at once</strong>, in parallel: a comparison table (stimulus type, pilot tone, steps or sweep range per channel), one chart per channel, and an <em>Overlay all channels</em> view.</li>
-      <li><strong>More reliable Tonal Teams verdict.</strong> A narrow tone that fell between two points of the export grid could show red fail markers on the chart yet still be judged PASS. The verdict now uses exactly the points drawn on the chart — every earlier failure is still found, and none slip through.</li>
-      <li><strong>Cleaner Tonal Teams <em>Top fails</em>:</strong> a new <em>Top Fails Min Spacing</em> setting (default 100 Hz) keeps the listed frequencies apart, so one peak is no longer repeated.</li>
-      <li><strong>Trial ended?</strong> AAT Pro now asks for the license key directly at start-up instead of just closing.</li>
-      <li>User guide: new screenshots of the multi-channel Tonal Noise, Scan Test and Tonal Teams views.</li>
+      <li><strong>Scan Test now reads the stimulus for you.</strong> For every channel it reports the sweep type (stepped / continuous log / linear / pure tone), direction, frequency range, step resolution (1/N octave, recognised R-series such as R40, or Hz per step), dwell time and the wake/sync tone. A new high-resolution detection even recognises fine stepped stimuli with very short steps (for example R40 from 20 kHz to 100 Hz). Auto-detect or enter the expected stimulus by hand, <strong>Save Parameters…</strong> to a JSON file, and <strong>Compare with Reference…</strong> to check other recordings against it — PASS/FAIL per parameter.</li>
+      <li><strong>New tool: Stimulus Response Test</strong> (<em>Tools → Stimulus Response Test…</em>). Load a recording of a good unit — the stimulus is detected automatically — or a saved golden file, then test your recordings: every step is found and measured (level, THD, rub &amp; buzz, frequency, dwell, dropouts, missing steps) and compared with the golden unit. You get a PASS/FAIL table per unit with the failing steps named, level / THD / R&amp;B charts with the golden tolerance band and failing steps in red, a per-step table and CSV export. Also available in Export Report.</li>
+      <li><strong>Generate Signal: design a stimulus like on an audio test system.</strong> Stepped sweeps with R10–R160, 1/N octave or Hz-per-step resolution, min cycles and min duration per step, log or linear sweeps, levels in dBFS peak or RMS with an optional ramp, wake/sync tone, gaps and silence, and an editable step table. The window shows step count, transition frequency, total duration and a waveform preview. <strong>Save Stimulus JSON…</strong> feeds it straight into Scan Test and Stimulus Response Test.</li>
+      <li><strong>Play before you save</strong> — Generate Signal has a Play button, and can re-create a stimulus from a saved Scan Test parameter file. Its window now resizes and scrolls on small screens.</li>
+      <li>User guide: new sections and screenshots for all of the above.</li>
     </ul>
     <div class="shots two-up">
-      <figure><img src="guide/images/tonal_noise_multi.png" alt="Tonal Noise comparison table for several channels" loading="lazy"><figcaption>Tonal Noise — comparison table, PASS / FAIL per channel</figcaption></figure>
-      <figure><img src="guide/images/tonal_noise_overlay.png" alt="Tonal Noise overlay of all channels" loading="lazy"><figcaption>Tonal Noise — every channel on one chart</figcaption></figure>
-      <figure><img src="guide/images/scan_test_multi.png" alt="Scan Test comparison of several channels" loading="lazy"><figcaption>Scan Test — many channels and files in parallel</figcaption></figure>
-      <figure><img src="guide/images/tonal_teams_overlay.png" alt="Tonal Teams overlay of all channels" loading="lazy"><figcaption>Tonal Teams — overlay of all channels</figcaption></figure>
+      <figure><img src="guide/images/scan_test_single.png" alt="Scan Test reporting the detected stimulus parameters" loading="lazy"><figcaption>Scan Test — stimulus parameters detected automatically</figcaption></figure>
+      <figure><img src="guide/images/scan_test_reference.png" alt="Scan Test compared with a saved reference" loading="lazy"><figcaption>Compare with Reference — PASS / FAIL per parameter</figcaption></figure>
+      <figure><img src="guide/images/stimulus_response_result.png" alt="Stimulus Response Test results against a golden unit" loading="lazy"><figcaption>Stimulus Response Test — every step checked against the golden unit</figcaption></figure>
+      <figure><img src="guide/images/generate_signal_manual.png" alt="Generate Signal manual step / sweep stimulus designer" loading="lazy"><figcaption>Generate Signal — design a stepped or swept stimulus by hand</figcaption></figure>
     </div>
   </section>
 
@@ -588,7 +590,24 @@
     <!-- Newest first. For a new release: add a <details class="release"> block at the top, move "open" to it,
          and mark only that one "Latest". Downloads live on the GitHub release tag AAT_Pro_v<version>. -->
     <details class="release" open>
-      <summary><span class="rel-ver">1.5.1</span><span class="rel-tag">Latest</span><span class="rel-date">2026-10-29</span></summary>
+      <summary><span class="rel-ver">1.5.2</span><span class="rel-tag">Latest</span><span class="rel-date">2026-10-29</span></summary>
+      <div class="rel-body">
+        <ul class="plain">
+          <li><strong>Scan Test</strong> reports the stimulus parameters (sweep type, direction, range, R-series / 1/N-octave resolution, dwell, wake/sync tone); save them as JSON and compare other recordings against them.</li>
+          <li>New <strong>Stimulus Response Test</strong>: every step measured (level, THD, rub &amp; buzz, frequency, dwell, dropouts, missing steps) with PASS/FAIL against a golden unit; charts, per-step table, CSV and Export Report.</li>
+          <li><strong>Generate Signal</strong>: manual step / sweep stimulus designer, Play button, re-create a stimulus from Scan Test parameters; resizable window.</li>
+          <li>User guide: new sections and screenshots.</li>
+        </ul>
+        <p class="rel-links">
+          <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Setup_1.5.2.exe">Installer (.exe)</a> ·
+          <a href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_Portable_1.5.2.zip">Portable (.zip)</a> ·
+          <a href="https://github.com/AAT-RR/AAT/releases/tag/AAT_Pro_v1.5.2">Release notes</a>
+        </p>
+      </div>
+    </details>
+
+    <details class="release">
+      <summary><span class="rel-ver">1.5.1</span><span class="rel-date">2026-10-29</span></summary>
       <div class="rel-body">
         <ul class="plain">
           <li><strong>Tonal Noise</strong> compares several channels and files at once: parallel analysis, comparison table with PASS/FAIL per channel, one chart per channel and an <em>Overlay all channels</em> view. Export Report includes all ticked channels.</li>
@@ -658,9 +677,9 @@
     </div>
 
     <h3 class="sub-head">File checksums (SHA-256)</h3>
-    <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.1.exe</span> in PowerShell and compare:</p>
-    <pre class="code">AAT_Pro_Setup_1.5.1.exe     84098EF753B7FC03B12A9EA3050CFB8DC2B69E57B860433C491B61D1E5F5BA9E
-AAT_Pro_Portable_1.5.1.zip  938BCBD49C84B91AB7C1A1A04F661C3A1477D03369CB3484F568B1B909FF0F5E</pre>
+    <p>To confirm a download is complete and unchanged, run <span class="val">Get-FileHash .\AAT_Pro_Setup_1.5.2.exe</span> in PowerShell and compare:</p>
+    <pre class="code">AAT_Pro_Setup_1.5.2.exe     9B9F5DBE755BD2B74BA6DDB58A3BD77FD785A26D552B4A3E0860F311419DFFE5
+AAT_Pro_Portable_1.5.2.zip  F774E3F867AD2070D5E830B1329D71AB076C1336AC53694DDD412C16D494392C</pre>
   </section>
 
   <section class="chapter" id="support">
@@ -682,7 +701,7 @@ AAT_Pro_Portable_1.5.1.zip  938BCBD49C84B91AB7C1A1A04F661C3A1477D03369CB3484F568
   </section>
 
   <footer>
-    AAT Pro 1.5.1 · <a href="guide/how_to_use.html">User Guide</a> · <a href="https://github.com/AAT-RR/AAT/releases">All releases</a> · <a href="classic.html">Classic AAT</a>
+    AAT Pro 1.5.2 · <a href="guide/how_to_use.html">User Guide</a> · <a href="https://github.com/AAT-RR/AAT/releases">All releases</a> · <a href="classic.html">Classic AAT</a>
   </footer>
 
 </main>
