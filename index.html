@@ -487,7 +487,7 @@
         <div class="os-row"><span class="os-chip"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M11.2 0c.1 1-.3 2-.9 2.7-.6.7-1.5 1.2-2.4 1.1-.1-1 .4-2 .9-2.6C9.4.5 10.4 0 11.2 0zm2.9 11.6c-.4.9-.6 1.3-1.1 2.1-.7 1.1-1.7 2.4-2.9 2.4-1.1 0-1.4-.7-2.9-.7s-1.8.7-2.9.7c-1.2 0-2.2-1.2-2.9-2.3C-.5 10.9-.7 7.4.5 5.6 1.3 4.3 2.6 3.6 3.9 3.6c1.3 0 2.1.7 3.2.7 1 0 1.7-.7 3.2-.7 1.1 0 2.3.6 3.1 1.7-2.8 1.5-2.3 5.4.7 6.3z"/></svg>macOS</span><span class="for-you">For your system</span></div>
         <h3>Mac</h3>
         <span class="size">AAT_Pro_1.5.2_macOS26_arm64.dmg <span class="nw">· 34.5 MB</span></span>
-        <p>Open the disk image and drag AAT Pro into Applications. See <a href="#install-mac">first start on a Mac</a>.</p>
+        <p>Open the disk image and drag AAT Pro into Applications. See <a href="#mac-first-run">first start on a Mac</a>.</p>
         <p class="req">Apple silicon (M1 or newer) · macOS 26 or newer</p>
         <a class="btn" href="https://github.com/AAT-RR/AAT/releases/download/AAT_Pro_v1.5.2/AAT_Pro_1.5.2_macOS26_arm64.dmg">Download for Mac</a>
       </div>
@@ -539,8 +539,7 @@
         <h4>Option C — Mac</h4>
         <ol>
           <li>Double-click <span class="val">AAT_Pro_1.5.2_macOS26_arm64.dmg</span> and drag <strong>AAT_Pro</strong> into the <strong>Applications</strong> folder.</li>
-          <li>The first start is blocked because the app is not signed with an Apple developer certificate: double-click AAT_Pro once and click <strong>Done</strong>.</li>
-          <li>Open <strong>System Settings → Privacy &amp; Security</strong>, scroll down and click <strong>Open Anyway</strong> next to AAT_Pro.</li>
+          <li>Allow the app to run once, using one of the two methods <a href="#mac-first-run">below</a>. macOS may block the first start.</li>
           <li>The first time you record, macOS asks for microphone access — click <strong>Allow</strong>.</li>
         </ol>
       </div>
@@ -551,6 +550,30 @@
           <li><strong>License keys work on both Windows and macOS.</strong></li>
           <li>To remove the app, drag it from <em>Applications</em> to the Trash.</li>
         </ul>
+      </div>
+    </div>
+
+    <h3 class="sub-head" id="mac-first-run">Mac: first start</h3>
+    <div class="note">AAT Pro is developed independently and is not signed with a paid Apple developer certificate. Because of this, macOS may block the first start with a message such as <em>"Apple could not verify AAT_Pro is free of malware"</em> or <em>"the developer cannot be verified"</em>. The app is safe to use. Use <strong>either</strong> method below to allow it — you only need to do this once.</div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Method 1 — Terminal (recommended)</h4>
+        <ol>
+          <li>Press <strong>Command + Space</strong>, type <strong>Terminal</strong> and open it.</li>
+          <li>Type <span class="val">xattr -cr</span> followed by <strong>one space</strong>. Do not press Return yet.</li>
+          <li>Open <strong>Finder → Applications</strong> and drag the <strong>AAT_Pro</strong> icon into the Terminal window. The path to the app is filled in for you.</li>
+          <li>Press <strong>Return</strong>. If no error appears, it worked. From now on, double-click AAT_Pro to open it.</li>
+        </ol>
+        <p><strong>Why recommended:</strong> this is the most reliable method. It removes the download "quarantine" flag from the app.</p>
+      </div>
+      <div class="card">
+        <h4>Method 2 — System Settings</h4>
+        <ol>
+          <li>Double-click AAT_Pro. When the security message appears, click <strong>Done</strong>.</li>
+          <li>Open <strong>System Settings → Privacy &amp; Security</strong>.</li>
+          <li>Scroll down to the <strong>Security</strong> section. It says <em>"AAT_Pro" was blocked</em>. Click <strong>Open Anyway</strong>.</li>
+          <li>Enter your Mac login password to confirm. AAT Pro opens and starts normally from then on.</li>
+        </ol>
       </div>
     </div>
 
@@ -646,7 +669,7 @@
   <section class="chapter" id="whatsnew">
     <h2>What's new in 1.5.2</h2>
     <ul class="plain">
-      <li><strong>New: AAT Pro for Mac.</strong> A native macOS version for Macs with Apple silicon and macOS 26 or newer — <a href="#download">download it</a> and see <a href="#install-mac">first start on a Mac</a>. License keys work on both Windows and macOS.</li>
+      <li><strong>New: AAT Pro for Mac.</strong> A native macOS version for Macs with Apple silicon and macOS 26 or newer — <a href="#download">download it</a> and see <a href="#mac-first-run">first start on a Mac</a>. License keys work on both Windows and macOS.</li>
       <li><strong>Scan Test now reads the stimulus for you.</strong> For every channel it reports the sweep type (stepped / continuous log / linear / pure tone), direction, frequency range, step resolution (1/N octave, recognised R-series such as R40, or Hz per step), dwell time and the wake/sync tone. A new high-resolution detection even recognises fine stepped stimuli with very short steps (for example R40 from 20 kHz to 100 Hz). Auto-detect or enter the expected stimulus by hand, <strong>Save Parameters…</strong> to a JSON file, and <strong>Compare with Reference…</strong> to check other recordings against it — PASS/FAIL per parameter.</li>
       <li><strong>New tool: Stimulus Response Test</strong> (<em>Tools → Stimulus Response Test…</em>). Load a recording of a good unit — the stimulus is detected automatically — or a saved golden file, then test your recordings: every step is found and measured (level, THD, rub &amp; buzz, frequency, dwell, dropouts, missing steps) and compared with the golden unit. You get a PASS/FAIL table per unit with the failing steps named, level / THD / R&amp;B charts with the golden tolerance band and failing steps in red, a per-step table and CSV export. Also available in Export Report.</li>
       <li><strong>Generate Signal: design a stimulus like on an audio test system.</strong> Stepped sweeps with R10–R160, 1/N octave or Hz-per-step resolution, min cycles and min duration per step, log or linear sweeps, levels in dBFS peak or RMS with an optional ramp, wake/sync tone, gaps and silence, and an editable step table. The window shows step count, transition frequency, total duration and a waveform preview. <strong>Save Stimulus JSON…</strong> feeds it straight into Scan Test and Stimulus Response Test.</li>
@@ -752,7 +775,7 @@
         <tr><td>Portable version does not start, or recordings fail to save</td><td>Make sure the folder was fully extracted (not run from inside the zip) and is somewhere you can write to, e.g. Desktop or Documents.</td></tr>
         <tr><td>No input device / no sound</td><td>Connect the device first, then <strong>Tools → Refresh Audio Devices</strong>. Check Windows sound settings and microphone privacy permissions.</td></tr>
         <tr><td>Charts are slow with many channels</td><td>Normal for very long recordings with many channels; select fewer channels or set a shorter <strong>Select Time Range…</strong>.</td></tr>
-        <tr><td>Mac: <em>"cannot verify the developer"</em> or <em>"AAT_Pro is damaged"</em></td><td>See <a href="#install-mac">Option C — Mac</a>: <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>.</td></tr>
+        <tr><td>Mac: <em>"cannot verify the developer"</em> or <em>"AAT_Pro is damaged"</em></td><td>The app is not signed with a paid Apple certificate. See <a href="#mac-first-run">Mac: first start</a>. The quickest fix is to run <span class="val">xattr -cr</span> on the app in Terminal. You can also use <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>.</td></tr>
         <tr><td>"Evaluation Period Ended"</td><td>See <a href="#license">Trial already ended?</a> above.</td></tr>
       </table>
     </div>
