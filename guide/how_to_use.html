@@ -468,6 +468,7 @@
       <a class="sub-link" href="#design-speaker-selection-sim">&nbsp;Speaker Selection Sim</a>
       <a class="sub-link" href="#design-acoustic-design-guide">&nbsp;Acoustic Design Guide</a>
       <a class="sub-link" href="#design-acoustic-methodology-manual">&nbsp;Acoustic Methodology Manual</a>
+      <a class="sub-link" href="#design-isolation-chamber-sim">&nbsp;Isolation Chamber Sim</a>
       <a href="#help">Help</a>
     </nav>
   </aside>
@@ -964,6 +965,22 @@ license_key = <span class="cm">ACME-P_1a2Z_xyz789...  (illustrative only &mdash;
         <div class="item" id="design-acoustic-design-guide"><div class="name">Acoustic Design Guide...</div><div class="body"><p>A side-volume calibration guide (English/Traditional Chinese toggle) &mdash; four sliders and a DSP-calibration toggle drive a stereo frequency-response chart and an imaging-shift gauge, with commentary alongside.</p></div></div>
 
         <div class="item" id="design-acoustic-methodology-manual"><div class="name">Acoustic Methodology Manual...</div><div class="body"><p>A two-step reference covering individual near-field measurement versus array far-field summation &mdash; four sliders drive a frequency-response chart and the same imaging-shift gauge, alongside the full engineering-manual text.</p></div></div>
+        <div class="item" id="design-isolation-chamber-sim"><div class="name">Isolation Chamber Sim...</div><div class="body">
+<p>A trend estimator for sizing a sound-isolation / anechoic test box for production or lab speaker and microphone testing. It is not a replacement for a full acoustic simulation or for measurement.</p>
+<ul>
+<li><b>Parameters (left column).</b> Clear interior size (length, width, height, tip to tip), wedge length, the device under test (loudspeaker or microphone), its size and position, the measuring device distance and axis, the lowest frequency (slider, 20&ndash;1000 Hz), and the deviation tolerance (&plusmn;3 dB production, &plusmn;1.5 dB strict).</li>
+<li><b>Presets.</b> AAT_PRO minimum and AAT_PRO recommended set the box, wedge and device positions. Presets do not change the wall; the wall comes from the wall editor.</li>
+<li><b>Wall (layer stack).</b> Build the wall outermost first: add, delete, move up/down, duplicate. Each layer has a type (steel, damping, board, cotton, air, custom), a thickness and a parameter. The layer stack is modelled with a transfer-matrix method. The built-in AAT_PRO example is one reference construction, not a fixed wall.</li>
+<li><b>Isolation tab.</b> Transmission loss against frequency, the mass-law line for the same surface density, the AAT_PRO 50 Hz / 40 dB and 100 Hz / 50 dB targets with the gap to each, and an energy-budget bar at the chosen frequency. The curve is clipped to 100 dB for display and is an upper bound.</li>
+<li><b>Field quality tab.</b> In-box deviation from the free-field level against frequency, with the wedge cut-off and box modes. Shows the lowest usable frequency at the chosen tolerance.</li>
+<li><b>Position tab.</b> Heat map of the deviation over the device position. Hatched cells are invalid (clearance below the recommended minimum, or a truncated measuring distance) and are excluded from the min/max readout.</li>
+<li><b>3D surface tab.</b> Three parameter surfaces (box size, device x position, wall thickness). Needs OpenGL; without it the tab shows a notice.</li>
+<li><b>3D space view.</b> The box in 3D: drag the device under test to move it in the floor plane, drag the device to change its distance, drag empty space to rotate, scroll to zoom. A wall-section inset shows the layer stack.</li>
+<li><b>Save Snapshot.</b> Asks you for a folder and a name, then writes <span class="mono">&lt;name&gt;/</span> with <span class="mono">&lt;name&gt;_settings.ini</span>, <span class="mono">&lt;name&gt;_dialog.png</span>, one PNG per result tab, and <span class="mono">&lt;name&gt;_space.png</span>. The same name is never overwritten: a repeat becomes <span class="mono">&lt;name&gt;_2</span>.</li>
+<li><b>Language.</b> The Language combo switches the dialog between English and Traditional Chinese. The switch is for this session only.</li>
+</ul>
+<p>The minimum clearance of 300 mm is a recommended safety distance; a smaller distance is not recommended. This is an engineering rule of thumb, not a quoted clause of ISO 3744/3745. The model is a trend estimate: see the Notes button in the dialog for all guessed defaults and limits.</p>
+</div></div>
       </div>
     </section>
 
