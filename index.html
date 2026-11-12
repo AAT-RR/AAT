@@ -555,9 +555,11 @@
         <h4>Option D — Mac portable (no installation)</h4>
         <ol>
           <li>Unzip <span class="val">AAT_Pro_1.5.4_macOS26_arm64_portable.zip</span> and open the <strong>AAT Pro</strong> folder.</li>
-          <li>Double-click <span class="val">First_Run.command</span> (first-run helper). It removes the download flag from <span class="val">AAT_Pro.app</span> and opens AAT Pro. You do not need to move the app into Applications.</li>
-          <li>If macOS refuses to run the script, click <strong>Cancel</strong>, right-click the file in Finder → <strong>Open</strong> → <strong>Open</strong>. If it still does not open, use <strong>System Settings → Privacy &amp; Security → Open Anyway</strong>.</li>
+          <li>Double-click <span class="val">First_Run.command</span>. macOS shows a warning that it "could not verify" the file. Click <strong>Done</strong> (do <strong>not</strong> click <em>Move to Trash</em>).</li>
+          <li>Open <strong>System Settings → Privacy &amp; Security</strong>, scroll to the bottom, find the message that <em>"First_Run.command" was blocked</em>, click <strong>Open Anyway</strong> and enter your password.</li>
+          <li>Double-click <span class="val">First_Run.command</span> again. AAT Pro opens. You do not need to move the app into Applications.</li>
         </ol>
+        <p><strong>If there is no "Open Anyway" message,</strong> use Terminal: type <span class="val">xattr -dr com.apple.quarantine</span> (with a space at the end), drag the whole <span class="val">AAT Pro</span> folder into the Terminal window and press Return. Then double-click <span class="val">AAT_Pro.app</span>.</p>
         <p><strong>After the first start,</strong> double-click <span class="val">AAT_Pro.app</span> in the folder. The whole folder can be copied to a USB drive or the Desktop. Only the Apple-silicon build has been checked on macOS; it has not been tested on a clean Mac.</p>
       </div>
       <div class="card">
@@ -838,7 +840,7 @@
     <pre class="code">AAT_Pro_Setup_1.5.4.exe                    8824EE1AF6064632E1B00694367231848CA297E248AEA97BC3724254832FEB47
 AAT_Pro_Portable_1.5.4.zip                 476F4DF09DE6AF355F1886E6D476BEE4235BA2B8B5F86494121B7C9DBACB7043
 AAT_Pro_1.5.4_macOS26_arm64.dmg            F43837B90D2D817F45FFE243BA53A3A426BC1C1D5EA8F80FE109C65360BC51E6
-AAT_Pro_1.5.4_macOS26_arm64_portable.zip   FC0CF758F643805F4005EA536093FBDFF940D4079D1CD8831557D27D879172C1</pre>
+AAT_Pro_1.5.4_macOS26_arm64_portable.zip   6F696E4C299389EE0220F9F0821D5AD68F25B9AFAF343CCD3978809AA0A41702</pre>
   </section>
 
   <section class="chapter" id="support">
