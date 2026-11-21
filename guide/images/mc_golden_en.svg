@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" font-family="-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',Helvetica,Arial,sans-serif">
+<rect width="960" height="600" fill="#ffffff"/>
+<text x="480" y="28" font-size="18" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="480" dy="0">Golden reference on a production line (no design coordinates needed)</tspan></text>
+<text x="40" y="62" font-size="15" fill="#16a34a" text-anchor="start" font-weight="bold"><tspan x="40" dy="0">1. Once (the golden unit)</tspan></text>
+<rect x="40" y="74" width="170" height="56" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" opacity="1"/>
+<text x="125" y="98" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="125" dy="0">Record the golden unit</tspan><tspan x="125" dy="1.3em">(a unit known to be good)</tspan></text>
+<rect x="250" y="74" width="150" height="56" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" opacity="1"/>
+<text x="325" y="102" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="325" dy="0">Run analysis</tspan></text>
+<rect x="440" y="74" width="210" height="56" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" opacity="1"/>
+<text x="545" y="98" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="545" dy="0">Set current result</tspan><tspan x="545" dy="1.3em">as golden</tspan></text>
+<rect x="690" y="74" width="170" height="56" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" opacity="1"/>
+<text x="775" y="98" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="775" dy="0">Save golden (CSV)...</tspan><tspan x="775" dy="1.3em">Load it next time</tspan></text>
+<line x1="212" y1="102" x2="248" y2="102" stroke="#16a34a" stroke-width="1.8"/>
+<polygon points="248,102 238.789,105.894 238.789,98.1058" fill="#16a34a"/>
+<line x1="402" y1="102" x2="438" y2="102" stroke="#16a34a" stroke-width="1.8"/>
+<polygon points="438,102 428.789,105.894 428.789,98.1058" fill="#16a34a"/>
+<line x1="652" y1="102" x2="688" y2="102" stroke="#16a34a" stroke-width="1.8"/>
+<polygon points="688,102 678.789,105.894 678.789,98.1058" fill="#16a34a"/>
+<text x="40" y="172" font-size="15" fill="#2563eb" text-anchor="start" font-weight="bold"><tspan x="40" dy="0">2. Every unit under test</tspan></text>
+<rect x="40" y="184" width="200" height="60" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" opacity="1"/>
+<text x="140" y="206" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="140" dy="0">Record the unit under test</tspan><tspan x="140" dy="1.3em">(same speaker position,</tspan><tspan x="140" dy="1.3em">same signal, same reference)</tspan></text>
+<rect x="280" y="184" width="150" height="60" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" opacity="1"/>
+<text x="355" y="214" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="355" dy="0">Run analysis</tspan></text>
+<rect x="470" y="184" width="390" height="60" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" opacity="1"/>
+<text x="665" y="210" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="665" dy="0">Read the last column, vs golden: PASS / FAIL</tspan><tspan x="665" dy="1.3em">(failing channels are red)</tspan></text>
+<line x1="242" y1="214" x2="278" y2="214" stroke="#2563eb" stroke-width="1.8"/>
+<polygon points="278,214 268.789,217.894 268.789,210.106" fill="#2563eb"/>
+<line x1="432" y1="214" x2="468" y2="214" stroke="#2563eb" stroke-width="1.8"/>
+<polygon points="468,214 458.789,217.894 458.789,210.106" fill="#2563eb"/>
+<text x="80" y="284" font-size="14" fill="#1f2937" text-anchor="start" font-weight="bold"><tspan x="80" dy="0">Deviation (us) = unit delay - golden delay (schematic)</tspan></text>
+<rect x="80" y="300" width="520" height="200" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<rect x="80" y="364.286" width="520" height="71.4286" rx="0" fill="#dcfce7" stroke="none" stroke-width="0" opacity="1"/>
+<line x1="80" y1="400" x2="600" y2="400" stroke="#1f2937" stroke-width="1.3"/>
+<line x1="80" y1="364.286" x2="600" y2="364.286" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="5 4"/>
+<line x1="80" y1="435.714" x2="600" y2="435.714" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="608" y="368.286" font-size="12" fill="#16a34a" text-anchor="start" font-weight="normal"><tspan x="608" dy="0">+5 us</tspan></text>
+<text x="608" y="439.714" font-size="12" fill="#16a34a" text-anchor="start" font-weight="normal"><tspan x="608" dy="0">-5 us</tspan></text>
+<text x="608" y="404" font-size="12" fill="#6b7280" text-anchor="start" font-weight="normal"><tspan x="608" dy="0">0</tspan></text>
+<rect x="96.5" y="400" width="32" height="1.5" rx="1" fill="#16a34a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="112.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="112.5" dy="0">1</tspan></text>
+<rect x="161.5" y="391.429" width="32" height="8.57143" rx="1" fill="#16a34a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="177.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="177.5" dy="0">2</tspan></text>
+<rect x="226.5" y="400" width="32" height="14.2857" rx="1" fill="#16a34a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="242.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="242.5" dy="0">3</tspan></text>
+<rect x="291.5" y="335.714" width="32" height="64.2857" rx="1" fill="#dc2626" stroke="none" stroke-width="0" opacity="1"/>
+<text x="307.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="307.5" dy="0">4</tspan></text>
+<text x="307.5" y="329.714" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="bold"><tspan x="307.5" dy="0">FAIL</tspan></text>
+<rect x="356.5" y="396.429" width="32" height="3.57143" rx="1" fill="#16a34a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="372.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="372.5" dy="0">5</tspan></text>
+<rect x="421.5" y="400" width="32" height="7.14286" rx="1" fill="#16a34a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="437.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="437.5" dy="0">6</tspan></text>
+<rect x="486.5" y="384.286" width="32" height="15.7143" rx="1" fill="#16a34a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="502.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="502.5" dy="0">7</tspan></text>
+<rect x="551.5" y="400" width="32" height="4.28571" rx="1" fill="#16a34a" stroke="none" stroke-width="0" opacity="1"/>
+<text x="567.5" y="518" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="567.5" dy="0">8</tspan></text>
+<text x="340" y="536" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="340" dy="0">Channel</tspan></text>
+<circle cx="670" cy="330" r="11" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="670" y="335" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="670" dy="0">1</tspan></text>
+<text x="690" y="335" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="690" dy="0">Green band = tolerance (default +-5 us)</tspan><tspan x="690" dy="1.3em">inside the band = PASS</tspan></text>
+<circle cx="670" cy="392" r="11" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="670" y="397" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="670" dy="0">2</tspan></text>
+<text x="690" y="397" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="690" dy="0">Outside the band (channel 4) = FAIL</tspan><tspan x="690" dy="1.3em">1 us = 0.343 mm, so 9 us is about</tspan><tspan x="690" dy="1.3em">3 mm of path difference</tspan></text>
+<circle cx="670" cy="462" r="11" fill="#ea580c" stroke="#ea580c" stroke-width="1"/>
+<text x="670" y="467" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="670" dy="0">3</tspan></text>
+<text x="690" y="467" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="690" dy="0">A polarity different from the golden,</tspan><tspan x="690" dy="1.3em">or a weak correlation, also fails</tspan><tspan x="690" dy="1.3em">(FAIL (polarity) / FAIL (weak))</tspan></text>
+<text x="480" y="584" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="480" dy="0">The speaker position, fixture and speed of sound are the same for the golden and the unit, so they cancel in the subtraction - no coordinates needed.</tspan></text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" width="900" height="650" font-family="-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',Helvetica,Arial,sans-serif">
+<rect width="900" height="650" fill="#ffffff"/>
+<text x="450" y="30" font-size="18" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="450" dy="0">Multichannel Check window: one scrollable page</tspan></text>
+<rect x="30" y="50" width="820" height="580" rx="10" fill="#fafafa" stroke="#cbd5e1" stroke-width="1.5" opacity="1"/>
+<rect x="45" y="62" width="790" height="44" rx="6" fill="#f3f4f6" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<rect x="55" y="71" width="130" height="26" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<text x="120" y="89" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="120" dy="0">Reference channel</tspan></text>
+<rect x="197" y="71" width="100" height="26" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<text x="247" y="89" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="247" dy="0">Max delay</tspan></text>
+<rect x="309" y="71" width="130" height="26" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<text x="374" y="89" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="374" dy="0">Matching band</tspan></text>
+<rect x="451" y="71" width="110" height="26" rx="5" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" opacity="1"/>
+<text x="506" y="89" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="506" dy="0">Run analysis</tspan></text>
+<rect x="573" y="71" width="110" height="26" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<text x="628" y="89" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="628" dy="0">Export CSV...</tspan></text>
+<rect x="695" y="71" width="100" height="26" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<text x="745" y="89" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="745" dy="0">How to use</tspan></text>
+<circle cx="40" cy="84" r="11" fill="#7c3aed" stroke="#7c3aed" stroke-width="1"/>
+<text x="40" y="89" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="40" dy="0">A</tspan></text>
+<rect x="45" y="122" width="770" height="108" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<circle cx="62" cy="144" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="62" y="149" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="62" dy="0">1</tspan></text>
+<text x="82" y="149" font-size="16" fill="#1f2937" text-anchor="start" font-weight="bold"><tspan x="82" dy="0">1  Delay &amp; polarity</tspan></text>
+<text x="62" y="178" font-size="13" fill="#6b7280" text-anchor="start" font-weight="normal"><tspan x="62" dy="0">Table: delay, polarity, correlation per channel (4 extra columns once a golden is set)</tspan><tspan x="62" dy="1.3em">Bar chart: the delay of each channel (hover for the values)</tspan></text>
+<rect x="690" y="184" width="9" height="1" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="704" y="178" width="9" height="7" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="718" y="184" width="9" height="6" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="732" y="154" width="9" height="31" rx="1" fill="#dc2626" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="746" y="184" width="9" height="3" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="760" y="180" width="9" height="5" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="774" y="184" width="9" height="33" rx="1" fill="#dc2626" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="788" y="176" width="9" height="9" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="45" y="240" width="770" height="108" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<circle cx="62" cy="262" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="62" y="267" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="62" dy="0">2</tspan></text>
+<text x="82" y="267" font-size="16" fill="#1f2937" text-anchor="start" font-weight="bold"><tspan x="82" dy="0">2  Mic position check</tspan></text>
+<text x="62" y="296" font-size="13" fill="#6b7280" text-anchor="start" font-weight="normal"><tspan x="62" dy="0">Left: source (azimuth/elevation/distance) and microphone coordinates; right: residual table</tspan><tspan x="62" dy="1.3em">Below: Locate the speaker (find the speaker from the delays)</tspan></text>
+<rect x="45" y="358" width="770" height="108" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<circle cx="62" cy="380" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="62" y="385" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="62" dy="0">3</tspan></text>
+<text x="82" y="385" font-size="16" fill="#1f2937" text-anchor="start" font-weight="bold"><tspan x="82" dy="0">3  Channel matching</tspan></text>
+<text x="62" y="414" font-size="13" fill="#6b7280" text-anchor="start" font-weight="normal"><tspan x="62" dy="0">Table: which channel matches worst (ranking)</tspan><tspan x="62" dy="1.3em">Chart: third-octave deviation of every channel from the median</tspan></text>
+<polyline points="690,428 698,433.269 706,437.467 714,439.743 722,439.635 730,437.163 738,432.831 746,427.517 754,422.302 762,418.244 770,416.167 778,416.493 786,419.156 794,423.615" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="690,436 698,439.71 706,441.832 714,441.456 722,438.744 730,434.857 738,431.459 746,430.006 754,431.12 762,434.324 770,438.245 778,441.205 786,441.936 794,440.125" fill="none" stroke="#ea580c" stroke-width="2" stroke-linejoin="round"/>
+<rect x="45" y="476" width="770" height="108" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<circle cx="62" cy="498" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="62" y="503" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="62" dy="0">4</tspan></text>
+<text x="82" y="503" font-size="16" fill="#1f2937" text-anchor="start" font-weight="bold"><tspan x="82" dy="0">4  Room (RT60)</tspan></text>
+<text x="62" y="532" font-size="13" fill="#6b7280" text-anchor="start" font-weight="normal"><tspan x="62" dy="0">Load the played sweep -&gt; table: EDT / T20 / T30 / C50 / D50</tspan><tspan x="62" dy="1.3em">Decay curve + wall-absorption inference (Estimate)</tspan></text>
+<polyline points="690,516 720,531 750,548 780,564 800,574" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="822" y="122" width="16" height="490" rx="8" fill="#e5e7eb" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<rect x="823" y="124" width="14" height="110" rx="7" fill="#9ca3af" stroke="none" stroke-width="0" opacity="1"/>
+<text x="450" y="644" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="450" dy="0">A: the top row holds the shared settings; after changing the reference channel press Run analysis again. Scroll with the bar or the mouse wheel.</tspan></text>
+</svg>

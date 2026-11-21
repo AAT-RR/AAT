@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 540" width="1060" height="540" font-family="-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',Helvetica,Arial,sans-serif">
+<rect width="1060" height="540" fill="#ffffff"/>
+<text x="530" y="28" font-size="18" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="530" dy="0">How to read the Schroeder decay curve and EDT / T20 / T30 (schematic)</tspan></text>
+<rect x="80" y="56" width="520" height="364" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<line x1="80" y1="56" x2="600" y2="56" stroke="#1f2937" stroke-width="1"/>
+<text x="72" y="60" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">0</tspan></text>
+<line x1="80" y1="111.152" x2="600" y2="111.152" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="115.152" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-10</tspan></text>
+<line x1="80" y1="166.303" x2="600" y2="166.303" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="170.303" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-20</tspan></text>
+<line x1="80" y1="221.455" x2="600" y2="221.455" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="225.455" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-30</tspan></text>
+<line x1="80" y1="276.606" x2="600" y2="276.606" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="280.606" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-40</tspan></text>
+<line x1="80" y1="331.758" x2="600" y2="331.758" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="335.758" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-50</tspan></text>
+<line x1="80" y1="386.909" x2="600" y2="386.909" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="390.909" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-60</tspan></text>
+<text x="80" y="438" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="80" dy="0">0.0</tspan></text>
+<text x="160" y="438" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="160" dy="0">0.1</tspan></text>
+<text x="240" y="438" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="240" dy="0">0.2</tspan></text>
+<text x="320" y="438" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="320" dy="0">0.3</tspan></text>
+<text x="400" y="438" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="400" dy="0">0.4</tspan></text>
+<text x="480" y="438" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="480" dy="0">0.5</tspan></text>
+<text x="560" y="438" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="560" dy="0">0.6</tspan></text>
+<text x="340" y="460" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="340" dy="0">Time (s)</tspan></text>
+<text x="26" y="238" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal" transform="rotate(-90 26 238.0)"><tspan x="26" dy="0">Energy (dB re total)</tspan></text>
+<polyline points="80,56 84,59.3091 88,62.6182 92,65.9273 96,69.2364 100,72.5455 104,75.8545 108,79.1636 112,82.4727 116,85.7818 120,89.0909 124,92.4 128,95.7091 132,99.0182 136,102.327 140,105.636 144,108.945 148,112.255 152,115.564 156,118.873 160,122.182 164,124.939 168,127.697 172,130.455 176,133.212 180,135.97 184,138.727 188,141.485 192,144.242 196,147 200,149.758 204,152.515 208,155.273 212,158.03 216,160.788 220,163.545 224,166.303 228,169.061 232,171.818 236,174.576 240,177.333 244,180.091 248,182.848 252,185.606 256,188.364 260,191.121 264,193.879 268,196.636 272,199.394 276,202.152 280,204.909 284,207.667 288,210.424 292,213.182 296,215.939 300,218.697 304,221.455 308,224.212 312,226.97 316,229.727 320,232.485 324,235.242 328,238 332,240.758 336,243.515 340,246.273 344,249.03 348,251.788 352,254.545 356,257.303 360,260.061 364,262.818 368,265.576 372,268.333 376,271.091 380,273.848 384,276.606 388,279.364 392,282.121 396,284.879 400,287.636 404,290.394 408,293.152 412,295.909 416,298.667 420,301.424 424,304.182 428,306.939 432,309.697 436,312.455 440,315.212 444,317.97 448,320.727 452,323.485 456,326.242 460,329 464,331.758 468,334.515" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round"/>
+<line x1="80" y1="331.758" x2="600" y2="331.758" stroke="#dc2626" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="594" y="347.758" font-size="12" fill="#dc2626" text-anchor="end" font-weight="normal"><tspan x="594" dy="0">noise floor: the tail below is cut</tspan></text>
+<line x1="108" y1="58" x2="108" y2="329.758" stroke="#16a34a" stroke-width="1.6"/>
+<polygon points="108,329.758 104.106,320.547 111.894,320.547" fill="#16a34a"/>
+<line x1="108" y1="329.758" x2="108" y2="58" stroke="#16a34a" stroke-width="1.6"/>
+<polygon points="108,58 111.894,67.2106 104.106,67.2106" fill="#16a34a"/>
+<text x="116" y="193.879" font-size="12" fill="#16a34a" text-anchor="start" font-weight="normal"><tspan x="116" dy="0">dynamic</tspan><tspan x="116" dy="1.3em">range</tspan><tspan x="116" dy="1.3em">50 dB</tspan></text>
+<line x1="80" y1="56" x2="480" y2="386.909" stroke="#ea580c" stroke-width="1.6" stroke-dasharray="7 4"/>
+<circle cx="80" cy="56" r="3.5" fill="#ea580c" stroke="#ea580c" stroke-width="1"/>
+<line x1="113.333" y1="83.5758" x2="527.667" y2="386.909" stroke="#7c3aed" stroke-width="1.6" stroke-dasharray="7 4"/>
+<circle cx="113.333" cy="83.5758" r="3.5" fill="#7c3aed" stroke="#7c3aed" stroke-width="1"/>
+<line x1="113.333" y1="83.5758" x2="536.222" y2="386.909" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="7 4"/>
+<circle cx="113.333" cy="83.5758" r="3.5" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<line x1="540" y1="386.909" x2="540" y2="420" stroke="#9ca3af" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="546" y="378.909" font-size="12" fill="#6b7280" text-anchor="start" font-weight="normal"><tspan x="546" dy="0">≈ 0.57 s</tspan></text>
+<circle cx="640" cy="70" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="640" y="75" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">1</tspan></text>
+<text x="660" y="75" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Blue: the Schroeder decay curve</tspan><tspan x="660" dy="1.3em">= how fast the sound dies away</tspan></text>
+<circle cx="640" cy="136" r="11" fill="#ea580c" stroke="#ea580c" stroke-width="1"/>
+<text x="640" y="141" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">2</tspan></text>
+<text x="660" y="141" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">EDT: slope between 0 and -10 dB,</tspan><tspan x="660" dy="1.3em">extended to the time for a 60 dB drop</tspan><tspan x="660" dy="1.3em">(early decay)</tspan></text>
+<circle cx="640" cy="220" r="11" fill="#7c3aed" stroke="#7c3aed" stroke-width="1"/>
+<text x="640" y="225" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">3</tspan></text>
+<text x="660" y="225" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">T20: slope between -5 and -25 dB, extended</tspan><tspan x="660" dy="1.3em">to 60 dB; needs a dynamic range &gt;= 35 dB</tspan></text>
+<circle cx="640" cy="286" r="11" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="640" y="291" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">4</tspan></text>
+<text x="660" y="291" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">T30: slope between -5 and -35 dB, extended</tspan><tspan x="660" dy="1.3em">to 60 dB; needs a dynamic range &gt;= 45 dB;</tspan><tspan x="660" dy="1.3em">the most used</tspan></text>
+<circle cx="640" cy="370" r="11" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="640" y="375" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">5</tspan></text>
+<text x="660" y="375" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Red dashes = noise floor. If the dynamic</tspan><tspan x="660" dy="1.3em">range is too small, T20 / T30 stay blank (-)</tspan></text>
+<text x="530" y="520" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="530" dy="0">RT60 is the time for the sound to drop by 60 dB; three close numbers mean a regular decay, big differences mean a non-diffuse room or noise.</tspan></text>
+</svg>

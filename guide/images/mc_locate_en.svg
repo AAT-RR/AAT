@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520" font-family="-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',Helvetica,Arial,sans-serif">
+<rect width="900" height="520" fill="#ffffff"/>
+<text x="450" y="28" font-size="18" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="450" dy="0">Locate the speaker: finding the speaker from the delays (schematic)</tspan></text>
+<rect x="20" y="50" width="280" height="330" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<text x="160" y="76" font-size="15" fill="#2563eb" text-anchor="middle" font-weight="bold"><tspan x="160" dy="0">Far field: direction only</tspan></text>
+<line x1="68.4533" y1="165.053" x2="131.547" y2="74.9466" stroke="#93c5fd" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="90.0789" y1="180.196" x2="153.172" y2="90.0891" stroke="#93c5fd" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="111.705" y1="195.338" x2="174.798" y2="105.231" stroke="#93c5fd" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="133.33" y1="210.481" x2="196.424" y2="120.374" stroke="#93c5fd" stroke-width="1.4" stroke-dasharray="5 4"/>
+<line x1="56" y1="100" x2="129.724" y2="151.622" stroke="#2563eb" stroke-width="2"/>
+<polygon points="129.724,151.622 119.945,149.529 124.412,143.149" fill="#2563eb"/>
+<text x="48" y="94" font-size="11" fill="#2563eb" text-anchor="start" font-weight="normal"><tspan x="48" dy="0">arrival direction</tspan></text>
+<circle cx="90" cy="330" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="124" cy="330" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="158" cy="330" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="192" cy="330" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="226" cy="330" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<line x1="70" y1="342" x2="260" y2="342" stroke="#9ca3af" stroke-width="1"/>
+<text x="160" y="360" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="160" dy="0">microphone array</tspan></text>
+<text x="160" y="400" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="160" dy="0">A plane wave carries no distance:</tspan><tspan x="160" dy="1.3em">result = azimuth + elevation</tspan><tspan x="160" dy="1.3em">at least 3 usable channels</tspan><tspan x="160" dy="1.3em">(besides the reference)</tspan></text>
+<rect x="310" y="50" width="280" height="330" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<text x="450" y="76" font-size="15" fill="#16a34a" text-anchor="middle" font-weight="bold"><tspan x="450" dy="0">Near field: a point</tspan></text>
+<circle cx="450" cy="120" r="8" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="464" y="124" font-size="12" fill="#dc2626" text-anchor="start" font-weight="normal"><tspan x="464" dy="0">speaker</tspan></text>
+<polyline points="499.149,154.415 497.441,156.733 495.624,158.967 493.702,161.111 491.68,163.16 489.561,165.11 487.351,166.956 485.055,168.694 482.678,170.32 480.226,171.83 477.705,173.221 475.12,174.489 472.476,175.631 469.781,176.645 467.041,177.529 464.261,178.281 461.449,178.898 458.61,179.379 455.751,179.724 452.879,179.931 450,180 447.121,179.931 444.249,179.724 441.39,179.379 438.551,178.898 435.739,178.281 432.959,177.529 430.219,176.645 427.524,175.631 424.88,174.489 422.295,173.221 419.774,171.83 417.322,170.32 414.945,168.694 412.649,166.956 410.439,165.11 408.32,163.16 406.298,161.111 404.376,158.967 402.559,156.733 400.851,154.415" fill="none" stroke="#86efac" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polyline points="540.107,183.093 536.976,187.344 533.645,191.439 530.121,195.37 526.412,199.127 522.528,202.702 518.477,206.087 514.267,209.273 509.91,212.254 505.415,215.022 500.792,217.571 496.053,219.896 491.207,221.99 486.266,223.85 481.242,225.47 476.145,226.848 470.989,227.979 465.784,228.862 460.543,229.494 455.278,229.873 450,230 444.722,229.873 439.457,229.494 434.216,228.862 429.011,227.979 423.855,226.848 418.758,225.47 413.734,223.85 408.793,221.99 403.947,219.896 399.208,217.571 394.585,215.022 390.09,212.254 385.733,209.273 381.523,206.087 377.472,202.702 373.588,199.127 369.879,195.37 366.355,191.439 363.024,187.344 359.893,183.093" fill="none" stroke="#86efac" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polyline points="581.064,211.772 576.51,217.955 571.665,223.912 566.539,229.629 561.145,235.094 555.495,240.294 549.602,245.217 543.48,249.852 537.142,254.187 530.604,258.214 523.88,261.922 516.986,265.303 509.937,268.349 502.751,271.054 495.442,273.411 488.03,275.415 480.529,277.06 472.959,278.344 465.335,279.263 457.677,279.816 450,280 442.323,279.816 434.665,279.263 427.041,278.344 419.471,277.06 411.97,275.415 404.558,273.411 397.249,271.054 390.063,268.349 383.014,265.303 376.12,261.922 369.396,258.214 362.858,254.187 356.52,249.852 350.398,245.217 344.505,240.294 338.855,235.094 333.461,229.629 328.335,223.912 323.49,217.955 318.936,211.772" fill="none" stroke="#86efac" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<circle cx="380" cy="300" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<line x1="450" y1="128" x2="380" y2="294" stroke="#bbf7d0" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="414" cy="300" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<line x1="450" y1="128" x2="414" y2="294" stroke="#bbf7d0" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="448" cy="300" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<line x1="450" y1="128" x2="448" y2="294" stroke="#bbf7d0" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="482" cy="300" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<line x1="450" y1="128" x2="482" y2="294" stroke="#bbf7d0" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="516" cy="300" r="6" fill="#374151" stroke="none" stroke-width="1.5"/>
+<line x1="450" y1="128" x2="516" y2="294" stroke="#bbf7d0" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="450" y="340" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="450" dy="0">microphone array</tspan></text>
+<text x="450" y="400" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="450" dy="0">Every mic has a different distance</tspan><tspan x="450" dy="1.3em">result = coordinates (x, y, z)</tspan><tspan x="450" dy="1.3em">at least 4 usable channels; the array</tspan><tspan x="450" dy="1.3em">must be much smaller than the distance</tspan></text>
+<rect x="600" y="50" width="280" height="330" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" opacity="1"/>
+<text x="740" y="76" font-size="15" fill="#ea580c" text-anchor="middle" font-weight="bold"><tspan x="740" dy="0">Planar array: a mirror candidate</tspan></text>
+<line x1="630" y1="215" x2="850" y2="215" stroke="#374151" stroke-width="2.5"/>
+<circle cx="655" cy="215" r="5" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="689" cy="215" r="5" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="723" cy="215" r="5" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="757" cy="215" r="5" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="791" cy="215" r="5" fill="#374151" stroke="none" stroke-width="1.5"/>
+<circle cx="825" cy="215" r="5" fill="#374151" stroke="none" stroke-width="1.5"/>
+<text x="850" y="233" font-size="11" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="850" dy="0">array plane (side view)</tspan></text>
+<circle cx="740" cy="120" r="8" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="754" y="124" font-size="12" fill="#dc2626" text-anchor="start" font-weight="normal"><tspan x="754" dy="0">in front (main result)</tspan></text>
+<circle cx="740" cy="310" r="8" fill="#ffffff" stroke="#ea580c" stroke-width="2"/>
+<text x="754" y="314" font-size="12" fill="#ea580c" text-anchor="start" font-weight="normal"><tspan x="754" dy="0">mirror (alternative)</tspan></text>
+<line x1="740" y1="128" x2="740" y2="302" stroke="#ea580c" stroke-width="1.2" stroke-dasharray="4 4"/>
+<text x="740" y="400" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="740" dy="0">In one plane, the source and its mirror</tspan><tspan x="740" dy="1.3em">give identical delays, so both are shown.</tspan><tspan x="740" dy="1.3em">A linear array only fixes the angle to</tspan><tspan x="740" dy="1.3em">its axis (a whole cone fits)</tspan></text>
+<text x="450" y="498" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="450" dy="0">In all cases the software least-squares fits every channel; the smaller the rms (us) the better,</tspan><tspan x="450" dy="1.3em">and above about 5 us it warns that the coordinates, reference or delays are wrong.</tspan></text>
+</svg>

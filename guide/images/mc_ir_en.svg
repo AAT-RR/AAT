@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420" font-family="-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',Helvetica,Arial,sans-serif">
+<rect width="900" height="420" fill="#ffffff"/>
+<text x="450" y="28" font-size="18" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="450" dy="0">The impulse response and Direct / C50 / D50 (schematic)</tspan></text>
+<rect x="70" y="60" width="192.5" height="250" rx="0" fill="#dcfce7" stroke="none" stroke-width="0" opacity="1"/>
+<rect x="262.5" y="60" width="577.5" height="250" rx="0" fill="#ffedd5" stroke="none" stroke-width="0" opacity="1"/>
+<line x1="70" y1="250" x2="840" y2="250" stroke="#1f2937" stroke-width="1.4"/>
+<line x1="70" y1="250" x2="70" y2="90" stroke="#2563eb" stroke-width="3"/>
+<line x1="100.8" y1="250" x2="100.8" y2="162" stroke="#16a34a" stroke-width="3"/>
+<line x1="123.9" y1="250" x2="123.9" y2="317.2" stroke="#16a34a" stroke-width="3"/>
+<line x1="154.7" y1="250" x2="154.7" y2="197.2" stroke="#16a34a" stroke-width="3"/>
+<line x1="204.75" y1="250" x2="204.75" y2="294.8" stroke="#16a34a" stroke-width="3"/>
+<line x1="247.1" y1="250" x2="247.1" y2="214.8" stroke="#16a34a" stroke-width="3"/>
+<line x1="270.2" y1="250" x2="270.2" y2="267.448" stroke="#ea580c" stroke-width="2"/>
+<line x1="279.44" y1="250" x2="279.44" y2="241.625" stroke="#ea580c" stroke-width="2"/>
+<line x1="288.68" y1="250" x2="288.68" y2="255.215" stroke="#ea580c" stroke-width="2"/>
+<line x1="297.92" y1="250" x2="297.92" y2="257.015" stroke="#ea580c" stroke-width="2"/>
+<line x1="307.16" y1="250" x2="307.16" y2="263.532" stroke="#ea580c" stroke-width="2"/>
+<line x1="316.4" y1="250" x2="316.4" y2="236.286" stroke="#ea580c" stroke-width="2"/>
+<line x1="325.64" y1="250" x2="325.64" y2="236.866" stroke="#ea580c" stroke-width="2"/>
+<line x1="334.88" y1="250" x2="334.88" y2="249.519" stroke="#ea580c" stroke-width="2"/>
+<line x1="344.12" y1="250" x2="344.12" y2="259.473" stroke="#ea580c" stroke-width="2"/>
+<line x1="353.36" y1="250" x2="353.36" y2="258.682" stroke="#ea580c" stroke-width="2"/>
+<line x1="362.6" y1="250" x2="362.6" y2="262.842" stroke="#ea580c" stroke-width="2"/>
+<line x1="371.84" y1="250" x2="371.84" y2="232.502" stroke="#ea580c" stroke-width="2"/>
+<line x1="381.08" y1="250" x2="381.08" y2="263.053" stroke="#ea580c" stroke-width="2"/>
+<line x1="390.32" y1="250" x2="390.32" y2="260.989" stroke="#ea580c" stroke-width="2"/>
+<line x1="399.56" y1="250" x2="399.56" y2="245.653" stroke="#ea580c" stroke-width="2"/>
+<line x1="408.8" y1="250" x2="408.8" y2="250.223" stroke="#ea580c" stroke-width="2"/>
+<line x1="418.04" y1="250" x2="418.04" y2="238.02" stroke="#ea580c" stroke-width="2"/>
+<line x1="427.28" y1="250" x2="427.28" y2="235.968" stroke="#ea580c" stroke-width="2"/>
+<line x1="436.52" y1="250" x2="436.52" y2="236.73" stroke="#ea580c" stroke-width="2"/>
+<line x1="445.76" y1="250" x2="445.76" y2="249.35" stroke="#ea580c" stroke-width="2"/>
+<line x1="455" y1="250" x2="455" y2="255.348" stroke="#ea580c" stroke-width="2"/>
+<line x1="464.24" y1="250" x2="464.24" y2="237.104" stroke="#ea580c" stroke-width="2"/>
+<line x1="473.48" y1="250" x2="473.48" y2="260.245" stroke="#ea580c" stroke-width="2"/>
+<line x1="482.72" y1="250" x2="482.72" y2="252.986" stroke="#ea580c" stroke-width="2"/>
+<line x1="491.96" y1="250" x2="491.96" y2="260.355" stroke="#ea580c" stroke-width="2"/>
+<line x1="501.2" y1="250" x2="501.2" y2="239.265" stroke="#ea580c" stroke-width="2"/>
+<line x1="510.44" y1="250" x2="510.44" y2="247.987" stroke="#ea580c" stroke-width="2"/>
+<line x1="519.68" y1="250" x2="519.68" y2="257.132" stroke="#ea580c" stroke-width="2"/>
+<line x1="528.92" y1="250" x2="528.92" y2="244.115" stroke="#ea580c" stroke-width="2"/>
+<line x1="538.16" y1="250" x2="538.16" y2="256.342" stroke="#ea580c" stroke-width="2"/>
+<line x1="547.4" y1="250" x2="547.4" y2="255.741" stroke="#ea580c" stroke-width="2"/>
+<line x1="556.64" y1="250" x2="556.64" y2="253.981" stroke="#ea580c" stroke-width="2"/>
+<line x1="565.88" y1="250" x2="565.88" y2="248.981" stroke="#ea580c" stroke-width="2"/>
+<line x1="575.12" y1="250" x2="575.12" y2="253.081" stroke="#ea580c" stroke-width="2"/>
+<line x1="584.36" y1="250" x2="584.36" y2="242.11" stroke="#ea580c" stroke-width="2"/>
+<line x1="593.6" y1="250" x2="593.6" y2="255.928" stroke="#ea580c" stroke-width="2"/>
+<line x1="602.84" y1="250" x2="602.84" y2="248.012" stroke="#ea580c" stroke-width="2"/>
+<line x1="612.08" y1="250" x2="612.08" y2="244.302" stroke="#ea580c" stroke-width="2"/>
+<line x1="621.32" y1="250" x2="621.32" y2="244.023" stroke="#ea580c" stroke-width="2"/>
+<line x1="630.56" y1="250" x2="630.56" y2="245.698" stroke="#ea580c" stroke-width="2"/>
+<line x1="639.8" y1="250" x2="639.8" y2="255.944" stroke="#ea580c" stroke-width="2"/>
+<line x1="649.04" y1="250" x2="649.04" y2="253.116" stroke="#ea580c" stroke-width="2"/>
+<line x1="658.28" y1="250" x2="658.28" y2="245.177" stroke="#ea580c" stroke-width="2"/>
+<line x1="667.52" y1="250" x2="667.52" y2="245.769" stroke="#ea580c" stroke-width="2"/>
+<line x1="676.76" y1="250" x2="676.76" y2="249.513" stroke="#ea580c" stroke-width="2"/>
+<line x1="686" y1="250" x2="686" y2="247.709" stroke="#ea580c" stroke-width="2"/>
+<line x1="695.24" y1="250" x2="695.24" y2="250.075" stroke="#ea580c" stroke-width="2"/>
+<line x1="704.48" y1="250" x2="704.48" y2="245.568" stroke="#ea580c" stroke-width="2"/>
+<line x1="713.72" y1="250" x2="713.72" y2="247.741" stroke="#ea580c" stroke-width="2"/>
+<line x1="722.96" y1="250" x2="722.96" y2="252.924" stroke="#ea580c" stroke-width="2"/>
+<line x1="732.2" y1="250" x2="732.2" y2="252.204" stroke="#ea580c" stroke-width="2"/>
+<line x1="741.44" y1="250" x2="741.44" y2="249.681" stroke="#ea580c" stroke-width="2"/>
+<line x1="750.68" y1="250" x2="750.68" y2="250.358" stroke="#ea580c" stroke-width="2"/>
+<line x1="759.92" y1="250" x2="759.92" y2="252.713" stroke="#ea580c" stroke-width="2"/>
+<line x1="769.16" y1="250" x2="769.16" y2="248.741" stroke="#ea580c" stroke-width="2"/>
+<line x1="778.4" y1="250" x2="778.4" y2="251.359" stroke="#ea580c" stroke-width="2"/>
+<line x1="787.64" y1="250" x2="787.64" y2="247.975" stroke="#ea580c" stroke-width="2"/>
+<line x1="796.88" y1="250" x2="796.88" y2="251.592" stroke="#ea580c" stroke-width="2"/>
+<line x1="806.12" y1="250" x2="806.12" y2="252.253" stroke="#ea580c" stroke-width="2"/>
+<line x1="815.36" y1="250" x2="815.36" y2="247.159" stroke="#ea580c" stroke-width="2"/>
+<line x1="262.5" y1="56" x2="262.5" y2="310" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="262.5" y="50" font-size="13" fill="#dc2626" text-anchor="middle" font-weight="bold"><tspan x="262.5" dy="0">50 ms</tspan></text>
+<text x="166.25" y="330" font-size="13" fill="#16a34a" text-anchor="middle" font-weight="bold"><tspan x="166.25" dy="0">early (&lt;= 50 ms)</tspan></text>
+<text x="551.25" y="330" font-size="13" fill="#ea580c" text-anchor="middle" font-weight="bold"><tspan x="551.25" dy="0">late (&gt; 50 ms, the reverberant tail)</tspan></text>
+<text x="70" y="362" font-size="12" fill="#2563eb" text-anchor="start" font-weight="normal"><tspan x="70" dy="0">1. Direct sound: Direct (ms) = time of the first strongest peak (the propagation time from source to mic)</tspan></text>
+<text x="450" y="408" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="450" dy="0">C50 = 10*log10( early energy / late energy ) dB, higher = clearer.   D50 = early energy / total energy x 100 %, higher = clearer.</tspan></text>
+</svg>

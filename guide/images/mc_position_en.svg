@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" width="1000" height="540" font-family="-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',Helvetica,Arial,sans-serif">
+<rect width="1000" height="540" fill="#ffffff"/>
+<text x="500" y="28" font-size="18" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="500" dy="0">Mic position check: why only the line-of-sight error is visible (schematic)</tspan></text>
+<rect x="54" y="248" width="26" height="44" rx="3" fill="#374151" stroke="none" stroke-width="0" opacity="1"/>
+<polyline points="80,248 108,230 108,310 80,292" fill="#6b7280" stroke="#374151" stroke-width="2" stroke-linejoin="round"/>
+<text x="80" y="340" font-size="14" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="80" dy="0">Source (speaker)</tspan></text>
+<polyline points="283.218,96.026 289.463,103.223 295.44,110.644 301.142,118.279 306.56,126.118 311.686,134.15 316.516,142.365 321.04,150.751 325.255,159.297 329.154,167.992 332.731,176.824 335.982,185.781 338.903,194.852 341.49,204.023 343.738,213.283 345.646,222.619 347.211,232.018 348.43,241.469 349.302,250.958 349.825,260.473 350,270 349.825,279.527 349.302,289.042 348.43,298.531 347.211,307.982 345.646,317.381 343.738,326.717 341.49,335.977 338.903,345.148 335.982,354.219 332.731,363.176 329.154,372.008 325.255,380.703 321.04,389.249 316.516,397.635 311.686,405.85 306.56,413.882 301.142,421.721 295.44,429.356 289.463,436.777 283.218,443.974" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polyline points="305.512,75.9521 312.478,83.9796 319.145,92.257 325.504,100.773 331.547,109.516 337.266,118.475 342.652,127.638 347.699,136.992 352.4,146.524 356.748,156.222 360.738,166.073 364.365,176.064 367.623,186.181 370.508,196.41 373.016,206.738 375.144,217.152 376.889,227.636 378.249,238.177 379.221,248.761 379.805,259.373 380,270 379.805,280.627 379.221,291.239 378.249,301.823 376.889,312.364 375.144,322.848 373.016,333.262 370.508,343.59 367.623,353.819 364.365,363.936 360.738,373.927 356.748,383.778 352.4,393.476 347.699,403.008 342.652,412.362 337.266,421.525 331.547,430.484 325.504,439.227 319.145,447.743 312.478,456.02 305.512,464.048" fill="none" stroke="#dc2626" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<text x="322.4" y="73.8" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="322.4" dy="0">same arc = arrives together</tspan></text>
+<line x1="112" y1="270" x2="450" y2="270" stroke="#9ca3af" stroke-width="1.2" stroke-dasharray="6 4"/>
+<text x="210" y="262" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="210" dy="0">line of sight</tspan></text>
+<circle cx="350" cy="270" r="9" fill="#ffffff" stroke="#2563eb" stroke-width="2.4"/>
+<circle cx="380" cy="270" r="9" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<line x1="360" y1="294" x2="380" y2="294" stroke="#dc2626" stroke-width="1.6"/>
+<polygon points="380,294 370.789,297.894 370.789,290.106" fill="#dc2626"/>
+<text x="372" y="314" font-size="12" fill="#dc2626" text-anchor="middle" font-weight="normal"><tspan x="372" dy="0">further along the line of sight</tspan><tspan x="372" dy="1.3em">-&gt; arrives later -&gt; visible</tspan></text>
+<line x1="112" y1="260" x2="334.32" y2="181.075" stroke="#9ca3af" stroke-width="1" stroke-dasharray="6 4"/>
+<circle cx="334.32" cy="181.075" r="9" fill="#ffffff" stroke="#2563eb" stroke-width="2.4"/>
+<circle cx="312.863" cy="136.09" r="9" fill="#7c3aed" stroke="#7c3aed" stroke-width="1"/>
+<text x="332.863" y="114.09" font-size="12" fill="#7c3aed" text-anchor="start" font-weight="normal"><tspan x="332.863" dy="0">moved sideways along the arc</tspan><tspan x="332.863" dy="1.3em">-&gt; same arrival time -&gt; invisible</tspan></text>
+<circle cx="60" cy="470" r="8" fill="#ffffff" stroke="#2563eb" stroke-width="2.4"/>
+<text x="76" y="475" font-size="13" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="76" dy="0">design position (the coordinates you entered)</tspan></text>
+<circle cx="60" cy="496" r="8" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="76" y="501" font-size="13" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="76" dy="0">actual position</tspan></text>
+<circle cx="640" cy="90" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="640" y="95" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">1</tspan></text>
+<text x="660" y="95" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">The software predicts each mic's</tspan><tspan x="660" dy="1.3em">arrival time from the coordinates</tspan><tspan x="660" dy="1.3em">and the speaker position, and</tspan><tspan x="660" dy="1.3em">compares it with the measurement</tspan></text>
+<circle cx="640" cy="222" r="11" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="640" y="227" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">2</tspan></text>
+<text x="660" y="227" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Residual (us) = measured - predicted</tspan><tspan x="660" dy="1.3em">Residual (mm) = times 0.343</tspan><tspan x="660" dy="1.3em">positive = further from the speaker</tspan><tspan x="660" dy="1.3em">than designed</tspan></text>
+<circle cx="640" cy="354" r="11" fill="#7c3aed" stroke="#7c3aed" stroke-width="1"/>
+<text x="640" y="359" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">3</tspan></text>
+<text x="660" y="359" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">One speaker cannot see sideways errors:</tspan><tspan x="660" dy="1.3em">move the speaker (or turn the device)</tspan><tspan x="660" dy="1.3em">and measure again</tspan></text>
+</svg>

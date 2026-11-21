@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" width="1000" height="470" font-family="-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',Helvetica,Arial,sans-serif">
+<rect width="1000" height="470" fill="#ffffff"/>
+<text x="500" y="28" font-size="18" fill="#1f2937" text-anchor="middle" font-weight="bold"><tspan x="500" dy="0">How to read the channel-delay bar chart (schematic)</tspan></text>
+<rect x="80" y="60" width="520" height="320" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" opacity="1"/>
+<line x1="80" y1="357.143" x2="600" y2="357.143" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="361.143" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-60</tspan></text>
+<line x1="80" y1="288.571" x2="600" y2="288.571" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="292.571" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">-30</tspan></text>
+<line x1="80" y1="220" x2="600" y2="220" stroke="#1f2937" stroke-width="1.5"/>
+<text x="72" y="224" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">0</tspan></text>
+<line x1="80" y1="151.429" x2="600" y2="151.429" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="155.429" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">30</tspan></text>
+<line x1="80" y1="82.8571" x2="600" y2="82.8571" stroke="#e5e7eb" stroke-width="1"/>
+<text x="72" y="86.8571" font-size="12" fill="#6b7280" text-anchor="end" font-weight="normal"><tspan x="72" dy="0">60</tspan></text>
+<text x="24" y="220" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal" transform="rotate(-90 24 220.0)"><tspan x="24" dy="0">Delay (us)</tspan></text>
+<rect x="96.5" y="220" width="32" height="1.5" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<text x="112.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="112.5" dy="0">1</tspan></text>
+<text x="112.5" y="214" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="112.5" dy="0">0</tspan></text>
+<rect x="161.5" y="213.143" width="32" height="6.85714" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<text x="177.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="177.5" dy="0">2</tspan></text>
+<text x="177.5" y="207.143" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="177.5" dy="0">+3</tspan></text>
+<rect x="226.5" y="220" width="32" height="4.57143" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<text x="242.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="242.5" dy="0">3</tspan></text>
+<text x="242.5" y="240.571" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="242.5" dy="0">-2</tspan></text>
+<rect x="291.5" y="117.143" width="32" height="102.857" rx="1" fill="#dc2626" stroke="none" stroke-width="0" opacity="1"/>
+<text x="307.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="307.5" dy="0">4</tspan></text>
+<text x="307.5" y="111.143" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="307.5" dy="0">+45</tspan></text>
+<rect x="356.5" y="220" width="32" height="2.28571" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<text x="372.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="372.5" dy="0">5</tspan></text>
+<text x="372.5" y="238.286" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="372.5" dy="0">-1</tspan></text>
+<rect x="421.5" y="215.429" width="32" height="4.57143" rx="1" fill="#2563eb" stroke="none" stroke-width="0" opacity="1"/>
+<text x="437.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="437.5" dy="0">6</tspan></text>
+<text x="437.5" y="209.429" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="437.5" dy="0">+2</tspan></text>
+<rect x="486.5" y="220" width="32" height="109.714" rx="1" fill="#ea580c" stroke="none" stroke-width="0" opacity="1"/>
+<text x="502.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="502.5" dy="0">7</tspan></text>
+<text x="502.5" y="345.714" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="502.5" dy="0">-48</tspan></text>
+<rect x="551.5" y="206.286" width="32" height="13.7143" rx="1" fill="#6b7280" stroke="none" stroke-width="0" opacity="0.55"/>
+<text x="567.5" y="400" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="567.5" dy="0">8</tspan></text>
+<text x="567.5" y="200.286" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="567.5" dy="0">+6</tspan></text>
+<text x="340" y="422" font-size="13" fill="#1f2937" text-anchor="middle" font-weight="normal"><tspan x="340" dy="0">Channel</tspan></text>
+<circle cx="112.5" cy="194" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="112.5" y="199" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="112.5" dy="0">1</tspan></text>
+<circle cx="333.5" cy="160" r="11" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="333.5" y="165" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="333.5" dy="0">3</tspan></text>
+<circle cx="528.5" cy="290" r="11" fill="#ea580c" stroke="#ea580c" stroke-width="1"/>
+<text x="528.5" y="295" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="528.5" dy="0">4</tspan></text>
+<circle cx="593.5" cy="192" r="11" fill="#6b7280" stroke="#6b7280" stroke-width="1"/>
+<text x="593.5" y="197" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="593.5" dy="0">5</tspan></text>
+<circle cx="100" cy="80" r="11" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="100" y="85" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="100" dy="0">2</tspan></text>
+<line x1="126" y1="100" x2="126" y2="66" stroke="#16a34a" stroke-width="1.8"/>
+<polygon points="126,66 129.894,75.2106 122.106,75.2106" fill="#16a34a"/>
+<line x1="126" y1="340" x2="126" y2="374" stroke="#16a34a" stroke-width="1.8"/>
+<polygon points="126,374 122.106,364.789 129.894,364.789" fill="#16a34a"/>
+<text x="136" y="96" font-size="12" fill="#16a34a" text-anchor="start" font-weight="normal"><tspan x="136" dy="0">later</tspan></text>
+<text x="136" y="360" font-size="12" fill="#16a34a" text-anchor="start" font-weight="normal"><tspan x="136" dy="0">earlier</tspan></text>
+<circle cx="640" cy="80" r="11" fill="#2563eb" stroke="#2563eb" stroke-width="1"/>
+<text x="640" y="85" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">1</tspan></text>
+<text x="660" y="85" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Reference channel (channel 1 here)</tspan><tspan x="660" dy="1.3em">its delay is always 0; the others</tspan><tspan x="660" dy="1.3em">are measured against it</tspan></text>
+<circle cx="640" cy="166" r="11" fill="#16a34a" stroke="#16a34a" stroke-width="1"/>
+<text x="640" y="171" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">2</tspan></text>
+<text x="660" y="171" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Bar up = arrives later than the reference</tspan><tspan x="660" dy="1.3em">Bar down = arrives earlier</tspan></text>
+<circle cx="640" cy="234" r="11" fill="#dc2626" stroke="#dc2626" stroke-width="1"/>
+<text x="640" y="239" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">3</tspan></text>
+<text x="660" y="239" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Channel 4 is 45 us late</tspan><tspan x="660" dy="1.3em">1 us = 0.343 mm of path,</tspan><tspan x="660" dy="1.3em">so about 15 mm further away</tspan></text>
+<circle cx="640" cy="320" r="11" fill="#ea580c" stroke="#ea580c" stroke-width="1"/>
+<text x="640" y="325" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">4</tspan></text>
+<text x="660" y="325" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Channel 7 is 48 us early</tspan><tspan x="660" dy="1.3em">(about 16 mm nearer to the source)</tspan></text>
+<circle cx="640" cy="388" r="11" fill="#6b7280" stroke="#6b7280" stroke-width="1"/>
+<text x="640" y="393" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="bold"><tspan x="640" dy="0">5</tspan></text>
+<text x="660" y="393" font-size="14" fill="#1f2937" text-anchor="start" font-weight="normal"><tspan x="660" dy="0">Grey = correlation below 0.5</tspan><tspan x="660" dy="1.3em">the channel does not follow the</tspan><tspan x="660" dy="1.3em">reference: delay and polarity unreliable</tspan></text>
+<text x="500" y="452" font-size="12" fill="#6b7280" text-anchor="middle" font-weight="normal"><tspan x="500" dy="0">Numbers are made up to show how to read the chart; in the real window, hovering a bar shows the channel, delay (us, samples, mm), polarity and correlation.</tspan></text>
+</svg>

@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Isolation Materials and Test Equipment Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#eef3f2; --surface:#fff; --surface-2:#e1eae8; --ink:#142422; --muted:#526864; --accent:#0e7a78; --border:#cfdbd8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0a1615; --surface:#0f1e1c; --surface-2:#14302c; --ink:#e6f3f0; --muted:#8fada8; --accent:#3fd9c4; --border:#1e3936; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 "Segoe UI", "Source Sans 3", Arial, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  h2 { font-size: 20px; margin: 34px 0 8px; border-bottom: 2px solid var(--accent); padding-bottom: 4px; }
+  h3 { font-size: 16px; margin: 22px 0 6px; color: var(--accent); }
+  p, li { max-width: 90ch; }
+  .note { background: var(--surface-2); border-left: 4px solid var(--accent); padding: 8px 12px; margin: 12px 0; border-radius: 4px; }
+  .wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; margin: 8px 0 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; vertical-align: top; padding: 6px 10px; border-bottom: 1px solid var(--border); }
+  th { background: var(--surface-2); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  a { color: var(--accent); }
+  nav a { margin-right: 14px; white-space: nowrap; }
+  code { font-family: Consolas, "JetBrains Mono", monospace; font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Isolation Materials and Test Equipment Reference</h1>
+<p>A lookup table of material and equipment names for acoustic isolation boxes and chambers (see <em>Design &gt; Isolation Chamber Sim</em> in the <a href="how_to_use.html#design-isolation-chamber-sim">user guide</a>). It is a name list with typical roles, not a design tool.</p>
+<div class="note"><strong>How to read this page.</strong> Entries marked <strong>&dagger;</strong> come from general engineering knowledge and were not confirmed by the web sources used. All other entries have a source link. Most sources are manufacturer pages, so numbers are manufacturer claims: confirm them in the manufacturer's data sheet or an independent test report before you design with them. Product names belong to their owners; listing is not an endorsement.</div>
+<nav><a href="#materials">Materials</a><a href="#data">Material data points</a><a href="#stacks">Typical layer stacks</a><a href="#equipment">Test equipment</a><a href="#standards">Standards</a><a href="#units">Units and terms</a><a href="#gaps">Not found</a></nav>
+
+<h2 id="materials">1. Materials</h2>
+<h3>1.1 Absorbers (control reflections inside the box)</h3>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Role / notes</th><th>Source</th></tr>
+<tr><td>Melamine foam wedge</td><td>The common anechoic wedge material; one supplier lists density 8&ndash;11 kg/m&sup3;.</td><td><a href="https://www.its-acoustique.fr/en/acoustical-insulation-soundproofing/absorbing-wedge-anechoic-room">ITS</a></td></tr>
+<tr><td>Rock wool / mineral wool wedge</td><td>Absorber and fill; needs a textile cover (stockinette).</td><td><a href="https://www.its-acoustique.fr/en/acoustical-insulation-soundproofing/absorbing-wedge-anechoic-room">ITS</a></td></tr>
+<tr><td>Glass wool</td><td>Porous (fibrous) absorber. Wedge base 20&ndash;60 cm, wedge angle 10&ndash;15&deg;.</td><td><a href="https://www.sciencedirect.com/topics/engineering/anechoic-chamber">ScienceDirect</a></td></tr>
+<tr><td>Polyurethane (PU) foam</td><td>Porous foam; tested in ISO 354 studies. Can oxidise and shed dust.</td><td><a href="https://dergipark.org.tr/en/download/article-file/2029893">Study</a></td></tr>
+<tr><td>Polyester fibre panel</td><td>Absorption panel, mainly mid and high frequencies.</td><td><a href="https://www.pro360.com.tw/guide/sound_insulation_material">Pro360</a></td></tr>
+<tr><td>Mineralised wood-wool board, mineral wool board</td><td>Absorption boards.</td><td><a href="https://www.pro360.com.tw/guide/sound_insulation_material">Pro360</a></td></tr>
+<tr><td>Perforated / micro-perforated panel</td><td>Resonant absorber, good at mid and high frequencies.</td><td><a href="https://www.sciengine.com/doi/pdf/4B74B7DF301D4E398E760F21D4024E53">Ceramics J., 2002</a></td></tr>
+<tr><td>Panel (membrane) resonator</td><td>Resonant absorber, more effective at low frequencies.</td><td><a href="https://www.sciengine.com/doi/pdf/4B74B7DF301D4E398E760F21D4024E53">Ceramics J., 2002</a></td></tr>
+<tr><td>Melamine flat panels (Basotect, MelaMax, AlphaSorb, Sorbermel)</td><td>Branded melamine products, flat or wedge. See section 2.</td><td><a href="https://www.archiexpo.com/prod/basf-usa/product-103548-1159889.html">BASF</a>, <a href="https://www.controlnoise.com/wp-content/uploads/2017/04/MelaMax-Datasheet.pdf">NetWell</a>, <a href="https://www.knowde.com/stores/acoustical-solutions/products/alphasorb-flat-foam">Acoustical Solutions</a></td></tr>
+</table></div>
+
+<h3>1.2 Barrier and mass layers (keep outside noise out)</h3>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Role / notes</th><th>Source</th></tr>
+<tr><td>Mass-loaded vinyl (MLV)</td><td>Limp mass layer. One vendor example: STC 30 at 2.5 mm, STC 34 at 4 mm.</td><td><a href="https://mmtacoustix.com/anechoic-chamber-design-materials-purpose.php">MMT Acoustix</a></td></tr>
+<tr><td>Gypsum board (drywall)</td><td>Mass layer of a double wall; several layers add mass.</td><td><a href="https://dbabsorber.com/blogs/blog/anechoic-room-design-acoustic-testing-guide">dB Absorber</a></td></tr>
+<tr><td>Calcium silicate board</td><td>Isolation board base material.</td><td><a href="https://www.pro360.com.tw/guide/sound_insulation_material">Pro360</a></td></tr>
+<tr><td>Plywood, birch plywood, particle board</td><td>Box walls. A university speaker box uses birch plywood + rock wool + felt + foam, about 9.7 cm in total.</td><td><a href="https://www.uio.no/ritmo/english/research/interaction-robotics/sound-box/index.html">UiO</a></td></tr>
+<tr><td>Concrete</td><td>Large mass.</td><td><a href="https://dbabsorber.com/blogs/blog/anechoic-room-design-acoustic-testing-guide">dB Absorber</a></td></tr>
+<tr><td>Steel frame</td><td>Strength and isolation of the chamber shell.</td><td><a href="https://dbabsorber.com/blogs/blog/anechoic-room-design-acoustic-testing-guide">dB Absorber</a></td></tr>
+<tr><td>Soundproof felt, soundproof membrane</td><td>Felt: absorption and some insulation (studios). Membrane: polymer + aluminium film + fire-retardant layer.</td><td><a href="https://www.cnpp.cn/focus/31813.html">CNPP</a></td></tr>
+<tr><td>Mineral wool / glass wool / rock wool as cavity fill</td><td>Fill between the walls; denser fill is better. Gap fill alone is not a barrier.</td><td><a href="https://www.pro360.com.tw/guide/soundproof_cotton">Pro360</a></td></tr>
+</table></div>
+
+<h3>1.3 Damping</h3>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Role / notes</th><th>Source</th></tr>
+<tr><td>Butyl constrained-layer damper (CLD)</td><td>Viscoelastic butyl layer + aluminium constraining layer; turns panel vibration into heat. A loss factor above 0.1 is called good. Examples: Damplifier Pro (&minus;60 to 232 &deg;C), SoundSkins Classic.</td><td><a href="https://www.secondskinaudio.com/content/pdf/damplifier-pro-spec-sheet.pdf">Second Skin</a>, <a href="https://uspto.report/patent/grant/11390057">US 11,390,057</a></td></tr>
+<tr><td>Damping compound &dagger;</td><td>Applied to panels to reduce ringing.</td><td>&mdash;</td></tr>
+</table></div>
+
+<h3>1.4 Decoupling and vibration isolation</h3>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Role / notes</th><th>Source</th></tr>
+<tr><td>Air gap / floating box (&ldquo;box in a room&rdquo;)</td><td>Shure's mic test chambers float inside a room with an air gap, foam and layers of drywall.</td><td><a href="https://www.shure.com/en-us/insights/an-inside-look-at-an-anechoic-chamber">Shure</a></td></tr>
+<tr><td>Sorbothane pads, mounts, sheet</td><td>Viscoelastic isolators. A sheet at least 1 in thick is needed to get to about 10 Hz natural frequency; small discs isolate better than large rectangles (vendor).</td><td><a href="https://www.sorbothane.com/technical-data/articles/about-sorbothane-vibration-isolation-mounts/">Sorbothane</a></td></tr>
+<tr><td>Neoprene pads, ribbed / waffle neoprene</td><td>Oil-resistant, durable. A commercial neoprene mount lists a minimum vertical natural frequency of 16 Hz. Ribbed neoprene (&lt;50 durometer) under steel springs isolates low and high frequencies.</td><td><a href="https://www.eaton.com/cr/en-us/catalog/support-systems/vibration-isolation-pads.html">Eaton</a>, <a href="https://gammaelectronics.xyz/measurement-testing-com/architectual-acoustics-5-mechanical-system-noise-vibrations-4.html">Overview</a></td></tr>
+<tr><td>Steel spring mounts</td><td>Largest deflection, best at low frequencies.</td><td><a href="https://gammaelectronics.xyz/measurement-testing-com/architectual-acoustics-5-mechanical-system-noise-vibrations-4.html">Overview</a></td></tr>
+<tr><td>Cork pads</td><td>Gradually compresses under constant load and loses resilience.</td><td><a href="https://gammaelectronics.xyz/measurement-testing-com/architectual-acoustics-5-mechanical-system-noise-vibrations-4.html">Overview</a></td></tr>
+</table></div>
+<p>Rule: a good isolator brings the system natural frequency below the disturbing frequency.</p>
+
+<h3>1.5 Seals, sealants and doors</h3>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Role / notes</th><th>Source</th></tr>
+<tr><td>Acoustical sealant (caulk)</td><td>Fills gaps and edges. Products: Sheetrock Acoustical Sealant (USG), OSI SC-175, DAP Acoustical Sealant, Titebond acoustical sealant, Acoustical Surfaces GREENchoice, Second Skin. Latex-based is the usual advice; one vendor says avoid silicone, silicone/latex hybrids, spray foam and butyl for soundproofing. Keep it sealed while it is still soft: performance falls as it hardens (vendor).</td><td><a href="https://www.usg.com/content/usgcom/en/products/walls/drywall/sealants/sheetrock-acoustical-sealant.html">USG</a>, <a href="https://acousticalsolutions.com/product/osi-sc-175-acoustical-caulk">OSI</a>, <a href="https://www.secondskinaudio.com/blogs/resources/acoustic-caulk">Second Skin</a></td></tr>
+<tr><td>Door seal kits (jamb, head, bottom)</td><td>Neoprene or silicone gaskets, adjustable kits, self-levelling bottom seals (not suitable for carpet). Vendors: Acoustical Surfaces, Second Skin Sound Lock, Zero International, Acuphon.</td><td><a href="https://www.acousticalsurfaces.com/?p=69518">Acoustical Surfaces</a>, <a href="https://www.secondskinaudio.com/soundproofing/sound-lock-jamb-seals">Second Skin</a>, <a href="https://www.zeroplus.co.uk/pages/acoustic-seals">Zero</a>, <a href="https://www.specifiedby.com/acuphon/c/acoustic-door-seals">Acuphon</a></td></tr>
+<tr><td>Sound-rated acoustic door</td><td>A single ordinary door rarely goes past STC 30 (poor seals, low mass); doors are the biggest leak. Sealing is the cheapest first step, replacing the door gives the most.</td><td><a href="https://acousticalsolutions.com/soundproofing-a-door">Acoustical Solutions</a>, <a href="https://www.whisperroom.com/blog/how-sound-isolation-works">WhisperRoom</a></td></tr>
+</table></div>
+
+<h2 id="data">2. Material data points</h2>
+<p>All values are manufacturer or study data under the stated method. Different test methods and thicknesses are not comparable.</p>
+<div class="wrap"><table>
+<tr><th>Material</th><th>Data</th><th>Method / note</th><th>Source</th></tr>
+<tr><td>BASF Basotect (melamine foam)</td><td>NRC 0.90 at 2 in; density 0.55 lb/ft&sup3; (about 8.8 kg/m&sup3;)</td><td>Vendor</td><td><a href="https://www.archiexpo.com/prod/basf-usa/product-103548-1159889.html">ArchiExpo</a></td></tr>
+<tr><td>Acoustical Surfaces Super Wedge (melamine), 6 in</td><td>NRC 1.25; &alpha; at 500 Hz 1.34</td><td>ASTM C423-17 (see note below)</td><td><a href="https://dev.acousticalsurfaces.com/wp-content/uploads/FoamSuperWedgeDataSheet.pdf">Data sheet</a></td></tr>
+<tr><td>Acoustical Surfaces Super Wedge, 8 in</td><td>NRC 1.35; &alpha; at 500 Hz 1.45</td><td>ASTM C423-17</td><td><a href="https://dev.acousticalsurfaces.com/wp-content/uploads/FoamSuperWedgeDataSheet.pdf">Data sheet</a></td></tr>
+<tr><td>NetWell MelaMax wedges, 4 / 6 / 8 in</td><td>NRC 1.26&ndash;1.33</td><td>Density in two data sheets differs (0.7 vs 2 lb/ft&sup3;): check before use</td><td><a href="https://www.controlnoise.com/wp-content/uploads/2017/04/MelaMax-Panels-Datasheet-041724.pdf">Data sheet</a></td></tr>
+<tr><td>Acoustical Solutions AlphaSorb flat foam</td><td>NRC 0.65 at 1 in, 1.00 at 2 in; density 0.34&ndash;0.6 lb/ft&sup3; (white grade)</td><td>Method not stated</td><td><a href="https://www.knowde.com/stores/acoustical-solutions/products/alphasorb-flat-foam">Knowde</a></td></tr>
+<tr><td>Rock wool slabs, 25 mm and 100 mm</td><td>&alpha;w and NRC are given in the report (values not extracted here)</td><td>ISO 354 random incidence</td><td><a href="https://brandcommunity.rockwool.com/asset/JSlivcd-rDKGAgUHkAamZg/asset.pdf?quality=10">Rockwool report</a></td></tr>
+<tr><td>Rock wool board 75 mm, 60 kg/m&sup3; in a plasterboard wall</td><td>Used in a transmission-loss case study</td><td>Study</td><td><a href="https://opus.cloud1.lib.uts.edu.au/bitstream/10453/165146/3/A%20case%20study%20on%20the%20transmission%20loss.pdf">UTS</a></td></tr>
+<tr><td>Stone wool, glass wool, foam glass, PU foam, melamine foam at 50 / 100 / 200 mm</td><td>Sound reduction, absorption and airflow resistivity compared</td><td>Impedance tube, ISO 10534-2</td><td><a href="https://akustiikka.turkuamk.fi/en/sound-absorption-coefficient-tube-method/">Turku AMK</a></td></tr>
+<tr><td>Wall with and without acoustical sealant</td><td>No caulk STC 29; one bead 49; beads under both gypsum layers 53</td><td>Vendor table citing ASTM C919</td><td><a href="https://www.secondskinaudio.com/soundproofing/acoustical-sealant">Second Skin</a></td></tr>
+<tr><td>Door seal kit</td><td>Up to +20 STC points, maximum STC 46 (one kit); up to STC 53 (another line)</td><td>Vendor claims</td><td><a href="https://www.secondskinaudio.com/soundproofing/sound-lock-jamb-seals">Second Skin</a></td></tr>
+</table></div>
+<div class="note">An NRC or &alpha; above 1.0 is not a real absorbed fraction. It appears for wedges tested to ASTM C423 because of the way the sample area is counted. Use it to compare wedges tested the same way, not as a cut-off. No wedge cut-off frequency was found in the sources. &dagger; As a rule of thumb, a wedge works well down to the frequency whose wavelength is about four times the wedge length.</div>
+
+<h2 id="stacks">3. Typical layer stacks</h2>
+<ul>
+<li><strong>Decoupled double wall:</strong> mass layers (gypsum, MLV or damping compound) + air gap + fill + sealed door + absorber inside (<a href="https://dbabsorber.com/blogs/blog/anechoic-room-design-acoustic-testing-guide">dB Absorber</a>).</li>
+<li><strong>Box in a room:</strong> outer room walls, air gap, foam insulation, several drywall layers, then the chamber (<a href="https://www.shure.com/en-us/insights/an-inside-look-at-an-anechoic-chamber">Shure</a>).</li>
+<li><strong>Small speaker sound box:</strong> birch plywood + rock wool + felt (glued) + interior acoustic foam, about 9.7 cm (<a href="https://www.uio.no/ritmo/english/research/interaction-robotics/sound-box/index.html">UiO</a>).</li>
+<li><strong>DIY enclosure:</strong> double-wall particle board with MLV between, MLV strips for an air gap; seals matter most (<a href="https://wiki.auto-pi-lot.com/index.php/Soundproof_Boxes">auto-pi-lot wiki</a>).</li>
+<li><strong>Full anechoic room:</strong> wedges on all surfaces. <strong>Semi-anechoic:</strong> reflecting floor, wedges on walls and ceiling (<a href="https://www.sciencedirect.com/topics/engineering/anechoic-chamber">ScienceDirect</a>).</li>
+</ul>
+
+<h2 id="equipment">4. Test equipment</h2>
+<h3>4.1 Analyzers, QC systems and interfaces</h3>
+<div class="wrap"><table>
+<tr><th>Maker</th><th>Model</th><th>Notes</th><th>Source</th></tr>
+<tr><td>Audio Precision</td><td>APx515, APx516B, APx517B, APx511, APx500 Flex (software)</td><td>APx517B: integrated acoustic test system for speakers, mics, headphones; APx511: hearing aid production test; APx500 Flex: software for third-party ASIO interfaces. APx555 &dagger; also exists but was not confirmed.</td><td><a href="https://www.prosoundweb.com/audio-precision-unveils-new-apx517b-acoustic-analyzer/">ProSoundWeb</a>, <a href="https://www.zhihu.com/tardis/jm/art/2049066871476040890">APx515</a></td></tr>
+<tr><td>Klippel</td><td>KLIPPEL Analyzer 3 (KA3), Production Analyzer (PA), QC Standard software, Multi-Tone Distortion module</td><td>KA3: USB 2.0, 2 XLR in/out, 8-channel speaker monitoring. PA is being discontinued. QC also runs on third-party sound cards.</td><td><a href="https://www.klippel.de/products/qc-system/analyzer-hardware.html">Klippel</a></td></tr>
+<tr><td>Listen Inc.</td><td>SoundCheck (software), AudioConnect 2 (2-in/2-out), AudioConnect 8&times;8, SoundConnect (1-ch mic supply), SoundConnect 2 (2-ch USB mic supply)</td><td>SoundCheck works with artificial mouths, ear couplers and HATS of many brands.</td><td><a href="https://acsoft.co.uk/product/audioconnect-2/">AC Soft</a>, <a href="https://audioxpress.com/tags/Audio-Interfaces/SoundCheck">audioXpress</a></td></tr>
+<tr><td>Neutrik</td><td>Minirator &dagger;</td><td>Hand-held audio generator/analyzer. Not confirmed by the sources.</td><td>&mdash;</td></tr>
+</table></div>
+
+<h3>4.2 Artificial ears, mouths and head simulators</h3>
+<div class="wrap"><table>
+<tr><th>Type</th><th>Models</th><th>Notes</th><th>Source</th></tr>
+<tr><td>Artificial ear / coupler</td><td>B&amp;K 4152 (2 cc and 6 cc), B&amp;K 4153 (IEC 60318-1, 4.2 cc), GRAS 43AA, Larson Davis AEC201-A, AEC100 (NBS 9/A), AEC304 (occluded ear simulator)</td><td>Headphone and earphone measurement; audiometer calibration.</td><td><a href="https://www.bksv.com/en/transducers/simulators/ear-mouth-simulators/4152">B&amp;K</a>, <a href="https://larsondavis.com/Products/audiometer-calibration-systems/portable-audcal">Larson Davis</a>, <a href="https://www.listeninc.com/products/audio-testing-hardware/artificial-mouths-ears-couplers/">Listen</a></td></tr>
+<tr><td>Artificial mastoid</td><td>Larson Davis AMC493</td><td>Bone-conduction vibrators.</td><td><a href="https://larsondavis.com/Products/audiometer-calibration-systems/portable-audcal">Larson Davis</a></td></tr>
+<tr><td>Artificial mouth</td><td>B&amp;K and GRAS mouth simulators, CRYSOUND mouth simulator</td><td>Speech source for microphone and phone tests.</td><td><a href="https://www.listeninc.com/products/audio-testing-hardware/artificial-mouths-ears-couplers/">Listen</a>, <a href="https://www.crysound.com/">CRYSOUND</a></td></tr>
+<tr><td>Head and torso simulator (HATS)</td><td>B&amp;K 5128-C (high frequency), B&amp;K 4128D, GRAS KEMAR</td><td>Head and ear geometry for headset, hearing and phone tests.</td><td><a href="https://www.listeninc.com/products/audio-testing-hardware/artificial-mouths-ears-couplers/">Listen</a></td></tr>
+</table></div>
+
+<h3>4.3 Microphones, sound level meters and calibrators</h3>
+<div class="wrap"><table>
+<tr><th>Type</th><th>Models</th><th>Notes</th><th>Source</th></tr>
+<tr><td>Measurement microphone</td><td>B&amp;K 4189, 4190, 4144; GRAS 46AE; Earthworks M30; Behringer ECM8000 (analog) / ECM8000-U (USB)</td><td>4189/4190: about 50 mV/Pa. 46AE: about &minus;26 dB re 1 V/Pa (comparison report, no data sheet found). M30: about 3 Hz&ndash;30 kHz, individually calibrated (buyer's guide). Check whether the ECM8000 comes with calibration data.</td><td><a href="https://www.manualslib.com/manual/1216019/Teac-Gx-1.html?page=87">Teac manual</a>, <a href="https://www.pcb.com/Resources/Reports/SideBySideMicComparison">PCB report</a></td></tr>
+<tr><td>Sound level meter</td><td>B&amp;K 2235 / 2231, Larson Davis SoundAdvisor 831C, CRYSOUND CRY2833 / CRY2851</td><td>IEC 61672-1:2013 defines class 1 and class 2.</td><td><a href="https://www.bksv.com/media/doc/bo0152.pdf">B&amp;K</a>, <a href="https://webstore.iec.ch/publication/5708">IEC</a></td></tr>
+<tr><td>Sound calibrator</td><td>B&amp;K 4231 (94 / 114 dB, 1 kHz, &plusmn;0.2 dB), GRAS 42AG (94/114 dB at 250 Hz or 1 kHz) and 42AB (114 dB), NTi Audio class 1 (94 dB) and class 2 (114 dB), PCB class 1 (94/114 dB), CRYSOUND CRY3018, BK Precision CAL73</td><td>Check microphone sensitivity before a test.</td><td><a href="https://www.bksv.com/ko/transducers/acoustic/calibrators">B&amp;K</a>, <a href="https://grasacoustics.com/products/sound-calibrator">GRAS</a>, <a href="https://www.nti-audio.com/en/products/measurement-microphones/accessories">NTi</a></td></tr>
+</table></div>
+
+<h2 id="standards">5. Standards</h2>
+<div class="wrap"><table>
+<tr><th>Standard</th><th>Subject</th><th>Source</th></tr>
+<tr><td>ISO 3745:2012 (ANSI/ASA S12.55)</td><td>Sound power in anechoic and semi-anechoic rooms, precision method</td><td><a href="https://genorma.com/en/standards/iso-3745-2012">Genorma</a></td></tr>
+<tr><td>ISO 354:2003</td><td>Sound absorption in a reverberation room</td><td><a href="https://www.iso.org/en/ics/17.140.01.html">ISO</a></td></tr>
+<tr><td>ISO 10534-2</td><td>Sound absorption coefficient, impedance tube</td><td><a href="https://akustiikka.turkuamk.fi/en/sound-absorption-coefficient-tube-method/">Turku AMK</a></td></tr>
+<tr><td>IEC 61672-1:2013</td><td>Sound level meters, class 1 and class 2 specifications</td><td><a href="https://webstore.iec.ch/publication/5708">IEC</a></td></tr>
+<tr><td>IEC 60318-1</td><td>Ear simulator for audiometric measurements (B&amp;K 4153)</td><td><a href="https://www.bksv.com/en/transducers/simulators/ear-mouth-simulators/4153">B&amp;K</a></td></tr>
+<tr><td>ASTM C919</td><td>Use of sealants in acoustical applications</td><td><a href="https://www.secondskinaudio.com/soundproofing/acoustical-sealant">Second Skin</a></td></tr>
+<tr><td>ASTM C423</td><td>Sound absorption in a reverberation room (NRC)</td><td><a href="https://dev.acousticalsurfaces.com/wp-content/uploads/FoamSuperWedgeDataSheet.pdf">Data sheet</a></td></tr>
+<tr><td>ASTM E90, ISO 10140, ISO 717-1 &dagger;</td><td>Airborne transmission loss in the lab; rating (STC, Rw). Current editions not confirmed by search.</td><td>&mdash;</td></tr>
+<tr><td>IEC 60268-5</td><td>Loudspeakers. Listed among the standards Klippel modules support; scope not confirmed here.</td><td><a href="https://klippel.de/know-how/literature/standards.html">Klippel</a></td></tr>
+<tr><td>ITU-T P.57, P.58 &dagger;</td><td>Artificial ears and head-and-torso simulators for telephonometry. Klippel's table uses different numbering (P.581 for HATS use): verify in the ITU catalogue.</td><td><a href="https://klippel.de/know-how/literature/standards.html">Klippel</a></td></tr>
+<tr><td>ISO 18233 &dagger;</td><td>Impulse response measurement methods (sweeps, MLS). Not found by search.</td><td>&mdash;</td></tr>
+</table></div>
+
+<h2 id="units">6. Units, quantities and terms in sound testing</h2>
+<div class="note">This section is general acoustics and audio-test knowledge, not taken from the web sources above. Definitions are the standard ones; for a binding definition, use the standard itself (for example IEC 61672-1 for weightings, ISO 80000-8 for acoustic quantities).</div>
+
+<h3>6.1 Level units and references</h3>
+<div class="wrap"><table>
+<tr><th>Unit</th><th>Reference</th><th>Meaning / use</th></tr>
+<tr><td>dB SPL (Lp)</td><td>20 &micro;Pa</td><td>Sound pressure level = 20&middot;log10(p / 20 &micro;Pa). 1 Pa = 94 dB SPL, 10 Pa = 114 dB SPL (calibrator levels).</td></tr>
+<tr><td>dB re 1 Pa</td><td>1 Pa</td><td>Used for microphone and ear simulator output; 0 dB re 1 Pa = 94 dB SPL.</td></tr>
+<tr><td>dB(A), dB(B), dB(C), dB(Z)</td><td>20 &micro;Pa, weighted</td><td>Frequency weighting. A: approximates ear sensitivity at low levels (most common). C: nearly flat, for loud sounds and peaks. Z: zero weighting (flat). B: rarely used.</td></tr>
+<tr><td>dBV</td><td>1 V RMS</td><td>Electrical level. 1 V = 0 dBV.</td></tr>
+<tr><td>dBu</td><td>0.7746 V RMS</td><td>Electrical level (1 mW into 600 &Omega;). 0 dBu = &minus;2.2 dBV. +4 dBu is the pro-audio line level.</td></tr>
+<tr><td>dBm</td><td>1 mW</td><td>Power level; same as dBu only into 600 &Omega;.</td></tr>
+<tr><td>dBFS, dBov</td><td>Digital full scale / overload</td><td>Digital level; 0 dBFS is the largest code. A full-scale sine is 0 dBFS (RMS &minus;3 dBFS in some conventions: state which one is used).</td></tr>
+<tr><td>dBr</td><td>Chosen reference</td><td>Level relative to another measured value (for example the 1 kHz level or a golden unit).</td></tr>
+<tr><td>dB re 1 V/Pa</td><td>1 V/Pa</td><td>Microphone sensitivity. 50 mV/Pa = &minus;26 dB re 1 V/Pa.</td></tr>
+<tr><td>dB SPL @ 1 W / 1 m</td><td>1 W at 1 m</td><td>Loudspeaker sensitivity. dB SPL @ 2.83 V / 1 m is the same for an 8 &Omega; speaker; for 4 &Omega; they differ by 3 dB.</td></tr>
+<tr><td>dB HL, dB SL</td><td>Audiometric zero / threshold</td><td>Hearing level (re standard hearing threshold) and sensation level (re the person's own threshold).</td></tr>
+<tr><td>Lw (dB re 1 pW)</td><td>1 pW</td><td>Sound power level of a source.</td></tr>
+<tr><td>LI (dB re 1 pW/m&sup2;)</td><td>1 pW/m&sup2;</td><td>Sound intensity level.</td></tr>
+<tr><td>dB re 1 &micro;m/s&sup2;, dB re 1 nm/s</td><td>Per vibration standard</td><td>Acceleration and velocity levels for vibration.</td></tr>
+</table></div>
+<p>Rules of thumb: doubling the distance from a point source in a free field gives &minus;6 dB. Doubling the number of equal incoherent sources gives +3 dB, coherent sources +6 dB. A 10 dB rise is heard as about twice as loud. Doubling the amplitude is +6.02 dB; doubling the power is +3.01 dB.</p>
+
+<h3>6.2 Physical quantities</h3>
+<div class="wrap"><table>
+<tr><th>Quantity</th><th>Symbol / unit</th><th>Notes</th></tr>
+<tr><td>Sound pressure</td><td>p, Pa (N/m&sup2;)</td><td>Hearing threshold about 20 &micro;Pa at 1 kHz; pain threshold about 20 Pa.</td></tr>
+<tr><td>Particle velocity</td><td>v, m/s</td><td>Needed for intensity probes.</td></tr>
+<tr><td>Sound intensity</td><td>I, W/m&sup2;</td><td>Power per area, a vector.</td></tr>
+<tr><td>Sound power</td><td>W, watt</td><td>Total radiated power, independent of the room (ISO 3744 / 3745).</td></tr>
+<tr><td>Frequency, period</td><td>f, Hz; T, s</td><td>Audible range about 20 Hz&ndash;20 kHz.</td></tr>
+<tr><td>Wavelength</td><td>&lambda; = c / f, m</td><td>1 kHz is about 34 cm in air at 20 &deg;C.</td></tr>
+<tr><td>Speed of sound</td><td>c, m/s</td><td>About 343 m/s at 20 &deg;C; c &asymp; 331.3 + 0.606&middot;T(&deg;C).</td></tr>
+<tr><td>Air density</td><td>&rho;, kg/m&sup3;</td><td>About 1.2 kg/m&sup3;.</td></tr>
+<tr><td>Characteristic impedance</td><td>Z0 = &rho;c, Pa&middot;s/m (rayl)</td><td>About 413 rayl in air at 20 &deg;C.</td></tr>
+<tr><td>Acoustic impedance</td><td>Pa&middot;s/m&sup3;</td><td>Pressure per volume velocity.</td></tr>
+<tr><td>Flow resistivity</td><td>&sigma;, Pa&middot;s/m&sup2;</td><td>Key parameter of porous absorbers.</td></tr>
+<tr><td>Surface density</td><td>kg/m&sup2;</td><td>Mass per area of a wall; drives mass-law isolation.</td></tr>
+<tr><td>Phase, delay, group delay</td><td>deg or rad; s (&micro;s, ms)</td><td>&phi; = 360&middot;f&middot;&tau;. Group delay = &minus;d&phi;/d&omega;.</td></tr>
+<tr><td>Temperature, humidity, pressure</td><td>&deg;C, %RH, kPa (hPa)</td><td>Affect c and high-frequency absorption; record them in precision tests.</td></tr>
+</table></div>
+
+<h3>6.3 Level statistics and time handling</h3>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>RMS</td><td>Root mean square; the power-related level. A sine&rsquo;s RMS = peak / &radic;2.</td></tr>
+<tr><td>Peak, peak-to-peak, Lpeak</td><td>Largest instantaneous value (C- or Z-weighted for Lpeak).</td></tr>
+<tr><td>Crest factor</td><td>Peak / RMS, in dB. 3 dB for a sine, about 12 dB for Gaussian noise (peak at 4 sigma), higher for speech and music.</td></tr>
+<tr><td>Leq, LAeq (Leq,T)</td><td>Equivalent continuous level over a time T.</td></tr>
+<tr><td>Lmax, Lmin</td><td>Highest and lowest time-weighted level.</td></tr>
+<tr><td>LN (L10, L50, L90)</td><td>Level exceeded N % of the time.</td></tr>
+<tr><td>LE, SEL</td><td>Sound exposure level: energy of one event normalised to 1 s.</td></tr>
+<tr><td>Time weighting F / S / I</td><td>Fast 125 ms, Slow 1 s, Impulse 35 ms rise (IEC 61672-1).</td></tr>
+<tr><td>Averaging time, integration time</td><td>Window of a level measurement; short windows follow changes, long ones are steadier.</td></tr>
+<tr><td>Max hold, min hold, average (power / linear)</td><td>Spectrum display and storage modes. Power averaging averages squared values; linear averaging averages amplitude.</td></tr>
+<tr><td>Dynamic range, noise floor</td><td>Span from the noise floor to the maximum level.</td></tr>
+</table></div>
+
+<h3>6.4 Frequency analysis</h3>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>FFT, DFT</td><td>Fast Fourier transform. Bin width = fs / N.</td></tr>
+<tr><td>Sample rate (fs), bit depth, Nyquist</td><td>Common 44.1, 48, 96, 192 kHz; 16, 24, 32-bit float. Nyquist = fs / 2.</td></tr>
+<tr><td>Window (Hann, Hamming, Blackman, Flat-top, Rectangular, Kaiser)</td><td>Reduces leakage. Flat-top gives accurate amplitude; Hann is the general choice.</td></tr>
+<tr><td>RBW, ENBW</td><td>Resolution bandwidth; equivalent noise bandwidth of the window.</td></tr>
+<tr><td>Octave and 1/3-octave bands</td><td>Constant-percentage bands, base-10 centres around 1 kHz (ISO 266 preferred frequencies, for example 100, 125, 160, 200 &hellip;). Band edges: f &times; 2<sup>&plusmn;1/6</sup> for 1/3-octave.</td></tr>
+<tr><td>Fractional-octave smoothing</td><td>Smoothing a response by a 1/N-octave window (1/3, 1/6, 1/12, 1/24).</td></tr>
+<tr><td>PSD, ESD</td><td>Power / energy spectral density: Pa&sup2;/Hz, V&sup2;/Hz, dB re 1 (&micro;Pa)&sup2;/Hz.</td></tr>
+<tr><td>Spectrogram, waterfall, CSD</td><td>Time-frequency views; cumulative spectral decay of a loudspeaker.</td></tr>
+<tr><td>Cepstrum</td><td>Spectrum of the log spectrum; finds echoes and periodicity.</td></tr>
+<tr><td>Impulse response (IR), step response</td><td>Time-domain system response; measured with sweeps (ESS) or MLS, then windowed.</td></tr>
+<tr><td>Transfer function, coherence</td><td>Output / input spectrum; coherence 0&ndash;1 shows how much of the output is linearly caused by the input.</td></tr>
+<tr><td>Bark, ERB, mel</td><td>Perceptual frequency scales.</td></tr>
+<tr><td>Sweep (log / linear), chirp, pink / white noise, MLS, multi-tone</td><td>Test stimuli. Log sweep separates harmonic distortion in time; pink noise has equal energy per octave.</td></tr>
+</table></div>
+
+<h3>6.5 Loudspeaker, headphone and microphone terms</h3>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Unit / symbol</th><th>Meaning</th></tr>
+<tr><td>Frequency response (FR)</td><td>dB vs Hz, &plusmn; dB tolerance</td><td>Level against frequency; often with a golden-unit tolerance mask.</td></tr>
+<tr><td>Sensitivity</td><td>dB SPL @ 1 W / 1 m, mV/Pa</td><td>Loudspeaker output per input; microphone output per pressure.</td></tr>
+<tr><td>Impedance</td><td>Z, &Omega; (nominal 4, 8, 16 &Omega;)</td><td>Magnitude and phase against frequency; minimum impedance matters for the amplifier.</td></tr>
+<tr><td>THD, THD+N</td><td>% or dB</td><td>Total harmonic distortion; with noise included. H2, H3: single harmonics.</td></tr>
+<tr><td>IMD, MTD</td><td>% or dB</td><td>Intermodulation / multi-tone distortion.</td></tr>
+<tr><td>Rub &amp; Buzz (R&amp;B)</td><td>dB, ratio</td><td>High-order, irregular distortion from mechanical defects (rubbing voice coil, loose parts, air leaks). Tested with high harmonics, often from the 10th up.</td></tr>
+<tr><td>Max SPL, SPLmax</td><td>dB SPL</td><td>Highest level for a stated distortion limit or input.</td></tr>
+<tr><td>Power handling</td><td>W (RMS, program, peak)</td><td>Rated input power. Rating methods differ between makers.</td></tr>
+<tr><td>Polar pattern, directivity</td><td>Directivity index DI (dB), Q, beamwidth (&deg;)</td><td>Level over angle; omni, cardioid, figure-8 for microphones.</td></tr>
+<tr><td>Thiele&ndash;Small parameters</td><td>Fs (Hz), Qts, Qes, Qms, Vas (L or m&sup3;), Re (&Omega;), Le (mH), Bl (T&middot;m), Mms (g), Cms (mm/N), Rms (kg/s), Sd (cm&sup2;), Xmax (mm)</td><td>Small-signal model of a driver. Fs resonance, Qts total Q, Vas equivalent volume, Bl force factor, Xmax peak excursion.</td></tr>
+<tr><td>Efficiency</td><td>&eta;, %</td><td>Acoustic power out / electrical power in.</td></tr>
+<tr><td>Polarity / phase check</td><td>+ / &minus;, deg</td><td>Whether a positive input moves the cone forward.</td></tr>
+<tr><td>Microphone self noise (EIN)</td><td>dB(A) SPL</td><td>Noise floor as an equivalent sound level. SNR = 94 dB &minus; self noise.</td></tr>
+<tr><td>AOP, max SPL</td><td>dB SPL</td><td>Acoustic overload point: level at 10 % (typical) THD.</td></tr>
+<tr><td>Phantom power, bias</td><td>48 V (P48), 12 V (P12), IEPE 2&ndash;4 mA</td><td>Microphone supply. TEDS: electronic data sheet in IEPE sensors.</td></tr>
+<tr><td>Pressure / free-field / diffuse-field response</td><td>dB</td><td>Calibration conditions of a measurement microphone.</td></tr>
+<tr><td>Sensitivity matching, gain matching, phase matching</td><td>dB, deg</td><td>Difference between channels of an array; for DOA, see <em>DOA Phase Budget Sim</em>.</td></tr>
+<tr><td>Golden sample</td><td>&mdash;</td><td>A known-good unit used as the reference and tolerance centre.</td></tr>
+</table></div>
+
+<h3>6.6 Audio electronics and interface terms</h3>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Unit</th><th>Meaning</th></tr>
+<tr><td>SNR</td><td>dB</td><td>Signal level minus noise level (weighted or unweighted, say which).</td></tr>
+<tr><td>Crosstalk, channel separation</td><td>dB</td><td>Leakage from one channel into the next.</td></tr>
+<tr><td>Level difference, channel balance</td><td>dB</td><td>Gain difference between channels.</td></tr>
+<tr><td>Inter-channel phase, time difference</td><td>deg, &micro;s, samples</td><td>Delay between channels at a given frequency.</td></tr>
+<tr><td>Gain, input sensitivity, output level</td><td>dB, dBu, V RMS</td><td>Amplifier or interface settings.</td></tr>
+<tr><td>CMRR</td><td>dB</td><td>Common-mode rejection ratio of a balanced input.</td></tr>
+<tr><td>Output / input impedance</td><td>&Omega;</td><td>Bridging: input &ge; 10&times; source impedance.</td></tr>
+<tr><td>DC offset</td><td>V or % FS</td><td>Constant shift of the waveform.</td></tr>
+<tr><td>Latency, record delay</td><td>ms, samples</td><td>Time between playing and recording; measured by loopback.</td></tr>
+<tr><td>Clock drift, sample-rate error</td><td>ppm</td><td>Difference between the clocks of play and record devices.</td></tr>
+<tr><td>Jitter</td><td>ps, ns</td><td>Timing noise of a digital clock.</td></tr>
+<tr><td>Clipping, headroom</td><td>dB</td><td>Margin below the maximum level.</td></tr>
+<tr><td>Mono, stereo, M/S</td><td>&mdash;</td><td>M = (L + R) / 2, S = (L &minus; R) / 2; the Phase Analysis scope uses this.</td></tr>
+<tr><td>Correlation (phase correlation)</td><td>&minus;1 &hellip; +1</td><td>Similarity of two channels; +1 identical, 0 uncorrelated, &minus;1 opposite polarity.</td></tr>
+</table></div>
+
+<h3>6.7 Isolation, absorption and room acoustics</h3>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Unit</th><th>Meaning</th></tr>
+<tr><td>Transmission loss (TL, R)</td><td>dB</td><td>10&middot;log10 of incident / transmitted sound power, per frequency band.</td></tr>
+<tr><td>Insertion loss (IL)</td><td>dB</td><td>Level drop at a receiver when a barrier or enclosure is added.</td></tr>
+<tr><td>Noise reduction (NR), level difference (D)</td><td>dB</td><td>Level inside minus level outside; depends on the room absorption.</td></tr>
+<tr><td>STC</td><td>points</td><td>Sound Transmission Class (ASTM E413 from E90 data). Single number for airborne isolation.</td></tr>
+<tr><td>Rw, Rw (C; Ctr)</td><td>dB</td><td>Weighted sound reduction index, ISO 717-1; C and Ctr are spectrum adaptation terms.</td></tr>
+<tr><td>OITC, NIC, NNIC, FSTC</td><td>points</td><td>Outdoor-indoor class; field versions of STC.</td></tr>
+<tr><td>IIC, Ln,w</td><td>points, dB</td><td>Impact isolation (footfall) class and weighted impact level.</td></tr>
+<tr><td>Absorption coefficient &alpha;</td><td>0&ndash;1 (can exceed 1 in a reverberation room)</td><td>Fraction of energy absorbed. Normal incidence (impedance tube) or random incidence (reverberation room).</td></tr>
+<tr><td>NRC</td><td>0&ndash;1 (rounded to 0.05)</td><td>Mean of &alpha; at 250, 500, 1000, 2000 Hz (ASTM C423).</td></tr>
+<tr><td>SAA, &alpha;w, &alpha;p</td><td>0&ndash;1</td><td>Sound absorption average (12 bands, 200&ndash;2500 Hz), weighted absorption coefficient (ISO 11654), practical absorption coefficient.</td></tr>
+<tr><td>Equivalent absorption area</td><td>A, m&sup2; (Sabine)</td><td>&Sigma; S&middot;&alpha;.</td></tr>
+<tr><td>Reverberation time RT60, T20, T30, EDT</td><td>s</td><td>Time for a 60 dB decay (from 20 or 30 dB extrapolated; EDT from the first 10 dB). Sabine: T = 0.161&middot;V / A.</td></tr>
+<tr><td>Schroeder frequency</td><td>Hz</td><td>fs &asymp; 2000&middot;&radic;(T / V); below it, room modes dominate.</td></tr>
+<tr><td>Room modes</td><td>Hz</td><td>f = (c / 2)&middot;&radic;((nx/Lx)&sup2; + (ny/Ly)&sup2; + (nz/Lz)&sup2;).</td></tr>
+<tr><td>Mass law</td><td>dB</td><td>TL rises about 6 dB per doubling of surface density or of frequency (single leaf, ideal).</td></tr>
+<tr><td>Coincidence frequency</td><td>Hz</td><td>Where bending waves match air waves and TL dips (thin stiff panels).</td></tr>
+<tr><td>Mass&ndash;air&ndash;mass resonance</td><td>Hz</td><td>Resonance of a double wall; isolation is poor near it. Wider air gaps and heavier leaves lower it.</td></tr>
+<tr><td>Damping loss factor</td><td>&eta; (dimensionless)</td><td>Fraction of vibration energy dissipated per cycle / 2&pi;.</td></tr>
+<tr><td>Anechoic cut-off frequency</td><td>Hz</td><td>Lowest frequency at which the walls absorb enough (&ge; 99 % absorption or a stated free-field deviation).</td></tr>
+<tr><td>Free-field qualification</td><td>dB deviation</td><td>Level deviation from the inverse-square law along a line (ISO 3745).</td></tr>
+<tr><td>Background noise level, NC, NR, RC curves</td><td>dB, curve number</td><td>Noise criteria for rooms. A test box should be at least 10 dB below the quietest signal it measures.</td></tr>
+<tr><td>Leakage, flanking</td><td>&mdash;</td><td>Sound passing through gaps or side paths; usually limits real isolation.</td></tr>
+<tr><td>Natural frequency of an isolator</td><td>fn = (1/2&pi;)&middot;&radic;(k/m), Hz</td><td>Isolation starts above &radic;2&middot;fn. Transmissibility &lt; 1 there.</td></tr>
+</table></div>
+
+<h3>6.8 Telephony, speech and perception</h3>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Unit</th><th>Meaning</th></tr>
+<tr><td>MRP, ERP, DRP</td><td>&mdash;</td><td>Mouth reference point, ear reference point, drum reference point (HATS and artificial mouth geometry).</td></tr>
+<tr><td>SLR, RLR, STMR, LSTR, OLR</td><td>dB</td><td>Sending / receiving / sidetone masking loudness ratings, listener sidetone rating, overall loudness rating (ITU-T P.79 and related).</td></tr>
+<tr><td>TCLw, echo loss</td><td>dB</td><td>Weighted terminal coupling loss; echo suppression of a handset.</td></tr>
+<tr><td>MOS, PESQ, POLQA, PEAQ</td><td>1&ndash;5 or index</td><td>Mean opinion score and objective speech / audio quality estimates.</td></tr>
+<tr><td>STI, SII, AI, %ALcons</td><td>0&ndash;1, %</td><td>Speech transmission index, speech intelligibility index, articulation index, articulation loss of consonants.</td></tr>
+<tr><td>Phon, sone</td><td>phon, sone</td><td>Loudness level (equal-loudness contours, ISO 226) and loudness (2 sone = twice as loud as 1 sone).</td></tr>
+<tr><td>LUFS / LKFS, LU, LRA, true peak</td><td>LUFS, LU, dBTP</td><td>Programme loudness (ITU-R BS.1770 / EBU R128), loudness range and inter-sample peak.</td></tr>
+<tr><td>Sharpness, roughness, fluctuation strength, tonality</td><td>acum, asper, vacil, tu</td><td>Psychoacoustic metrics for product sound quality.</td></tr>
+<tr><td>Tone-to-noise ratio (TNR), prominence ratio (PR)</td><td>dB</td><td>Audibility of discrete tones in noise (for example ECMA-74).</td></tr>
+</table></div>
+
+<h3>6.9 Vibration (shakers, accelerometers, structure-borne noise)</h3>
+<div class="wrap"><table>
+<tr><th>Quantity</th><th>Unit</th><th>Notes</th></tr>
+<tr><td>Acceleration</td><td>m/s&sup2;, g (9.80665 m/s&sup2;)</td><td>Accelerometer sensitivity in mV/g or mV/(m/s&sup2;), charge types in pC/g.</td></tr>
+<tr><td>Velocity</td><td>mm/s</td><td>a = &omega;&middot;v.</td></tr>
+<tr><td>Displacement</td><td>&micro;m, mm</td><td>v = &omega;&middot;d.</td></tr>
+<tr><td>Force</td><td>N</td><td>Shaker and impact hammer input.</td></tr>
+<tr><td>Mechanical impedance, mobility</td><td>N&middot;s/m; m/(N&middot;s)</td><td>Force / velocity and its inverse.</td></tr>
+</table></div>
+
+<h3>6.10 Production-line test items (the curve types in SoundCheck-style .dat files)</h3>
+<p>Short names used in end-of-line audio testing and in the curve types of the AAT tools. Exact algorithms differ between vendors (SoundCheck, Klippel, APx); the entries marked &dagger; are described from general knowledge and the vendor definition should be checked.</p>
+<div class="wrap"><table>
+<tr><th>Short name</th><th>Full name</th><th>Typical unit</th><th>Meaning</th></tr>
+<tr><td>FR</td><td>Frequency response</td><td>dB SPL or dBV vs Hz</td><td>Level against frequency, compared with a limit mask around the golden sample.</td></tr>
+<tr><td>Phase</td><td>Phase response</td><td>deg vs Hz</td><td>Phase against frequency, relative to a reference channel or the stimulus. Used for polarity and array matching.</td></tr>
+<tr><td>THD</td><td>Total harmonic distortion</td><td>% or dB vs Hz</td><td>Harmonics of the stimulus relative to the fundamental, measured per frequency in a sweep.</td></tr>
+<tr><td>RB, R&amp;B</td><td>Rub &amp; Buzz</td><td>dB or % vs Hz</td><td>Only the high-order harmonics (typically from the 10th up) of a sweep. Detects rubbing, buzzing, loose parts and air leaks.</td></tr>
+<tr><td>PRB</td><td>Perceptual Rub &amp; Buzz &dagger;</td><td>dB or loudness-based ratio</td><td>Rub &amp; Buzz weighted by how audible it is (psychoacoustic loudness and masking), so that defects a listener would hear fail and harmless high-order distortion does not. Reduces false rejects against plain R&amp;B.</td></tr>
+<tr><td>EPRB</td><td>Enhanced Perceptual Rub &amp; Buzz &dagger;</td><td>dB or ratio</td><td>A refined perceptual R&amp;B variant of the same idea with improved audibility weighting. Check the vendor description for the exact method.</td></tr>
+<tr><td>Peak ratio</td><td>Peak ratio (crest of the distortion) &dagger;</td><td>ratio, dB</td><td>Ratio of the peak to the RMS level of the distortion residual. Impulsive defects (loose particle, tick) give a high value; smooth distortion gives a low one.</td></tr>
+<tr><td>Loose particle</td><td>Loose-particle / ticking test &dagger;</td><td>pass / fail, dB</td><td>Detects random clicks from particles inside a speaker or microphone, normally with a swept or fixed-tone drive and a time-domain or high-order analysis.</td></tr>
+<tr><td>Sealing</td><td>Acoustic sealing / leak test</td><td>dB, ratio</td><td>Low-frequency response or pressure behaviour that shows a leak in the enclosure or gasket. See <em>Sealing Analyzer</em>.</td></tr>
+<tr><td>Sensitivity</td><td>Sensitivity at a reference frequency</td><td>dB SPL, mV/Pa, dBV/Pa</td><td>Single value, usually at 1 kHz.</td></tr>
+<tr><td>Record delay</td><td>Delay between stimulus and recording</td><td>ms, samples</td><td>Latency of the device path. Subtracted before time-aligned analysis; also the basis of the delay curve type.</td></tr>
+<tr><td>Delay, group delay</td><td>Delay / group delay</td><td>ms, &micro;s</td><td>Time delay of a path, or the slope of phase against frequency.</td></tr>
+<tr><td>SNR</td><td>Signal-to-noise ratio</td><td>dB</td><td>Level of the signal against the noise floor of the device.</td></tr>
+<tr><td>Polarity</td><td>Polarity test</td><td>+ / &minus;</td><td>Checks that the positive input gives a positive pressure. A pair with reversed polarity cancels at low frequency.</td></tr>
+<tr><td>Limit, golden curve, mask</td><td>Upper and lower limit curves</td><td>dB</td><td>Pass/fail boundary, usually the golden sample &plusmn; a tolerance. A unit passes when its whole curve stays inside.</td></tr>
+<tr><td>Cpk, Sigma</td><td>Process capability index; standard deviation</td><td>number</td><td>How far the mean of a production lot is from the nearest limit in units of 3 &sigma;. Cpk &ge; 1.33 is a common target. See the Sigma run in the AAT analyser.</td></tr>
+<tr><td>Gauge R&amp;R</td><td>Repeatability and reproducibility</td><td>% of tolerance</td><td>How much of the measurement spread comes from the test system itself instead of the product.</td></tr>
+<tr><td>Fixture, coupler, seal</td><td>Test fixture</td><td>&mdash;</td><td>Holds the device against the artificial ear or microphone; fixture leaks and resonances show up as the same failures as product leaks.</td></tr>
+</table></div>
+
+<h3>6.11 Direction of arrival (DOA) and microphone arrays</h3>
+<p>General signal-processing knowledge, not web-sourced. The AAT DOA Analysis uses the cross-spectral phase between channel pairs; the other methods are listed so the names are clear.</p>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Unit</th><th>Meaning</th></tr>
+<tr><td>DOA, DoA</td><td>deg</td><td>Direction of arrival: the angle from which a sound wave reaches the array.</td></tr>
+<tr><td>Azimuth, elevation</td><td>deg</td><td>Horizontal angle and angle above the array plane. Linear arrays resolve one angle only (front/back is ambiguous).</td></tr>
+<tr><td>TDOA, ITD</td><td>&micro;s, samples</td><td>Time difference of arrival between two microphones. Delay = d&middot;cos&theta;/c.</td></tr>
+<tr><td>IPD, phase difference</td><td>deg, rad</td><td>Inter-microphone phase difference, &phi; = 360&middot;f&middot;&tau;. Ambiguous above the spatial aliasing frequency.</td></tr>
+<tr><td>ILD / IID</td><td>dB</td><td>Level difference between microphones (or ears).</td></tr>
+<tr><td>CSD, cross-spectrum</td><td>V&sup2;/Hz</td><td>Cross-spectral density of two channels; its angle is the phase difference per frequency.</td></tr>
+<tr><td>Coherence</td><td>0&ndash;1</td><td>How linearly related two channels are at each frequency. Low coherence means noise or reflections and an unreliable phase.</td></tr>
+<tr><td>GCC, GCC-PHAT</td><td>&mdash;</td><td>Generalised cross-correlation; PHAT weighting whitens the spectrum so the peak gives the delay robustly in reverberation.</td></tr>
+<tr><td>SRP-PHAT</td><td>&mdash;</td><td>Steered response power with PHAT: scan directions and pick the one with the highest summed GCC.</td></tr>
+<tr><td>MUSIC, ESPRIT</td><td>&mdash;</td><td>Subspace high-resolution methods using the eigenstructure of the covariance matrix.</td></tr>
+<tr><td>Beamforming, delay-and-sum</td><td>&mdash;</td><td>Align and sum the channels to favour one direction. MVDR / Capon minimises noise from other directions; superdirective and GSC are variants.</td></tr>
+<tr><td>Beam pattern, beamwidth, sidelobe</td><td>dB vs deg</td><td>Array response over angle; main lobe width and level of the other lobes.</td></tr>
+<tr><td>Array aperture, spacing d</td><td>mm, cm</td><td>Larger aperture gives finer low-frequency resolution; smaller spacing raises the aliasing limit.</td></tr>
+<tr><td>Spatial aliasing</td><td>Hz</td><td>f = c / (2d) for a pair; above it the phase wraps and the direction is ambiguous.</td></tr>
+<tr><td>Far field, near field</td><td>m</td><td>Plane-wave assumption holds in the far field (distance &gg; aperture&sup2;/&lambda;); the near field needs spherical wave models.</td></tr>
+<tr><td>Microphone mismatch</td><td>dB, deg, &micro;s</td><td>Sensitivity, phase and delay errors between channels; they become DOA error. See <em>DOA Phase Budget Sim</em>.</td></tr>
+<tr><td>Resolution, accuracy, RMS error</td><td>deg</td><td>Smallest separable angle; mean error against a known source; spread of repeated estimates.</td></tr>
+<tr><td>Speed of sound c</td><td>m/s</td><td>About 343 m/s at 20 &deg;C; 331.3 + 0.606&middot;T (T in &deg;C).</td></tr>
+<tr><td>Sample-rate sync, clock drift</td><td>ppm</td><td>Channels from different devices drift and shift the phase; array interfaces share one clock.</td></tr>
+</table></div>
+
+<h3>6.12 Signal processing, adaptive filters and AI / machine-learning terms</h3>
+<p>General knowledge, not web-sourced. The AAT tools implement NLMS/LMS noise cancellation, spectral subtraction and audio difference extraction; the machine-learning terms are listed for reading papers and vendor sheets.</p>
+<div class="wrap"><table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>LMS, NLMS</td><td>Least-mean-squares adaptive filter; NLMS normalises the step size by input power for stable convergence. Step size &mu; and filter length are the main parameters.</td></tr>
+<tr><td>RLS, Kalman filter</td><td>Faster-converging adaptive filters at higher cost.</td></tr>
+<tr><td>ANC, adaptive noise cancellation</td><td>Subtract a noise estimate predicted from a reference microphone. Needs a reference that has noise but little target signal.</td></tr>
+<tr><td>Active noise control (ANC, headphones)</td><td>Anti-noise played by a loudspeaker (feedforward, feedback, hybrid). Uses FxLMS with a secondary-path model.</td></tr>
+<tr><td>AEC, echo cancellation</td><td>Remove the loudspeaker signal from the microphone signal; ERLE in dB measures the echo reduction.</td></tr>
+<tr><td>Spectral subtraction</td><td>Subtract an estimated noise spectrum from the signal spectrum. Leaves musical noise if over-subtracted.</td></tr>
+<tr><td>Wiener filter</td><td>Minimum-mean-square-error gain per frequency from the signal-to-noise ratio.</td></tr>
+<tr><td>VAD</td><td>Voice activity detection: decides speech or no speech, used to update the noise estimate.</td></tr>
+<tr><td>Noise suppression / denoising</td><td>Classical (spectral subtraction, Wiener, MMSE-LSA) or neural (RNNoise, DeepFilterNet, DNS-style models).</td></tr>
+<tr><td>STFT, window, hop size</td><td>Short-time Fourier transform; window length sets frequency resolution, hop sets time step. Hann is a common window.</td></tr>
+<tr><td>Spectrogram, mel spectrogram, MFCC</td><td>Time-frequency picture; mel-scaled version; cepstral coefficients derived from it. Common model inputs.</td></tr>
+<tr><td>Cepstrum, LPC</td><td>Source/filter analysis; linear predictive coding of speech.</td></tr>
+<tr><td>Resampling, decimation, anti-alias filter</td><td>Change the sample rate; low-pass before downsampling.</td></tr>
+<tr><td>FIR, IIR, biquad</td><td>Digital filter types; FIR can be linear-phase, IIR is cheaper. Butterworth, Bessel, Linkwitz&ndash;Riley are common alignments.</td></tr>
+<tr><td>Machine learning, deep learning</td><td>Models that learn from data. Training, validation and test sets; overfitting means good on training data only.</td></tr>
+<tr><td>CNN, RNN / LSTM / GRU, Transformer</td><td>Common network types for audio: convolutional, recurrent, attention-based.</td></tr>
+<tr><td>Classification, regression, anomaly detection</td><td>Task types. In production audio test: pass/fail classification, level prediction, defect detection from unusual signals.</td></tr>
+<tr><td>Features, embeddings</td><td>Numbers extracted from audio (spectrum, MFCC, learned vectors) that the model uses.</td></tr>
+<tr><td>Accuracy, precision, recall, F1, ROC / AUC</td><td>Classifier quality. False reject = good unit failed; false accept (escape) = bad unit passed. Production tests care most about escapes.</td></tr>
+<tr><td>Confusion matrix</td><td>Table of predicted against true classes.</td></tr>
+<tr><td>Data augmentation, domain shift</td><td>Create varied training data; performance drop when production data differ from training data (new fixture, new site).</td></tr>
+<tr><td>Inference latency, quantisation, edge deployment</td><td>Time per prediction; reducing model precision to run on small devices.</td></tr>
+<tr><td>ASR, WER; TTS; keyword spotting, wake word</td><td>Speech recognition and its word error rate; speech synthesis; always-on detection of a trigger phrase. Test conditions: SNR, distance, accents, device microphone.</td></tr>
+<tr><td>PESQ, POLQA, STOI, DNSMOS</td><td>Objective speech-quality and intelligibility scores (ITU-T P.862, P.863; STOI; model-based DNSMOS). Compare processed with clean reference.</td></tr>
+<tr><td>SI-SDR, SDR</td><td>dB, signal-to-distortion ratio for separation and enhancement.</td></tr>
+<tr><td>Source separation, blind source separation, ICA</td><td>Split mixed sources; independent component analysis separates them without a model of the room.</td></tr>
+<tr><td>Dereverberation, WPE</td><td>Remove room reverb; weighted prediction error is the classic method.</td></tr>
+</table></div>
+
+<h3>6.13 Newer technologies (web search, Nov 2026)</h3>
+<p>Mostly research papers, theses and vendor statements. Performance numbers are claims by the authors or vendors and were not checked independently. Search results gave no confirmed commercial product for the new materials.</p>
+<div class="wrap"><table>
+<tr><th>Area</th><th>Term / technology</th><th>What it is</th><th>Source</th></tr>
+<tr><td>Production test</td><td>Sound-AI defect inspection</td><td>Machine-learning inspection of factory recordings from spectrogram features, aimed at defects a listener cannot hear in factory noise. Vendor claim: defect signals about 1.8 dB above ~100 dB factory noise.</td><td><a href="https://www.automate.org/ai/news/deeply-ceo-suji-lee-defects-invisible-to-the-human-ear-can-be-detected-with-sound-ai--deeply-inc">Deeply interview</a></td></tr>
+<tr><td>Production test</td><td>Student project: AI speaker defect detection</td><td>Binary normal / abnormal classifier on 1 s spectrograms; projected inspection time 5 s down to 1 s (estimate, not measured).</td><td><a href="https://cs231n.stanford.edu/papers/text_file_841032472-final report.pdf">Stanford CS231n report</a></td></tr>
+<tr><td>Production test</td><td>NVH end-of-line "voiceprint" analysis</td><td>Edge box on the line running order tracking and kurtosis analysis. Case study is for solenoid valves, not speakers.</td><td><a href="https://pl.hertzinno.com/cases-detail/beyond-the-human-ear-revolutionizing-end-of-line-quality-control-with-ai-voiceprint-technology">Hertzinno case</a></td></tr>
+<tr><td>Production test</td><td>AI assistance in loudspeaker assembly</td><td>Fraunhofer IDMT project on AI support for manual loudspeaker assembly.</td><td><a href="https://www.idmt.fraunhofer.de/en/institute/projects-products/projects/manual-assembly-ai-assistance-system.html">Fraunhofer IDMT</a></td></tr>
+<tr><td>Loudspeaker analysis</td><td>FLSI (Fast Large Signal Identification), Standard / Pro</td><td>Klippel module for fast large-signal driver parameter identification; subscription licences; Pro pre-release 2025, Standard pre-release May 2026.</td><td><a href="https://www.klippel.de/service/news/newsdetails/article/whats-new-in-db-lab-212813-qc-711.html">Klippel news</a></td></tr>
+<tr><td>Loudspeaker analysis</td><td>QC-Remote API, automation</td><td>Klippel QC 7.9 added faster device handling and a stronger remote-control API for line integration.</td><td><a href="https://www.klippel.de/service/news/newsdetails/article/whats-new-in-db-lab-212805-qc-78.html">Klippel news</a></td></tr>
+<tr><td>Acoustic imaging</td><td>CLEAN-SC, DAMAS</td><td>Deconvolution methods that sharpen beamforming maps and estimate source strength.</td><td><a href="https://eprints.soton.ac.uk/505924">Southampton</a></td></tr>
+<tr><td>Acoustic imaging</td><td>Deep-learning source imaging</td><td>Densely connected CNNs that beat conventional beamforming at low frequency in simulation; compared against CLEAN-SC and DAMAS.</td><td><a href="https://eprints.soton.ac.uk/506970">Southampton</a></td></tr>
+<tr><td>Acoustic imaging</td><td>DAMAS-FISTA-Net (unrolled network)</td><td>An iterative deconvolution algorithm unrolled into a network for real-time, interpretable imaging.</td><td><a href="https://lup.lub.lu.se/record/7a5a6121-3616-420b-bf3d-6a0cc6c8d189">Lund</a></td></tr>
+<tr><td>Acoustic imaging</td><td>Spherical segmentation of beamformed maps</td><td>U-Net segments 360&deg; sound maps instead of regressing one direction; drone dataset released.</td><td><a href="https://arxiv.org/html/2508.00307v1">arXiv 2508.00307</a></td></tr>
+<tr><td>Acoustic imaging</td><td>Beamforming plus vision tracking</td><td>Embedded 3D localisation of moving sources using depth estimation and stereo vision.</td><td><a href="https://arxiv.org/abs/2511.19396v1">arXiv 2511.19396</a></td></tr>
+<tr><td>Acoustic imaging</td><td>3D acoustic field reconstruction</td><td>Deep-learning reconstruction of 3D sound pressure fields and noise-source positions.</td><td><a href="https://essay.utwente.nl/essays/106443">Twente thesis</a></td></tr>
+<tr><td>Multi-source DOA</td><td>Deep-learning localisation of several sources from acoustic images</td><td>Network on microphone-array acoustic images for multiple simultaneous sources.</td><td><a href="https://www.springerprofessional.de/en/localization-of-multiple-sound-sources-based-on-deep-learning-us/51046020">Springer</a></td></tr>
+<tr><td>Spatial audio</td><td>Neural Ambisonics encoding</td><td>Network converts circular-array signals to second-order Ambisonics.</td><td><a href="https://arxiv.org/abs/2409.06954v2">arXiv 2409.06954</a></td></tr>
+<tr><td>Spatial audio</td><td>Array-agnostic encoders (Gen-A)</td><td>One model for unseen array geometries; follow-up uses array transfer functions as metadata, relevant for cheap MEMS arrays.</td><td><a href="https://export.arxiv.org/pdf/2501.08047">arXiv 2501.08047</a>, <a href="https://arxiv.org/pdf/2601.21124">arXiv 2601.21124</a></td></tr>
+<tr><td>Spatial audio</td><td>SpatialCodec</td><td>Neural sub-band codec for multi-channel microphone-array speech.</td><td><a href="https://arxiv.org/html/2309.07432v2">arXiv 2309.07432</a></td></tr>
+<tr><td>Materials</td><td>Graphene-oxide / PVA aerogel</td><td>Ultralight (2.1 kg/m&sup3;) lab aerogel, claimed up to 16 dB engine-noise reduction; a lab result, no product.</td><td><a href="https://www.labmanager.com/meringue-like-material-could-make-aircraft-as-quiet-as-a-hairdryer-26119">Lab Manager</a></td></tr>
+<tr><td>Materials</td><td>Owl-inspired nanofibre aerogel</td><td>Two-layer aerogel with NRC 0.58 reported in 2025; material result only.</td><td><a href="https://axial.acs.org/materials-science/natures-blueprint-for-silence-how-owl-inspired-aerogels-could-transform-noise-reduction">ACS Axial</a></td></tr>
+<tr><td>Materials</td><td>Silica aerogel for acoustics</td><td>A review notes the market is driven by thermal insulation; acoustic use faces commercialisation barriers.</td><td><a href="https://ui.adsabs.harvard.edu/abs/2021JNCS..56220770M">Review (2021)</a></td></tr>
+<tr><td>Materials</td><td>Aerogel acoustic treatment for buildings</td><td>Virginia Tech project combining acoustic and thermal insulation.</td><td><a href="https://arch.vt.edu/experiential-learning/research-and-creative-scholarship/aerogel-acoustic-treatment-for-building-applications.html">Virginia Tech</a></td></tr>
+</table></div>
+<p>Not confirmed: no source found for AI features in SoundCheck or APx, or for PRB / EPRB in current releases, so 6.10 stays marked &dagger;. An acoustic-metamaterial market statistics page was left out because its figures had no verifiable source.</p>
+
+<h2 id="gaps">7. Not found by the search</h2>
+<ul>
+<li>Density and absorption coefficients of rock wool at 60 kg/m&sup3; and glass wool at 24 kg/m&sup3;.</li>
+<li>A cut-off frequency for anechoic wedges.</li>
+<li>Independent (non-vendor) comparisons of sealants and door seals.</li>
+<li>Neutrik Minirator and Audio Precision APx555 data sheets.</li>
+<li>Current edition status of ASTM E90, ISO 10140, ISO 717-1, ISO 18233 and ITU-T P.57 / P.58.</li>
+</ul>
+</main>
+</body>
+</html>
